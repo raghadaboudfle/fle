@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le passé composé — Activité A2</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f0; color: #1a1a18; line-height: 1.7; padding: 2rem 1rem; }
+  .page { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: #666; margin-bottom: 2rem; }
+  .ex-wrap { margin-bottom: 2.5rem; }
+  .ex-title { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+  .ex-sub { font-size: 13px; color: #666; margin-bottom: 1rem; }
+  .ex-card { background: #fff; border: 1px solid #e0e0d8; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .num { font-size: 12px; color: #aaa; margin-bottom: 6px; }
+  .sentence { font-size: 16px; color: #1a1a18; line-height: 2.2; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .blank { border: none; border-bottom: 2px solid #378ADD; background: transparent; font-size: 16px; color: #185FA5; width: 140px; outline: none; text-align: center; padding: 2px 4px; font-family: inherit; }
+  .blank:focus { border-bottom-color: #0C447C; }
+  .blank.ok { border-bottom-color: #3B6D11; color: #3B6D11; }
+  .blank.ko { border-bottom-color: #A32D2D; color: #A32D2D; }
+  .feedback { font-size: 12px; color: #aaa; margin-top: 4px; font-style: italic; }
+  .feedback.show-ko { color: #A32D2D; }
+  .btn-row { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+  button { font-family: inherit; font-size: 14px; padding: 7px 16px; border: 1px solid #bbb; border-radius: 8px; background: transparent; cursor: pointer; color: #1a1a18; }
+  button:hover { background: #f0f0ec; }
+  button:active { transform: scale(0.98); }
+  .score-box { border-radius: 8px; padding: 12px 16px; font-size: 14px; margin-top: 1rem; display: none; }
+  .score-box.show { display: block; }
+  .score-ok { background: #EAF3DE; color: #3B6D11; }
+  .score-mid { background: #FAEEDA; color: #854F0B; }
+  .score-bad { background: #FCEBEB; color: #A32D2D; }
+  .divider { border: none; border-top: 1px solid #e0e0d8; margin: 2rem 0; }
+  select.sel { font-size: 15px; border: none; border-bottom: 2px solid #378ADD; background: transparent; color: #185FA5; padding: 2px 6px; outline: none; cursor: pointer; font-family: inherit; }
+  select.sel.ok { border-bottom-color: #3B6D11; color: #3B6D11; }
+  select.sel.ko { border-bottom-color: #A32D2D; color: #A32D2D; }
+  .long-blank { width: 100%; text-align: left; margin-top: 6px; display: block; }
+  .prompt-note { font-size: 12px; color: #888; margin-bottom: 6px; font-style: italic; }
+  .hint-verb { color: #aaa; font-size: 14px; }
+
+  /* Leçon */
+  .rule-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; border-left: 3px solid; }
+  .rule-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .rule-body { font-size: 14px; line-height: 1.8; }
+  .rule-blue { background: #E6F1FB; border-color: #378ADD; }
+  .rule-blue .rule-title { color: #185FA5; }
+  .rule-green { background: #EAF3DE; border-color: #639922; }
+  .rule-green .rule-title { color: #3B6D11; }
+  .rule-amber { background: #FAEEDA; border-color: #BA7517; }
+  .rule-amber .rule-title { color: #854F0B; }
+  .rule-purple { background: #EEEDFE; border-color: #7F77DD; }
+  .rule-purple .rule-title { color: #534AB7; }
+  code { background: #f0f0ec; border: 1px solid #ddd; border-radius: 4px; padding: 1px 5px; font-size: 13px; color: #185FA5; font-family: monospace; }
+  .section-label { font-size: 12px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    button, .btn-row, .score-box { display: none !important; }
+    .blank { border-bottom-color: #999; color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Le passé composé</h1>
+  <p class="subtitle">Activité A2 — 3 exercices interactifs</p>
+
+  <!-- LEÇON -->
+  <div class="ex-wrap">
+    <div class="ex-title">Leçon — rappel</div>
+    <div class="ex-sub" style="margin-bottom:1rem">Formation : <strong>sujet + auxiliaire au présent + participe passé</strong></div>
+
+    <div class="rule-box rule-blue">
+      <div class="rule-title">Formation générale</div>
+      <div class="rule-body">
+        <em>J'ai mangé une pizza. / Elle est allée au cinéma.</em>
+      </div>
+    </div>
+
+    <div class="rule-box rule-green">
+      <div class="rule-title">Avec AVOIR (la majorité des verbes)</div>
+      <div class="rule-body">
+        <code>j'ai</code> <code>tu as</code> <code>il/elle a</code> <code>nous avons</code> <code>vous avez</code> <code>ils/elles ont</code><br><br>
+        Participes réguliers : -er → <strong>-é</strong> &nbsp;|&nbsp; -ir → <strong>-i</strong> &nbsp;|&nbsp; -re → <strong>-u</strong>
+      </div>
+    </div>
+
+    <div class="rule-box rule-amber">
+      <div class="rule-title">Avec ÊTRE (17 verbes + réfléchis)</div>
+      <div class="rule-body">
+        DR &amp; MRS VANDERTRAMPP : Devenir, Rester, Monter, Revenir, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir, Passer<br><br>
+        ⚠ Le participe s'accorde avec le sujet :<br>
+        <em>Il est allé. / Elle est allée. / Ils sont allés.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EXO 1 -->
+  <div class="ex-wrap">
+    <div class="ex-title">Exercice 1 — Conjuguez au passé composé</div>
+    <div class="ex-sub">Écrivez la forme correcte du verbe entre parenthèses.</div>
+
+    <div class="ex-card">
+      <div class="num">1.</div>
+      <div class="sentence">Hier soir, nous <input class="blank" id="a1" placeholder="…" autocomplete="off" spellcheck="false"> une bonne soupe. <span class="hint-verb">(manger)</span></div>
+      <div class="feedback" id="f1"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">2.</div>
+      <div class="sentence">Marie <input class="blank" id="a2" placeholder="…" autocomplete="off" spellcheck="false"> à 8h du matin. <span class="hint-verb">(partir)</span></div>
+      <div class="feedback" id="f2"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">3.</div>
+      <div class="sentence">Tu <input class="blank" id="a3" placeholder="…" autocomplete="off" spellcheck="false"> tes devoirs ? <span class="hint-verb">(finir)</span></div>
+      <div class="feedback" id="f3"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">4.</div>
+      <div class="sentence">Ils <input class="blank" id="a4" placeholder="…" autocomplete="off" spellcheck="false"> en voiture. <span class="hint-verb">(venir)</span></div>
+      <div class="feedback" id="f4"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">5.</div>
+      <div class="sentence">J' <input class="blank" id="a5" placeholder="…" autocomplete="off" spellcheck="false"> le bus ce matin. <span class="hint-verb">(prendre)</span></div>
+      <div class="feedback" id="f5"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">6.</div>
+      <div class="sentence">Vous <input class="blank" id="a6" placeholder="…" autocomplete="off" spellcheck="false"> à quelle heure ? <span class="hint-verb">(arriver)</span></div>
+      <div class="feedback" id="f6"></div>
+    </div>
+
+    <div class="btn-row">
+      <button onclick="check1()">Corriger</button>
+      <button onclick="reset1()">Effacer</button>
+    </div>
+    <div class="score-box" id="score1"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EXO 2 -->
+  <div class="ex-wrap">
+    <div class="ex-title">Exercice 2 — Avoir ou être ?</div>
+    <div class="ex-sub">Choisissez le bon auxiliaire dans chaque liste déroulante.</div>
+
+    <div class="ex-card">
+      <div class="num">1.</div>
+      <div class="sentence">Elle <select class="sel" id="b1"><option value="">—</option><option>a</option><option>est</option></select> allée au marché.</div>
+      <div class="feedback" id="g1"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">2.</div>
+      <div class="sentence">Nous <select class="sel" id="b2"><option value="">—</option><option>avons</option><option>sommes</option></select> regardé la télé.</div>
+      <div class="feedback" id="g2"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">3.</div>
+      <div class="sentence">Ils <select class="sel" id="b3"><option value="">—</option><option>ont</option><option>sont</option></select> sortis tôt.</div>
+      <div class="feedback" id="g3"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">4.</div>
+      <div class="sentence">Tu <select class="sel" id="b4"><option value="">—</option><option>as</option><option>es</option></select> bu un café ?</div>
+      <div class="feedback" id="g4"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">5.</div>
+      <div class="sentence">Elle <select class="sel" id="b5"><option value="">—</option><option>a</option><option>est</option></select> tombée dans l'escalier.</div>
+      <div class="feedback" id="g5"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">6.</div>
+      <div class="sentence">J' <select class="sel" id="b6"><option value="">—</option><option>ai</option><option>suis</option></select> fait mes courses.</div>
+      <div class="feedback" id="g6"></div>
+    </div>
+
+    <div class="btn-row">
+      <button onclick="check2()">Corriger</button>
+      <button onclick="reset2()">Effacer</button>
+    </div>
+    <div class="score-box" id="score2"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EXO 3 -->
+  <div class="ex-wrap">
+    <div class="ex-title">Exercice 3 — Construisez la phrase</div>
+    <div class="ex-sub">Remettez les mots dans l'ordre et conjuguez le verbe au passé composé.</div>
+
+    <div class="ex-card">
+      <div class="num">1.</div>
+      <div class="prompt-note">Paul / rentrer / tard / hier soir</div>
+      <input class="blank long-blank" id="c1" placeholder="Écrivez la phrase complète…" autocomplete="off" spellcheck="false">
+      <div class="feedback" id="h1"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">2.</div>
+      <div class="prompt-note">nous / visiter / le musée / samedi</div>
+      <input class="blank long-blank" id="c2" placeholder="Écrivez la phrase complète…" autocomplete="off" spellcheck="false">
+      <div class="feedback" id="h2"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">3.</div>
+      <div class="prompt-note">les enfants / naître / en 2015</div>
+      <input class="blank long-blank" id="c3" placeholder="Écrivez la phrase complète…" autocomplete="off" spellcheck="false">
+      <div class="feedback" id="h3"></div>
+    </div>
+    <div class="ex-card">
+      <div class="num">4.</div>
+      <div class="prompt-note">tu / écrire / une lettre / à ta mère</div>
+      <input class="blank long-blank" id="c4" placeholder="Écrivez la phrase complète…" autocomplete="off" spellcheck="false">
+      <div class="feedback" id="h4"></div>
+    </div>
+
+    <div class="btn-row">
+      <button onclick="check3()">Corriger</button>
+      <button onclick="reset3()">Effacer</button>
+    </div>
+    <div class="score-box" id="score3"></div>
+  </div>
+
+</div>
+
+<script>
+const ans1 = ["avons mangé","est partie","as fini","sont venus","ai pris","êtes arrivés"];
+const hints1 = [
+  "manger → avoir → avons mangé",
+  "partir → être ; accord féminin → est partie",
+  "finir → avoir → as fini",
+  "venir → être ; accord masc. pluriel → sont venus",
+  "prendre → participe irrégulier : pris → ai pris",
+  "arriver → être → êtes arrivés"
+];
+const ans2 = ["est","avons","sont","as","est","ai"];
+const hints2 = [
+  "aller → être → est",
+  "regarder → avoir → avons",
+  "sortir → être → sont",
+  "boire → avoir → as",
+  "tomber → être → est",
+  "faire → avoir → ai"
+];
+const ans3 = [
+  "paul est rentré tard hier soir",
+  "nous avons visité le musée samedi",
+  "les enfants sont nés en 2015",
+  "tu as écrit une lettre à ta mère"
+];
+const hints3 = [
+  "rentrer → être → Paul est rentré tard hier soir.",
+  "visiter → avoir → Nous avons visité le musée samedi.",
+  "naître → être ; accord masc. pluriel → Les enfants sont nés en 2015.",
+  "écrire → participe irrégulier : écrit → Tu as écrit une lettre à ta mère."
+];
+
+function norm(s){
+  return s.toLowerCase().trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/['']/g,"'").replace(/\s+/g,' ').replace(/[.!?,;]/g,'');
+}
+
+function check1(){
+  let ok=0;
+  ans1.forEach((a,i)=>{
+    const el=document.getElementById('a'+(i+1));
+    const fel=document.getElementById('f'+(i+1));
+    const good=norm(el.value)===norm(a);
+    el.classList.toggle('ok',good); el.classList.toggle('ko',!good);
+    if(good){ok++;fel.textContent='';fel.className='feedback';}
+    else{fel.textContent='Indice : '+hints1[i];fel.className='feedback show-ko';}
+  });
+  showScore('score1',ok,6);
+}
+function reset1(){
+  for(let i=1;i<=6;i++){
+    const el=document.getElementById('a'+i);el.value='';el.classList.remove('ok','ko');
+    const f=document.getElementById('f'+i);f.textContent='';f.className='feedback';
+  }
+  document.getElementById('score1').className='score-box';
+}
+
+function check2(){
+  let ok=0;
+  ans2.forEach((a,i)=>{
+    const el=document.getElementById('b'+(i+1));
+    const fel=document.getElementById('g'+(i+1));
+    const good=el.value===a;
+    el.classList.toggle('ok',good); el.classList.toggle('ko',!good);
+    if(good){ok++;fel.textContent='';fel.className='feedback';}
+    else{fel.textContent='Indice : '+hints2[i];fel.className='feedback show-ko';}
+  });
+  showScore('score2',ok,6);
+}
+function reset2(){
+  for(let i=1;i<=6;i++){
+    const el=document.getElementById('b'+i);el.value='';el.classList.remove('ok','ko');
+    const f=document.getElementById('g'+i);f.textContent='';f.className='feedback';
+  }
+  document.getElementById('score2').className='score-box';
+}
+
+function check3(){
+  let ok=0;
+  ans3.forEach((a,i)=>{
+    const el=document.getElementById('c'+(i+1));
+    const fel=document.getElementById('h'+(i+1));
+    const good=norm(el.value)===norm(a);
+    el.classList.toggle('ok',good); el.classList.toggle('ko',!good);
+    if(good){ok++;fel.textContent='';fel.className='feedback';}
+    else{fel.textContent='Indice : '+hints3[i];fel.className='feedback show-ko';}
+  });
+  showScore('score3',ok,4);
+}
+function reset3(){
+  for(let i=1;i<=4;i++){
+    const el=document.getElementById('c'+i);el.value='';el.classList.remove('ok','ko');
+    const f=document.getElementById('h'+i);f.textContent='';f.className='feedback';
+  }
+  document.getElementById('score3').className='score-box';
+}
+
+function showScore(id,ok,total){
+  const el=document.getElementById(id);
+  const pct=Math.round(ok/total*100);
+  el.className='score-box show '+(pct===100?'score-ok':pct>=50?'score-mid':'score-bad');
+  el.innerHTML='<strong>'+ok+'/'+total+'</strong> — '+(pct===100?'Parfait, bravo !':pct>=50?'Bien ! Regardez les indices en rouge.':'Courage ! Relisez la leçon et réessayez.');
+}
+</script>
+</body>
+</html>

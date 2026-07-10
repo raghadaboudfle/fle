@@ -1,227 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Learn French | Français Sans Illusion</title>
+  <title>Learn French | Français Sans Illusion</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-<style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/logos/icon-light.svg"
+  >
 
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(180deg,#f7fbff,#eef5ff);
-color:#1f2937;
-padding:40px 20px 80px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.container{
-max-width:1100px;
-margin:auto;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #eaf4ff 100%);
+      color: #1f2937;
+    }
 
-.back-link{
-display:inline-flex;
-align-items:center;
-gap:10px;
-text-decoration:none;
-color:#1e5bb8;
-font-weight:600;
-margin-bottom:40px;
-}
+    .page {
+      width: min(100% - 36px, 1050px);
+      margin: 0 auto;
+      padding: 35px 0 55px;
+    }
 
-.logo{
-width:80px;
-display:block;
-margin:0 auto 20px;
-}
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 15px;
+      color: #1e5bb8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
 
-h1{
-text-align:center;
-font-size:3rem;
-color:#1e5bb8;
-margin-bottom:12px;
-}
+    .back-link:hover {
+      transform: translateX(-3px);
+    }
 
-.subtitle{
-text-align:center;
-font-size:1.1rem;
-color:#5f6f87;
-margin-bottom:60px;
-}
+    .site-icon {
+      display: block;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 18px;
+    }
 
-.level{
-background:white;
-border-radius:28px;
-padding:45px;
-margin-bottom:45px;
-box-shadow:0 18px 45px rgba(30,91,184,.10);
-}
+    .site-title {
+      margin: 0;
+      text-align: center;
+      color: #1e5bb8;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+    }
 
-.level h2{
-text-align:center;
-font-size:2rem;
-color:#1e5bb8;
-margin-bottom:10px;
-}
+    .subtitle {
+      max-width: 700px;
+      margin: 15px auto 42px;
+      text-align: center;
+      color: #64748b;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
 
-.level p{
-text-align:center;
-color:#6b7280;
-margin-bottom:35px;
-}
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px;
-}
+    .level-card {
+      min-height: 285px;
+      padding: 38px 30px;
+      border-radius: 25px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 35px rgba(30, 91, 184, 0.13);
+      transition: 0.25s ease;
+    }
 
-.card{
-border-radius:22px;
-padding:40px;
-text-align:center;
-color:white;
-font-weight:600;
-font-size:1.15rem;
-cursor:pointer;
-transition:.25s;
-}
+    .level-card:hover {
+      transform: translateY(-5px);
+    }
 
-.card:hover{
-transform:translateY(-6px);
-}
+    .level-icon {
+      width: 76px;
+      height: 76px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
 
-.a1{background:#dbeeff;color:#1e5bb8;}
-.a2{background:#a8d3ff;}
-.b1{background:#6eaef7;}
-.b2{background:#2f73d9;}
+    .level-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+      line-height: 1.3;
+    }
 
-@media(max-width:768px){
+    .level-card p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
 
-.cards{
-grid-template-columns:1fr;
-}
+    .level-arrow {
+      width: 50px;
+      height: 50px;
+      margin-top: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 7px 16px rgba(30, 91, 184, 0.15);
+    }
 
-h1{
-font-size:2.3rem;
-}
+    .a1 {
+      background: linear-gradient(135deg, #eef7ff, #dceeff);
+      color: #1e5bb8;
+      border: 1px solid #cfe5ff;
+    }
 
-}
+    .a1 .level-icon {
+      background: rgba(119, 177, 242, 0.18);
+    }
 
-</style>
+    .a1 .level-arrow {
+      background: #ffffff;
+      color: #1e5bb8;
+    }
 
+    .a2 {
+      background: linear-gradient(135deg, #d5e9ff, #a9ceff);
+      color: #1554ad;
+      border: 1px solid #b7d7ff;
+    }
+
+    .a2 .level-icon {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .a2 .level-arrow {
+      background: #ffffff;
+      color: #1554ad;
+    }
+
+    .b1 {
+      background: linear-gradient(135deg, #73b1ff, #4d8ff0);
+      color: #ffffff;
+      border: 1px solid #5a9df4;
+    }
+
+    .b1 .level-icon {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .b1 .level-arrow {
+      background: #ffffff;
+      color: #2f73d9;
+    }
+
+    .b2 {
+      background: linear-gradient(135deg, #1762c8, #0d4daf);
+      color: #ffffff;
+      border: 1px solid #1558ba;
+    }
+
+    .b2 .level-icon {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .b2 .level-arrow {
+      background: #ffffff;
+      color: #1558ba;
+    }
+
+    footer {
+      margin-top: 38px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 24px, 1050px);
+        padding-top: 25px;
+      }
+
+      .levels-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .level-card {
+        min-height: 245px;
+      }
+
+      .site-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <main class="page">
 
-<a href="index.html" class="back-link">
-<i class="fa-solid fa-arrow-left"></i>
-Back to Home
-</a>
+    <a href="index.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back to Home
+    </a>
 
-<img src="assets/logos/icon-light.svg" class="logo">
+    <img
+      src="assets/logos/icon-light.svg"
+      alt="Français Sans Illusion logo"
+      class="site-icon"
+    >
 
-<h1>Choose Your Level</h1>
+    <h1 class="site-title">Français Sans Illusion</h1>
 
-<p class="subtitle">
-Start practicing French through interactive activities designed for every level.
-</p>
+    <p class="subtitle">
+      Choose your level and start learning French at your own pace.
+    </p>
 
-<section class="level">
+    <section class="levels-grid">
 
-<h2>A1 – Beginner</h2>
+      <article class="level-card a1">
+        <div class="level-icon">
+          <i class="fa-regular fa-user"></i>
+        </div>
 
-<p>Build your first French conversations.</p>
+        <h2>A1 – Beginner</h2>
 
-<div class="cards">
+        <p>
+          Build your first French conversations.
+        </p>
 
-<div class="card a1">
-Activity 1
-</div>
+        <div class="level-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </article>
 
-<div class="card a1">
-Activity 2
-</div>
+      <article class="level-card a2">
+        <div class="level-icon">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
 
-<div class="card a1">
-Activity 3
-</div>
+        <h2>A2 – Elementary</h2>
 
-<div class="card a1">
-Activity 4
-</div>
+        <p>
+          Speak with more confidence.
+        </p>
 
-</div>
+        <div class="level-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </article>
 
-</section>
+      <article class="level-card b1">
+        <div class="level-icon">
+          <i class="fa-solid fa-chart-column"></i>
+        </div>
 
-<section class="level">
+        <h2>B1 – Intermediate</h2>
 
-<h2>A2 – Elementary</h2>
+        <p>
+          Handle everyday situations naturally.
+        </p>
 
-<p>Speak with more confidence.</p>
+        <div class="level-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </article>
 
-<div class="cards">
+      <article class="level-card b2">
+        <div class="level-icon">
+          <i class="fa-regular fa-gem"></i>
+        </div>
 
-<div class="card a2">Activity 1</div>
-<div class="card a2">Activity 2</div>
-<div class="card a2">Activity 3</div>
-<div class="card a2">Activity 4</div>
+        <h2>B2 – Upper Intermediate</h2>
 
-</div>
+        <p>
+          Express yourself fluently and accurately.
+        </p>
 
-</section>
+        <div class="level-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </article>
 
-<section class="level">
+    </section>
 
-<h2>B1 – Intermediate</h2>
+    <footer>
+      Designed with ❤️ &amp; AI by Raghad Aboud
+    </footer>
 
-<p>Handle everyday situations naturally.</p>
-
-<div class="cards">
-
-<div class="card b1">Activity 1</div>
-<div class="card b1">Activity 2</div>
-<div class="card b1">Activity 3</div>
-<div class="card b1">Activity 4</div>
-
-</div>
-
-</section>
-
-<section class="level">
-
-<h2>B2 – Upper Intermediate</h2>
-
-<p>Express yourself fluently and accurately.</p>
-
-<div class="cards">
-
-<div class="card b2">Activity 1</div>
-<div class="card b2">Activity 2</div>
-<div class="card b2">Activity 3</div>
-<div class="card b2">Activity 4</div>
-
-</div>
-
-</section>
-
-</div>
+  </main>
 
 </body>
 </html>

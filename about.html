@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meet Raghad | Français Sans Illusion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/logos/icon-light.svg"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #eaf4ff 100%);
+      color: #1f2937;
+    }
+
+    .page {
+      width: min(100% - 36px, 1050px);
+      margin: 0 auto;
+      padding: 35px 0 45px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 30px;
+      color: #1e5bb8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-3px);
+    }
+
+    .page-title {
+      margin: 0 0 35px;
+      color: #1e5bb8;
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .profile-card {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 42px;
+      align-items: center;
+      padding: 38px;
+      margin-bottom: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #dbeafe;
+      border-radius: 30px;
+      box-shadow: 0 18px 45px rgba(30, 91, 184, 0.12);
+    }
+
+    .portrait-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait {
+      width: 270px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 7px solid #eaf4ff;
+      box-shadow: 0 12px 30px rgba(30, 91, 184, 0.18);
+    }
+
+    .profile-name {
+      margin: 0 0 8px;
+      color: #1e5bb8;
+      font-size: 2rem;
+    }
+
+    .profile-role {
+      margin: 0 0 24px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .bio p {
+      margin: 0 0 16px;
+      color: #4b5563;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .bio strong {
+      color: #1f2937;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #dbeafe;
+      border-radius: 28px;
+      box-shadow: 0 14px 35px rgba(30, 91, 184, 0.09);
+    }
+
+    .section h2 {
+      margin: 0 0 25px;
+      color: #1e5bb8;
+      text-align: center;
+      font-size: 1.65rem;
+    }
+
+    .qualification-card {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 26px;
+      text-align: center;
+      background: #f8fbff;
+      border: 1px solid #cfe2ff;
+      border-radius: 22px;
+    }
+
+    .qualification-card h3,
+    .training-card h3 {
+      margin: 0 0 8px;
+      color: #1e5bb8;
+    }
+
+    .qualification-card p,
+    .training-card p {
+      margin: 5px 0;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .training-card {
+      padding: 24px 20px;
+      background: #f8fbff;
+      border: 1px solid #cfe2ff;
+      border-radius: 22px;
+      text-align: center;
+    }
+
+    .socials {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 620px;
+      margin: 35px auto 0;
+    }
+
+    .socials a,
+    .socials button {
+      min-height: 86px;
+      padding: 13px 10px;
+      border: 0;
+      border-radius: 18px;
+      background: #ffffff;
+      color: #1e5bb8;
+      box-shadow: 0 8px 18px rgba(30, 91, 184, 0.12);
+      font-family: "Poppins", sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.2s ease;
+    }
+
+    .socials a:hover,
+    .socials button:hover {
+      transform: translateY(-3px);
+      background: #f5f9ff;
+    }
+
+    .socials i {
+      font-size: 1.65rem;
+    }
+
+    footer {
+      margin-top: 38px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #1e5bb8;
+      color: #ffffff;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(20px);
+      transition: 0.25s ease;
+      box-shadow: 0 10px 25px rgba(30, 91, 184, 0.25);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 800px) {
+      .profile-card {
+        grid-template-columns: 1fr;
+        padding: 28px 22px;
+        text-align: center;
+      }
+
+      .portrait {
+        width: 220px;
+        height: 220px;
+      }
+
+      .training-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .socials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="index.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back to Home
+    </a>
+
+    <h1 class="page-title">Meet Raghad</h1>
+
+    <section class="profile-card">
+
+      <div class="portrait-wrap">
+        <img
+          src="assets/images/raghad-sketch.png"
+          alt="Blue sketch portrait of Raghad Aboud"
+          class="portrait"
+        >
+      </div>
+
+      <div class="bio">
+        <h2 class="profile-name">Raghad Aboud</h2>
+
+        <p class="profile-role">
+          French Teacher · Founder of Français Sans Illusion
+        </p>
+
+        <p>
+          <strong>Hi! I'm Raghad Aboud.</strong>
+        </p>
+
+        <p>
+          I hold a Bachelor's degree in Dentistry from the University of
+          Baghdad, but my passion for the French language led me to a new path.
+        </p>
+
+        <p>
+          Today, I'm a French teacher and the founder of
+          <strong>Français Sans Illusion</strong>. I create practical lessons,
+          real-life conversations, and interactive activities to help learners
+          build confidence in French.
+        </p>
+
+        <p>
+          I also use Artificial Intelligence to design modern learning
+          experiences that make studying French more engaging, effective,
+          and enjoyable.
+        </p>
+
+        <p>
+          <strong>
+            My mission is simple: to make French accessible, practical,
+            and enjoyable for everyone.
+          </strong>
+        </p>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <h2>Qualifications</h2>
+
+      <div class="qualification-card">
+        <h3>DELF B2</h3>
+        <p>Diplôme d'Études en Langue Française</p>
+        <p>Issued by France Éducation international</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Professional Development</h2>
+
+      <div class="training-grid">
+
+        <article class="training-card">
+          <h3>French Institute of Iraq</h3>
+          <p>French language teaching and professional development</p>
+        </article>
+
+        <article class="training-card">
+          <h3>IFprofs</h3>
+          <p>Artificial Intelligence in French language teaching</p>
+        </article>
+
+        <article class="training-card">
+          <h3>Digital Transformation &amp; AI in Education</h3>
+          <p>Professional training certificate in Iraq</p>
+        </article>
+
+      </div>
+    </section>
+
+    <nav class="socials" aria-label="Social media and contact links">
+
+      <a
+        href="https://www.instagram.com/francais.sans.illusion/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-instagram"></i>
+        Instagram
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/raghadaboud/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+      </a>
+
+      <a
+        href="https://www.youtube.com/@RaghadAboud-e4y"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-youtube"></i>
+        YouTube
+      </a>
+
+      <button type="button" onclick="copyEmail()">
+        <i class="fa-regular fa-envelope"></i>
+        Email
+      </button>
+
+    </nav>
+
+    <footer>
+      Designed with ❤️ &amp; AI by Raghad Aboud
+    </footer>
+
+  </main>
+
+  <div id="toast" class="toast">Email copied</div>
+
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText("raghad.aboud.fle@gmail.com");
+
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

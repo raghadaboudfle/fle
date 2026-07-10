@@ -8,22 +8,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  >
-
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="assets/logos/icon-light.svg"
-  >
+  <link rel="icon" type="image/svg+xml" href="assets/logos/icon-light.svg">
 
   <style>
     * {
@@ -85,8 +74,9 @@
 
     .levels-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
+      align-items: stretch;
     }
 
     .level-card {
@@ -94,17 +84,21 @@
       padding: 38px 30px;
       border-radius: 25px;
       text-align: center;
-      text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       box-shadow: 0 16px 35px rgba(30, 91, 184, 0.13);
-      transition: 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .clickable {
+      cursor: pointer;
     }
 
     .level-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 20px 42px rgba(30, 91, 184, 0.18);
     }
 
     .level-icon {
@@ -139,6 +133,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.25rem;
+      background: #ffffff;
       box-shadow: 0 7px 16px rgba(30, 91, 184, 0.15);
     }
 
@@ -153,7 +148,6 @@
     }
 
     .a1 .level-arrow {
-      background: #ffffff;
       color: #1e5bb8;
     }
 
@@ -168,7 +162,6 @@
     }
 
     .a2 .level-arrow {
-      background: #ffffff;
       color: #1554ad;
     }
 
@@ -183,7 +176,6 @@
     }
 
     .b1 .level-arrow {
-      background: #ffffff;
       color: #2f73d9;
     }
 
@@ -198,7 +190,6 @@
     }
 
     .b2 .level-arrow {
-      background: #ffffff;
       color: #1558ba;
     }
 
@@ -253,36 +244,34 @@
 
     <section class="levels-grid">
 
-<article class="level-card a1" onclick="window.location.href='a1.html'" style="cursor: pointer;">
-  <div class="level-icon">
+      <article
+        class="level-card a1 clickable"
+        onclick="window.location.href='a1.html'"
+      >
+        <div class="level-icon">
           <i class="fa-regular fa-user"></i>
         </div>
 
         <h2>A1 – Beginner</h2>
-
-        <p>
-          Build your first French conversations.
-        </p>
+        <p>Build your first French conversations.</p>
 
         <div class="level-arrow">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
-</article>
+      </article>
+
       <article class="level-card a2">
         <div class="level-icon">
           <i class="fa-solid fa-book-open"></i>
         </div>
 
         <h2>A2 – Elementary</h2>
-
-        <p>
-          Speak with more confidence.
-        </p>
+        <p>Speak with more confidence.</p>
 
         <div class="level-arrow">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
-      </a>
+      </article>
 
       <article class="level-card b1">
         <div class="level-icon">
@@ -290,15 +279,12 @@
         </div>
 
         <h2>B1 – Intermediate</h2>
-
-        <p>
-          Handle everyday situations naturally.
-        </p>
+        <p>Handle everyday situations naturally.</p>
 
         <div class="level-arrow">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
-      </a>
+      </article>
 
       <article class="level-card b2">
         <div class="level-icon">
@@ -306,15 +292,12 @@
         </div>
 
         <h2>B2 – Upper Intermediate</h2>
-
-        <p>
-          Express yourself fluently and accurately.
-        </p>
+        <p>Express yourself fluently and accurately.</p>
 
         <div class="level-arrow">
           <i class="fa-solid fa-arrow-right"></i>
         </div>
-      </a>
+      </article>
 
     </section>
 

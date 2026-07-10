@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A1 Beginner | Français Sans Illusion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/logos/icon-light.svg"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #eaf4ff 100%);
+      color: #1f2937;
+    }
+
+    .page {
+      width: min(100% - 36px, 1050px);
+      margin: 0 auto;
+      padding: 35px 0 55px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      color: #1e5bb8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-3px);
+    }
+
+    .site-icon {
+      display: block;
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 18px;
+    }
+
+    .page-title {
+      margin: 0;
+      text-align: center;
+      color: #1e5bb8;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 14px auto 42px;
+      text-align: center;
+      color: #64748b;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .activity-card {
+      min-height: 260px;
+      padding: 34px 28px;
+      border-radius: 26px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 16px 35px rgba(30, 91, 184, 0.11);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 42px rgba(30, 91, 184, 0.16);
+    }
+
+    .activity-icon {
+      width: 82px;
+      height: 82px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background: #eaf4ff;
+      color: #1e5bb8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+
+    .activity-card h2 {
+      margin: 0 0 12px;
+      color: #1e5bb8;
+      font-size: 1.7rem;
+    }
+
+    .activity-card p {
+      margin: 0;
+      max-width: 430px;
+      color: #64748b;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .activity-link {
+      margin-top: 20px;
+      color: #1e5bb8;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer {
+      margin-top: 38px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .activity-card {
+        min-height: 235px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="learn.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      Retour aux niveaux
+    </a>
+
+    <img
+      src="assets/logos/icon-light.svg"
+      alt="Français Sans Illusion"
+      class="site-icon"
+    >
+
+    <h1 class="page-title">A1 – Débutant</h1>
+
+    <p class="subtitle">
+      Pratiquez votre français avec des situations simples de la vie quotidienne.
+    </p>
+
+    <section class="activities-grid">
+
+      <a href="restaurant.html" class="activity-card">
+
+        <div class="activity-icon">
+          <i class="fa-solid fa-utensils"></i>
+        </div>
+
+        <h2>Au restaurant</h2>
+
+        <p>
+          Apprenez à commander un repas et à utiliser les expressions essentielles dans un restaurant français.
+        </p>
+
+        <div class="activity-link">
+          Commencer l’activité
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+      </a>
+
+    </section>
+
+    <footer>
+      Designed with ❤️ &amp; AI by Raghad Aboud
+    </footer>
+
+  </main>
+
+</body>
+</html>

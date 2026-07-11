@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>B1 Learning Categories | Français Sans Illusion</title>
+  <title>B1 Learning Categories | Français Sans Illusion</title>
+
   <style>
     :root {
       --primary-blue: #1E5BB8;
-      --light-blue: #7EB4FF;
-      --very-light-blue: #EAF4FF;
       --dark-text: #1F2937;
       --white: #FFFFFF;
 
-      --a1-sand: #D9B98C;
-      --a1-dark: #8A4F17;
-      --a1-light: #F7EBDD;
-      --a1-border: #E8D0B2;
-      --a1-background: #F8F1E8;
+      --b1-purple: #8B5CF6;
+      --b1-dark: #6D28D9;
+      --b1-light: #F3E8FF;
+      --b1-border: #D8B4FE;
+      --b1-background: #FAF5FF;
     }
 
     * {
@@ -31,8 +30,8 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--dark-text);
       background:
-        radial-gradient(circle at top left, var(--a1-light), transparent 40%),
-        linear-gradient(180deg, #ffffff 0%, var(--a1-background) 100%);
+        radial-gradient(circle at top left, var(--b1-light), transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, var(--b1-background) 100%);
     }
 
     .page-container {
@@ -54,14 +53,14 @@
       padding: 10px 22px;
       margin-bottom: 20px;
 
-      color: #ffffff;
-      background: var(--a1-sand);
+      color: var(--white);
+      background: var(--b1-purple);
       border-radius: 999px;
 
       font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: 1px;
-      box-shadow: 0 8px 20px rgba(138, 79, 23, 0.20);
+      box-shadow: 0 8px 20px rgba(109, 40, 217, 0.22);
     }
 
     .brand-symbol {
@@ -83,7 +82,7 @@
     .hero p {
       max-width: 600px;
       margin: 0 auto;
-      color: #6B625A;
+      color: #655B73;
       font-size: 1.05rem;
       line-height: 1.7;
     }
@@ -102,10 +101,10 @@
       overflow: hidden;
 
       color: inherit;
-      background: rgba(255, 255, 255, 0.94);
-      border: 2px solid var(--a1-border);
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid var(--b1-border);
       border-radius: 24px;
-      box-shadow: 0 12px 30px rgba(138, 79, 23, 0.08);
+      box-shadow: 0 12px 30px rgba(109, 40, 217, 0.09);
 
       text-decoration: none;
       transition:
@@ -122,18 +121,18 @@
 
       width: 7px;
       height: 100%;
-      background: var(--a1-sand);
+      background: var(--b1-purple);
       transition: background 0.25s ease;
     }
 
     .category-card:hover {
       transform: translateY(-6px);
-      border-color: var(--a1-dark);
-      box-shadow: 0 18px 38px rgba(138, 79, 23, 0.14);
+      border-color: var(--b1-dark);
+      box-shadow: 0 18px 38px rgba(109, 40, 217, 0.16);
     }
 
     .category-card:hover::before {
-      background: var(--a1-dark);
+      background: var(--b1-dark);
     }
 
     .category-icon {
@@ -145,7 +144,7 @@
       height: 62px;
       margin-bottom: 20px;
 
-      background: var(--a1-light);
+      background: var(--b1-light);
       border-radius: 18px;
       font-size: 2rem;
     }
@@ -157,7 +156,7 @@
     }
 
     .category-card p {
-      color: #6B625A;
+      color: #655B73;
       font-size: 1rem;
       line-height: 1.6;
     }
@@ -167,8 +166,8 @@
       margin-top: 18px;
       padding: 7px 13px;
 
-      color: #ffffff;
-      background: var(--a1-dark);
+      color: var(--white);
+      background: var(--b1-dark);
       border-radius: 999px;
 
       font-size: 0.82rem;
@@ -181,19 +180,19 @@
 
     .inactive-card:hover {
       transform: none;
-      border-color: var(--a1-border);
-      box-shadow: 0 12px 30px rgba(138, 79, 23, 0.08);
+      border-color: var(--b1-border);
+      box-shadow: 0 12px 30px rgba(109, 40, 217, 0.09);
     }
 
     .inactive-card:hover::before {
-      background: var(--a1-sand);
+      background: var(--b1-purple);
     }
 
     footer {
       margin-top: 55px;
       padding-top: 30px;
       text-align: center;
-      border-top: 1px solid var(--a1-border);
+      border-top: 1px solid var(--b1-border);
     }
 
     .footer-logo {
@@ -237,7 +236,7 @@
 
     <header class="hero">
 
-      <div class="level-badge">A1</div>
+      <div class="level-badge">B1</div>
 
       <img
         class="brand-symbol"
@@ -245,7 +244,7 @@
         alt="Français Sans Illusion symbol"
       >
 
-      <h1>Choose an A1 category</h1>
+      <h1>Choose a B1 category</h1>
 
       <p>
         Select a learning area to continue your French journey.
@@ -255,14 +254,14 @@
 
     <section class="categories">
 
-      <a class="category-card" href="videos-a1.html">
+      <a class="category-card" href="videos-b1.html">
 
         <div class="category-icon">🎥</div>
 
         <h2>Videos</h2>
 
         <p>
-          Learn French through simple dialogues and everyday situations.
+          Improve your French through authentic dialogues and everyday situations.
         </p>
 
         <span class="available-label">Explore activities</span>
@@ -276,7 +275,7 @@
         <h2>Grammar</h2>
 
         <p>
-          Understand basic French grammar through clear explanations and practical exercises.
+          Strengthen your French grammar through clear explanations and practical exercises.
         </p>
 
       </article>
@@ -288,7 +287,7 @@
         <h2>Vocabulary</h2>
 
         <p>
-          Learn useful French words and expressions organised by topic.
+          Expand your vocabulary with useful words and expressions organised by topic.
         </p>
 
       </article>
@@ -300,7 +299,7 @@
         <h2>Reading</h2>
 
         <p>
-          Improve your reading comprehension with simple French texts.
+          Improve your reading comprehension with engaging intermediate French texts.
         </p>
 
       </article>

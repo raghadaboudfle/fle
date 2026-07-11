@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Chez le médecin — Activité A2</title>
+
+  <style>
+    :root {
+      --background: #fff8f2;
+      --surface: #fffdfb;
+      --surface-soft: #fff0e5;
+
+      --primary: #d97745;
+      --primary-dark: #a94f27;
+      --primary-light: #f6c7a8;
+      --apricot: #f3aa78;
+      --peach: #ffe1cf;
+
+      --text: #2f2926;
+      --text-soft: #725f55;
+      --border: #f0d2be;
+
+      --correct: #257a4b;
+      --correct-bg: #e9f7ef;
+
+      --incorrect: #b43c3c;
+      --incorrect-bg: #fff0f0;
+
+      --shadow: 0 12px 35px rgba(147, 82, 45, 0.1);
+      --radius-large: 24px;
+      --radius-medium: 16px;
+      --radius-small: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      background:
+        radial-gradient(circle at top left, #fff1e5 0, transparent 28%),
+        linear-gradient(180deg, var(--background), #fffaf6);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page-wrapper {
+      width: min(920px, calc(100% - 28px));
+      margin: 42px auto 70px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      margin-bottom: 24px;
+    }
+
+    .header-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-card::after {
+      content: "🩺";
+      position: absolute;
+      right: 28px;
+      top: 22px;
+      font-size: 64px;
+      opacity: 0.12;
+      transform: rotate(-10deg);
+    }
+
+    .brand {
+      margin: 0 0 12px;
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .level-badge {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: linear-gradient(
+        135deg,
+        var(--primary-light),
+        var(--apricot)
+      );
+      color: #5f2c16;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 4px;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.15;
+      color: #281f1b;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      margin-bottom: 24px;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+    .introduction {
+      margin-bottom: 16px;
+      font-size: 1.04rem;
+    }
+
+    .focus-title {
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+      font-size: 1.14rem;
+      font-weight: 800;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .keyword {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 8px 14px;
+      border: 1px solid var(--primary-light);
+      border-radius: 999px;
+      background: #fffaf6;
+      color: #4c352a;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(217, 119, 69, 0.06);
+    }
+
+    .cultural-card {
+      border-left: 8px solid var(--primary);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 225, 207, 0.72),
+          rgba(255, 247, 241, 0.96)
+        );
+    }
+
+    .cultural-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      display: inline;
+      padding: 1px 5px;
+      border-radius: 5px;
+      background: #ffd0b0;
+      color: #7f3214;
+      font-weight: 800;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .video-card h2 {
+      margin-bottom: 18px;
+    }
+
+    .video-container {
+      position: relative;
+      width: min(100%, 420px);
+      margin: 0 auto;
+      overflow: hidden;
+      border: 8px solid #2f2926;
+      border-radius: 24px;
+      background: #000;
+      box-shadow: 0 18px 38px rgba(47, 41, 38, 0.18);
+      aspect-ratio: 9 / 16;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .instruction {
+      margin-bottom: 0;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .exercise-heading {
+      margin-bottom: 6px;
+    }
+
+    .exercise-intro {
+      margin-bottom: 26px;
+      color: var(--text-soft);
+    }
+
+    .question {
+      padding: 22px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-medium);
+      background: #fffaf6;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .question:hover {
+      border-color: var(--primary-light);
+      box-shadow: 0 8px 20px rgba(217, 119, 69, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .question-title {
+      margin-bottom: 15px;
+      color: #3b2b24;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .question-number {
+      color: var(--primary-dark);
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 12px 14px;
+      border: 1px solid #ead8cc;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .option:hover {
+      border-color: var(--primary);
+      background: #fff4eb;
+      transform: translateX(2px);
+    }
+
+    .option input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .option.correct-answer {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: #185b36;
+      font-weight: 700;
+    }
+
+    .option.incorrect-answer {
+      border-color: var(--incorrect);
+      background: var(--incorrect-bg);
+      color: #8c2929;
+    }
+
+    .question-feedback {
+      min-height: 26px;
+      margin: 12px 0 0;
+      font-weight: 800;
+    }
+
+    .feedback-correct {
+      color: var(--correct);
+    }
+
+    .feedback-incorrect {
+      color: var(--incorrect);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      min-width: 170px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(120, 64, 34, 0.18);
+    }
+
+    .button-primary {
+      background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+      );
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--primary-light);
+      background: white;
+      color: var(--primary-dark);
+    }
+
+    .result {
+      display: none;
+      padding: 22px;
+      margin-top: 26px;
+      border-radius: var(--radius-medium);
+      background: linear-gradient(135deg, #ffe3d0, #fff5ee);
+      color: #542b19;
+      text-align: center;
+    }
+
+    .result.visible {
+      display: block;
+      animation: appear 0.35s ease;
+    }
+
+    .result-score {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+      font-size: 2.1rem;
+      font-weight: 900;
+    }
+
+    .footer {
+      padding: 18px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-wrapper {
+        width: min(100% - 18px, 920px);
+        margin-top: 18px;
+      }
+
+      .card {
+        padding: 23px 19px;
+        border-radius: 18px;
+      }
+
+      .header-card::after {
+        right: 10px;
+        top: 12px;
+        font-size: 48px;
+      }
+
+      .question {
+        padding: 18px 14px;
+      }
+
+      .option {
+        padding: 11px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page-wrapper">
+
+    <!-- Introduction -->
+    <section class="card header-card">
+      <p class="brand">Français Sans Illusion — Raghad Aboud</p>
+
+      <span class="level-badge">Niveau A2</span>
+
+      <h1>🩺 Chez le médecin</h1>
+
+      <p class="subtitle">
+        Activité de compréhension orale — situation du quotidien
+      </p>
+
+      <p class="introduction">
+        Vous allez regarder une courte conversation entre un médecin et une
+        patiente dans un cabinet médical. Écoutez attentivement les symptômes
+        décrits par la patiente, les questions du médecin et le diagnostic
+        final.
+      </p>
+
+      <p class="focus-title">
+        Concentrez-vous sur ces mots et expressions :
+      </p>
+
+      <div class="keywords" aria-label="Mots et expressions clés">
+        <span class="keyword">avoir mal à...</span>
+        <span class="keyword">la fièvre</span>
+        <span class="keyword">la grippe</span>
+        <span class="keyword">examiner</span>
+        <span class="keyword">une ordonnance</span>
+        <span class="keyword">un médicament</span>
+        <span class="keyword">un médecin généraliste</span>
+      </div>
+    </section>
+
+    <!-- Cultural note -->
+    <section class="card cultural-card">
+      <h2>🇫🇷 Un petit clin d'œil culturel</h2>
+
+      <p>
+        💊 De nombreux médicaments ne peuvent être délivrés qu'avec une
+        <span class="highlight">ordonnance</span> rédigée par un médecin.
+        Les médicaments qui peuvent être achetés sans ordonnance sont appelés
+        « <span class="highlight">médicaments sans ordonnance</span> » ou
+        « <span class="highlight">médicaments en vente libre</span> ».
+      </p>
+
+      <p>
+        👨‍⚕️ Le médecin de cette vidéo est un
+        <span class="highlight">médecin généraliste</span>.
+        En France, après les études de médecine, les médecins suivent une
+        formation spécialisée avant d'exercer leur spécialité.
+        Le médecin généraliste est souvent le premier professionnel de santé
+        que l'on consulte.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="card video-card">
+      <h2>🎥 Regardez la vidéo</h2>
+
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/AxP-8BesB8Y"
+          title="Chez le médecin — Conversation A2"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="instruction">
+        Vous pouvez regarder la vidéo plusieurs fois avant de répondre.
+      </p>
+    </section>
+
+    <!-- Exercise -->
+    <section class="card">
+      <h2 class="exercise-heading">❓ Vérifiez votre compréhension</h2>
+
+      <p class="exercise-intro">
+        Choisissez une seule réponse pour chaque question.
+      </p>
+
+      <form id="quiz-form">
+
+        <!-- Question 1 -->
+        <article class="question" data-question="q1">
+          <p class="question-title">
+            <span class="question-number">1.</span>
+            Où se déroule cette vidéo ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q1" value="restaurant" />
+              <span>Au restaurant</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q1" value="cabinet" />
+              <span>Au cabinet médical</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q1" value="ecole" />
+              <span>À l'école</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q1" value="rue" />
+              <span>Dans la rue</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="question" data-question="q2">
+          <p class="question-title">
+            <span class="question-number">2.</span>
+            Quelle est la première plainte de la patiente ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q2" value="tete" />
+              <span>Elle a mal à la tête.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q2" value="ventre" />
+              <span>Elle a mal au ventre.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q2" value="dents" />
+              <span>Elle a mal aux dents.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q2" value="tousse" />
+              <span>Elle tousse.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 3 -->
+        <article class="question" data-question="q3">
+          <p class="question-title">
+            <span class="question-number">3.</span>
+            Que demande le médecin à la patiente pendant l'examen ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q3" value="yeux" />
+              <span>De fermer les yeux.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q3" value="bouche" />
+              <span>D'ouvrir la bouche.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q3" value="tousser" />
+              <span>De tousser.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q3" value="allonger" />
+              <span>De s'allonger.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 4 -->
+        <article class="question" data-question="q4">
+          <p class="question-title">
+            <span class="question-number">4.</span>
+            Quel est le diagnostic du médecin ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q4" value="fracture" />
+              <span>Une fracture du bras.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q4" value="grippe" />
+              <span>La grippe.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q4" value="allergie" />
+              <span>Une allergie.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q4" value="angine" />
+              <span>Une angine.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 5 -->
+        <article class="question" data-question="q5">
+          <p class="question-title">
+            <span class="question-number">5.</span>
+            Quel document le médecin donne-t-il à la patiente ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q5" value="recette" />
+              <span>Une recette de cuisine.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q5" value="article" />
+              <span>Un article de journal.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q5" value="photo" />
+              <span>Une photo.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q5" value="ordonnance" />
+              <span>Une ordonnance.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 6 -->
+        <article class="question" data-question="q6">
+          <p class="question-title">
+            <span class="question-number">6.</span>
+            Quelle est la spécialité du médecin dans cette vidéo ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q6" value="dentiste" />
+              <span>Dentiste.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q6" value="ophtalmologue" />
+              <span>Ophtalmologue.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q6" value="generaliste" />
+              <span>Médecin généraliste.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q6" value="psychiatre" />
+              <span>Psychiatre.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Question 7 -->
+        <article class="question" data-question="q7">
+          <p class="question-title">
+            <span class="question-number">7.</span>
+            Comment appelle-t-on les médicaments qui nécessitent une
+            ordonnance ?
+          </p>
+
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q7" value="sans-ordonnance" />
+              <span>Médicaments sans ordonnance.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q7" value="vente-libre" />
+              <span>Médicaments en vente libre.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q7" value="specialises" />
+              <span>Médicaments spécialisés.</span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="q7" value="sur-ordonnance" />
+              <span>Médicaments sur ordonnance.</span>
+            </label>
+          </div>
+
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <div class="actions">
+          <button class="button button-primary" type="submit">
+            Vérifier mes réponses
+          </button>
+
+          <button
+            class="button button-secondary"
+            id="reset-button"
+            type="button">
+            Recommencer
+          </button>
+        </div>
+
+        <div class="result" id="result" aria-live="polite">
+          <span class="result-score" id="result-score"></span>
+          <span id="result-message"></span>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      Français Sans Illusion — Activité conçue par Raghad Aboud
+    </footer>
+  </main>
+
+  <script>
+    const correctAnswers = {
+      q1: "cabinet",
+      q2: "tete",
+      q3: "bouche",
+      q4: "grippe",
+      q5: "ordonnance",
+      q6: "generaliste",
+      q7: "sur-ordonnance"
+    };
+
+    const quizForm = document.getElementById("quiz-form");
+    const resetButton = document.getElementById("reset-button");
+    const resultBox = document.getElementById("result");
+    const resultScore = document.getElementById("result-score");
+    const resultMessage = document.getElementById("result-message");
+
+    function clearQuestionStyles(questionElement) {
+      const options = questionElement.querySelectorAll(".option");
+
+      options.forEach((option) => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      const feedback = questionElement.querySelector(".question-feedback");
+      feedback.textContent = "";
+      feedback.className = "question-feedback";
+    }
+
+    function showResultMessage(score, total) {
+      resultScore.textContent = `${score} / ${total}`;
+
+      if (score === total) {
+        resultMessage.textContent =
+          "Excellent ! Vous avez parfaitement compris la vidéo. 🎉";
+      } else if (score >= 5) {
+        resultMessage.textContent =
+          "Très bien ! Regardez encore une fois les éléments que vous avez manqués.";
+      } else if (score >= 3) {
+        resultMessage.textContent =
+          "Bon effort ! Regardez la vidéo une deuxième fois, puis réessayez.";
+      } else {
+        resultMessage.textContent =
+          "Continuez ! Réécoutez attentivement le dialogue et relisez le clin d'œil culturel.";
+      }
+
+      resultBox.classList.add("visible");
+      resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    quizForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let score = 0;
+      const totalQuestions = Object.keys(correctAnswers).length;
+
+      Object.entries(correctAnswers).forEach(([questionName, correctValue]) => {
+        const questionElement = document.querySelector(
+          `[data-question="${questionName}"]`
+        );
+
+        clearQuestionStyles(questionElement);
+
+        const selectedInput = quizForm.querySelector(
+          `input[name="${questionName}"]:checked`
+        );
+
+        const correctInput = quizForm.querySelector(
+          `input[name="${questionName}"][value="${correctValue}"]`
+        );
+
+        const correctOption = correctInput.closest(".option");
+        const feedback = questionElement.querySelector(".question-feedback");
+
+        correctOption.classList.add("correct-answer");
+
+        if (!selectedInput) {
+          feedback.textContent = "Veuillez choisir une réponse.";
+          feedback.classList.add("feedback-incorrect");
+          return;
+        }
+
+        const selectedOption = selectedInput.closest(".option");
+
+        if (selectedInput.value === correctValue) {
+          score += 1;
+          feedback.textContent = "Bonne réponse !";
+          feedback.classList.add("feedback-correct");
+        } else {
+          selectedOption.classList.add("incorrect-answer");
+          feedback.textContent = "Ce n'est pas la bonne réponse.";
+          feedback.classList.add("feedback-incorrect");
+        }
+      });
+
+      showResultMessage(score, totalQuestions);
+    });
+
+    resetButton.addEventListener("click", function () {
+      quizForm.reset();
+
+      document.querySelectorAll(".question").forEach((questionElement) => {
+        clearQuestionStyles(questionElement);
+      });
+
+      resultBox.classList.remove("visible");
+      resultScore.textContent = "";
+      resultMessage.textContent = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+</body>
+</html>

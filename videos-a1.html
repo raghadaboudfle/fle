@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vidéos A1 | Français Sans Illusion</title>
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --dark-text: #1F2937;
+      --white: #FFFFFF;
+
+      --a1-sand: #D9B98C;
+      --a1-dark: #8A4F17;
+      --a1-light: #F7EBDD;
+      --a1-border: #E8D0B2;
+      --a1-background: #F8F1E8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark-text);
+      background:
+        radial-gradient(circle at top left, var(--a1-light), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--a1-background) 100%);
+    }
+
+    .page-container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 35px 0 30px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      color: var(--primary-blue);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+
+    .hero {
+      margin-bottom: 45px;
+      text-align: center;
+    }
+
+    .brand-symbol {
+      display: block;
+      width: 105px;
+      height: auto;
+      margin: 0 auto 18px;
+      object-fit: contain;
+    }
+
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      margin-bottom: 18px;
+      color: var(--white);
+      background: var(--a1-sand);
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(138, 79, 23, 0.18);
+    }
+
+    .hero h1 {
+      margin-bottom: 14px;
+      color: var(--primary-blue);
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #6B625A;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      position: relative;
+      display: block;
+      min-height: 300px;
+      padding: 34px;
+      overflow: hidden;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.96);
+      border: 2px solid var(--a1-border);
+      border-radius: 26px;
+      box-shadow: 0 16px 38px rgba(138, 79, 23, 0.10);
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .video-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: var(--a1-sand);
+    }
+
+    .video-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--a1-sand);
+      box-shadow: 0 22px 48px rgba(138, 79, 23, 0.17);
+    }
+
+    .restaurant-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 82px;
+      height: 82px;
+      margin-bottom: 24px;
+      color: var(--a1-dark);
+      background: var(--a1-light);
+      border-radius: 22px;
+    }
+
+    .restaurant-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: currentColor;
+    }
+
+    .video-card h2 {
+      margin-bottom: 13px;
+      color: var(--primary-blue);
+      font-size: 1.65rem;
+    }
+
+    .video-card p {
+      max-width: 620px;
+      margin-bottom: 24px;
+      color: #6B625A;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .start-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--a1-dark);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 65px;
+      padding-top: 32px;
+      text-align: center;
+      border-top: 1px solid var(--a1-border);
+    }
+
+    .footer-logo {
+      display: block;
+      width: 245px;
+      max-width: 78%;
+      height: auto;
+      margin: 0 auto 18px;
+      object-fit: contain;
+    }
+
+    footer p {
+      color: #738096;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .page-container {
+        padding-top: 24px;
+      }
+
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-card {
+        min-height: auto;
+        padding: 28px;
+      }
+
+      .brand-symbol {
+        width: 95px;
+      }
+
+      .hero {
+        margin-bottom: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page-container">
+
+    <a class="back-link" href="learn-a1.html">
+      ← Retour aux catégories A1
+    </a>
+
+    <header class="hero">
+
+      <img
+        class="brand-symbol"
+        src="assets/logos/brand-symbol.png"
+        alt="Français Sans Illusion"
+      >
+
+      <div class="level-badge">Niveau A1</div>
+
+      <h1>A1 – Vidéos</h1>
+
+      <p>
+        Pratiquez votre français avec des situations simples de la vie quotidienne.
+      </p>
+
+    </header>
+
+    <section class="videos-grid">
+
+      <a class="video-card" href="restaurant.html">
+
+        <div class="restaurant-icon" aria-hidden="true">
+
+          <svg
+            viewBox="0 0 64 64"
+            fill="none"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="35" cy="33" r="15"></circle>
+            <circle cx="35" cy="33" r="9"></circle>
+
+            <path d="M13 10v18"></path>
+            <path d="M8 10v9c0 4 2 6 5 6s5-2 5-6v-9"></path>
+            <path d="M13 28v26"></path>
+
+            <path d="M54 10v44"></path>
+            <path d="M46 10v17c0 5 3 8 8 8"></path>
+          </svg>
+
+        </div>
+
+        <h2>Au restaurant</h2>
+
+        <p>
+          Apprenez à commander un repas et à utiliser les expressions essentielles
+          dans un restaurant français.
+        </p>
+
+        <span class="start-link">
+          Commencer l’activité →
+        </span>
+
+      </a>
+
+    </section>
+
+    <footer>
+
+      <img
+        class="footer-logo"
+        src="assets/logos/raghad-logo.png"
+        alt="Raghad Aboud — Français Sans Illusion"
+      >
+
+      <p>Designed with ❤️ &amp; AI by Raghad Aboud</p>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

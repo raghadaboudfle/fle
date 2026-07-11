@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A1 Learning Categories | Français Sans Illusion</title>
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --light-blue: #7EB4FF;
+      --very-light-blue: #EAF4FF;
+      --dark-text: #1F2937;
+      --white: #FFFFFF;
+
+      --a1-sand: #D9B98C;
+      --a1-dark: #8A4F17;
+      --a1-light: #F7EBDD;
+      --a1-border: #E8D0B2;
+      --a1-background: #F8F1E8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark-text);
+      background:
+        radial-gradient(circle at top left, var(--a1-light), transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, var(--a1-background) 100%);
+    }
+
+    .page-container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 45px 0 30px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 78px;
+      padding: 10px 22px;
+      margin-bottom: 20px;
+
+      color: #ffffff;
+      background: var(--a1-sand);
+      border-radius: 999px;
+
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(138, 79, 23, 0.20);
+    }
+
+    .brand-symbol {
+      display: block;
+      width: 115px;
+      max-width: 35%;
+      height: auto;
+      margin: 0 auto 18px;
+      object-fit: contain;
+    }
+
+    .hero h1 {
+      margin-bottom: 12px;
+      color: var(--primary-blue);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #6B625A;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .category-card {
+      position: relative;
+      display: block;
+      min-height: 210px;
+      padding: 30px;
+      overflow: hidden;
+
+      color: inherit;
+      background: rgba(255, 255, 255, 0.94);
+      border: 2px solid var(--a1-border);
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(138, 79, 23, 0.08);
+
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 7px;
+      height: 100%;
+      background: var(--a1-sand);
+      transition: background 0.25s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--a1-dark);
+      box-shadow: 0 18px 38px rgba(138, 79, 23, 0.14);
+    }
+
+    .category-card:hover::before {
+      background: var(--a1-dark);
+    }
+
+    .category-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 62px;
+      height: 62px;
+      margin-bottom: 20px;
+
+      background: var(--a1-light);
+      border-radius: 18px;
+      font-size: 2rem;
+    }
+
+    .category-card h2 {
+      margin-bottom: 10px;
+      color: var(--primary-blue);
+      font-size: 1.45rem;
+    }
+
+    .category-card p {
+      color: #6B625A;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .available-label {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 7px 13px;
+
+      color: #ffffff;
+      background: var(--a1-dark);
+      border-radius: 999px;
+
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .inactive-card {
+      cursor: default;
+    }
+
+    .inactive-card:hover {
+      transform: none;
+      border-color: var(--a1-border);
+      box-shadow: 0 12px 30px rgba(138, 79, 23, 0.08);
+    }
+
+    .inactive-card:hover::before {
+      background: var(--a1-sand);
+    }
+
+    footer {
+      margin-top: 55px;
+      padding-top: 30px;
+      text-align: center;
+      border-top: 1px solid var(--a1-border);
+    }
+
+    .footer-logo {
+      display: block;
+      width: 260px;
+      max-width: 80%;
+      height: auto;
+      margin: 0 auto 15px;
+      object-fit: contain;
+    }
+
+    footer p {
+      color: #738096;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .page-container {
+        padding-top: 30px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        min-height: auto;
+        padding: 26px;
+      }
+
+      .brand-symbol {
+        width: 95px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page-container">
+
+    <header class="hero">
+
+      <div class="level-badge">A1</div>
+
+      <img
+        class="brand-symbol"
+        src="assets/logos/brand-symbol.png"
+        alt="Français Sans Illusion symbol"
+      >
+
+      <h1>Choose an A1 category</h1>
+
+      <p>
+        Select a learning area to continue your French journey.
+      </p>
+
+    </header>
+
+    <section class="categories">
+
+      <a class="category-card" href="videos-a1.html">
+
+        <div class="category-icon">🎥</div>
+
+        <h2>Videos</h2>
+
+        <p>
+          Learn French through simple dialogues and everyday situations.
+        </p>
+
+        <span class="available-label">Explore activities</span>
+
+      </a>
+
+      <article class="category-card inactive-card">
+
+        <div class="category-icon">📖</div>
+
+        <h2>Grammar</h2>
+
+        <p>
+          Understand basic French grammar through clear explanations and practical exercises.
+        </p>
+
+      </article>
+
+      <article class="category-card inactive-card">
+
+        <div class="category-icon">📝</div>
+
+        <h2>Vocabulary</h2>
+
+        <p>
+          Learn useful French words and expressions organised by topic.
+        </p>
+
+      </article>
+
+      <article class="category-card inactive-card">
+
+        <div class="category-icon">📄</div>
+
+        <h2>Reading</h2>
+
+        <p>
+          Improve your reading comprehension with simple French texts.
+        </p>
+
+      </article>
+
+    </section>
+
+    <footer>
+
+      <img
+        class="footer-logo"
+        src="assets/logos/raghad-logo.png"
+        alt="Raghad Aboud — Français Sans Illusion"
+      >
+
+      <p>Designed with ❤️ &amp; AI by Raghad Aboud</p>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

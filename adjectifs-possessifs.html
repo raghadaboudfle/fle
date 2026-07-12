@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Les adjectifs possessifs | Français Sans Illusion
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/logos/brand-symbol.png"
+  >
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --light-blue: #7EB4FF;
+      --very-light-blue: #EAF4FF;
+      --dark-text: #1F2937;
+      --white: #FFFFFF;
+
+      --a1-sand: #D9B98C;
+      --a1-dark: #8A4F17;
+      --a1-light: #F7EBDD;
+      --a1-border: #E8D0B2;
+      --a1-background: #F8F1E8;
+
+      --soft-gray: #667085;
+      --success-background: #EDF8F1;
+      --success-border: #B9DFC7;
+      --warning-background: #FFF7E8;
+      --warning-border: #F1D19A;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--dark-text);
+
+      background:
+        radial-gradient(
+          circle at top left,
+          var(--a1-light),
+          transparent 34%
+        ),
+        linear-gradient(
+          180deg,
+          #FFFFFF 0%,
+          var(--a1-background) 100%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-container {
+      width: min(100%, 1050px);
+      margin: 0 auto;
+      padding: 30px 22px 55px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 34px;
+
+      color: var(--primary-blue);
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .lesson-header {
+      max-width: 780px;
+      margin: 0 auto 45px;
+
+      text-align: center;
+    }
+
+    .brand-symbol {
+      display: block;
+
+      width: 112px;
+      height: 112px;
+
+      margin: 0 auto 22px;
+
+      object-fit: contain;
+    }
+
+    .lesson-level {
+      display: inline-block;
+
+      margin-bottom: 15px;
+      padding: 8px 17px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 999px;
+
+      background: var(--a1-light);
+      color: var(--a1-dark);
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .lesson-header h1 {
+      margin-bottom: 18px;
+
+      color: var(--primary-blue);
+
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.12;
+    }
+
+    .lesson-header p {
+      color: var(--soft-gray);
+
+      font-size: clamp(18px, 2.5vw, 23px);
+      line-height: 1.7;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 28px;
+    }
+
+    .lesson-section {
+      padding: 32px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      box-shadow:
+        0 14px 34px rgba(138, 79, 23, 0.08);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 19px;
+
+      color: var(--primary-blue);
+
+      font-size: 27px;
+      line-height: 1.3;
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 46px;
+      height: 46px;
+
+      flex: 0 0 auto;
+
+      border-radius: 14px;
+
+      background: var(--a1-light);
+
+      font-size: 24px;
+    }
+
+    .lesson-section p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .examples-list {
+      display: grid;
+      gap: 12px;
+
+      margin-top: 18px;
+
+      list-style: none;
+    }
+
+    .examples-list li {
+      position: relative;
+
+      padding: 14px 18px 14px 45px;
+
+      border-radius: 15px;
+
+      background: var(--very-light-blue);
+
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .examples-list li::before {
+      content: "✓";
+
+      position: absolute;
+      top: 14px;
+      left: 18px;
+
+      color: var(--primary-blue);
+      font-weight: 800;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+
+      margin-top: 22px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 20px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 850px;
+
+      border-collapse: collapse;
+
+      background: var(--white);
+    }
+
+    th,
+    td {
+      padding: 17px 15px;
+
+      border-bottom: 1px solid var(--a1-border);
+      border-right: 1px solid var(--a1-border);
+
+      text-align: left;
+      vertical-align: middle;
+
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    thead th {
+      background: var(--a1-light);
+      color: var(--a1-dark);
+
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #FFFCF8;
+    }
+
+    .possessive-word {
+      color: var(--primary-blue);
+
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .pronunciation {
+      white-space: nowrap;
+
+      color: #4B5563;
+      font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    }
+
+    .rule-list {
+      display: grid;
+      gap: 14px;
+
+      margin-top: 18px;
+
+      list-style: none;
+    }
+
+    .rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      padding: 16px 18px;
+
+      border-left: 5px solid var(--a1-sand);
+      border-radius: 12px;
+
+      background: #FFFCF8;
+
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .rule-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 30px;
+      height: 30px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background: var(--primary-blue);
+      color: var(--white);
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .attention-box {
+      border-color: var(--warning-border);
+      background: var(--warning-background);
+    }
+
+    .important-box {
+      border-color: var(--success-border);
+      background: var(--success-background);
+    }
+
+    .example-pair {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 22px;
+    }
+
+    .example-card {
+      padding: 21px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 18px;
+
+      background: var(--white);
+    }
+
+    .example-card strong {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--primary-blue);
+
+      font-size: 19px;
+    }
+
+    .correct-example {
+      color: #187044;
+    }
+
+    .incorrect-example {
+      color: #B42318;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+
+      gap: 15px;
+
+      margin-top: 20px;
+    }
+
+    .memory-card {
+      padding: 18px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 17px;
+
+      background: var(--white);
+
+      text-align: center;
+    }
+
+    .memory-card strong {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: var(--primary-blue);
+
+      font-size: 19px;
+    }
+
+    .exercise-area {
+      margin-top: 42px;
+
+      text-align: center;
+    }
+
+    .exercise-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      min-width: 290px;
+      padding: 18px 30px;
+
+      border-radius: 999px;
+
+      background: var(--primary-blue);
+      color: var(--white);
+
+      box-shadow:
+        0 15px 30px rgba(30, 91, 184, 0.22);
+
+      font-size: 19px;
+      font-weight: 800;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .exercise-button:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 20px 38px rgba(30, 91, 184, 0.3);
+    }
+
+    .exercise-button:focus-visible {
+      outline: 4px solid rgba(30, 91, 184, 0.25);
+      outline-offset: 4px;
+    }
+
+    .brand-footer {
+      margin-top: 70px;
+      padding-top: 38px;
+
+      border-top: 1px solid var(--a1-border);
+
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: block;
+
+      width: min(330px, 78%);
+      max-height: 190px;
+
+      margin: 0 auto 16px;
+
+      object-fit: contain;
+    }
+
+    .brand-footer p {
+      color: var(--soft-gray);
+
+      font-size: 15px;
+    }
+
+    @media (max-width: 720px) {
+      .page-container {
+        padding: 24px 16px 45px;
+      }
+
+      .back-link {
+        margin-bottom: 28px;
+
+        font-size: 16px;
+      }
+
+      .brand-symbol {
+        width: 92px;
+        height: 92px;
+      }
+
+      .lesson-header {
+        margin-bottom: 34px;
+      }
+
+      .lesson-section {
+        padding: 23px 18px;
+
+        border-radius: 22px;
+      }
+
+      .section-title {
+        font-size: 23px;
+      }
+
+      .lesson-section p,
+      .examples-list li,
+      .rule-list li {
+        font-size: 17px;
+      }
+
+      .example-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .footer-logo {
+        width: min(300px, 92%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page-container">
+
+    <a class="back-link" href="grammar-a1.html">
+      <span aria-hidden="true">←</span>
+      Back to A1 Grammar
+    </a>
+
+    <header class="lesson-header">
+
+      <img
+        class="brand-symbol"
+        src="assets/logos/brand-symbol.png"
+        alt="Français Sans Illusion"
+      >
+
+      <span class="lesson-level">
+        A1 · Grammaire
+      </span>
+
+      <h1>
+        Les adjectifs possessifs
+      </h1>
+
+      <p>
+        Apprenez à exprimer la possession et à choisir
+        l’adjectif possessif correct.
+      </p>
+
+    </header>
+
+    <div class="lesson-content">
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            🎯
+          </span>
+
+          Objectif
+
+        </h2>
+
+        <p>
+          À la fin de cette leçon, vous saurez utiliser
+          les adjectifs possessifs pour parler de vos objets,
+          de votre famille, de vos amis et de vos animaux.
+        </p>
+
+      </section>
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            📖
+          </span>
+
+          Qu’est-ce qu’un adjectif possessif ?
+
+        </h2>
+
+        <p>
+          Un adjectif possessif accompagne un nom.
+          Il indique à qui appartient une personne,
+          un animal ou un objet.
+        </p>
+
+        <ul class="examples-list">
+
+          <li>
+            C’est <strong>mon</strong> livre.
+          </li>
+
+          <li>
+            Voici <strong>ma</strong> voiture.
+          </li>
+
+          <li>
+            Ce sont <strong>mes</strong> clés.
+          </li>
+
+        </ul>
+
+      </section>
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            📊
+          </span>
+
+          Les adjectifs possessifs
+
+        </h2>
+
+        <p>
+          Regardez le nom pour choisir la forme correcte :
+          masculin, féminin, singulier ou pluriel.
+        </p>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Adjectif possessif</th>
+                <th>Utilisation</th>
+                <th>Prononciation</th>
+                <th>English</th>
+                <th>Exemple</th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td class="possessive-word">mon</td>
+                <td>
+                  Nom masculin<br>
+                  Nom féminin commençant par une voyelle
+                  ou un h muet
+                </td>
+                <td class="pronunciation">/mɔ̃/</td>
+                <td>my</td>
+                <td>
+                  mon livre<br>
+                  mon amie
+                </td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">ma</td>
+                <td>Nom féminin</td>
+                <td class="pronunciation">/ma/</td>
+                <td>my</td>
+                <td>ma voiture</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">mes</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/me/</td>
+                <td>my</td>
+                <td>mes clés</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">ton</td>
+                <td>
+                  Nom masculin<br>
+                  Nom féminin commençant par une voyelle
+                  ou un h muet
+                </td>
+                <td class="pronunciation">/tɔ̃/</td>
+                <td>your</td>
+                <td>
+                  ton frère<br>
+                  ton école
+                </td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">ta</td>
+                <td>Nom féminin</td>
+                <td class="pronunciation">/ta/</td>
+                <td>your</td>
+                <td>ta sœur</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">tes</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/te/</td>
+                <td>your</td>
+                <td>tes amis</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">son</td>
+                <td>
+                  Nom masculin<br>
+                  Nom féminin commençant par une voyelle
+                  ou un h muet
+                </td>
+                <td class="pronunciation">/sɔ̃/</td>
+                <td>his / her</td>
+                <td>
+                  son téléphone<br>
+                  son histoire
+                </td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">sa</td>
+                <td>Nom féminin</td>
+                <td class="pronunciation">/sa/</td>
+                <td>his / her</td>
+                <td>sa maison</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">ses</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/se/</td>
+                <td>his / her</td>
+                <td>ses enfants</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">notre</td>
+                <td>Nom singulier</td>
+                <td class="pronunciation">/nɔtʁ/</td>
+                <td>our</td>
+                <td>notre professeur</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">nos</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/no/</td>
+                <td>our</td>
+                <td>nos livres</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">votre</td>
+                <td>Nom singulier</td>
+                <td class="pronunciation">/vɔtʁ/</td>
+                <td>your</td>
+                <td>votre passeport</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">vos</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/vo/</td>
+                <td>your</td>
+                <td>vos valises</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">leur</td>
+                <td>Nom singulier</td>
+                <td class="pronunciation">/lœʁ/</td>
+                <td>their</td>
+                <td>leur voiture</td>
+              </tr>
+
+              <tr>
+                <td class="possessive-word">leurs</td>
+                <td>Nom pluriel</td>
+                <td class="pronunciation">/lœʁ/</td>
+                <td>their</td>
+                <td>leurs enfants</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            🔎
+          </span>
+
+          Comment choisir ?
+
+        </h2>
+
+        <p>
+          Pour choisir le bon adjectif possessif,
+          regardez trois éléments :
+        </p>
+
+        <ul class="rule-list">
+
+          <li>
+
+            <span class="rule-number">
+              1
+            </span>
+
+            <span>
+              Le propriétaire :
+              <strong>je, tu, il, elle, nous, vous,
+              ils ou elles</strong>.
+            </span>
+
+          </li>
+
+          <li>
+
+            <span class="rule-number">
+              2
+            </span>
+
+            <span>
+              Le genre du nom :
+              <strong>masculin ou féminin</strong>.
+            </span>
+
+          </li>
+
+          <li>
+
+            <span class="rule-number">
+              3
+            </span>
+
+            <span>
+              Le nombre du nom :
+              <strong>singulier ou pluriel</strong>.
+            </span>
+
+          </li>
+
+        </ul>
+
+        <ul class="examples-list">
+
+          <li>
+            <strong>mon</strong> livre
+          </li>
+
+          <li>
+            <strong>ma</strong> maison
+          </li>
+
+          <li>
+            <strong>mes</strong> amis
+          </li>
+
+        </ul>
+
+      </section>
+
+      <section class="lesson-section attention-box">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            ⚠️
+          </span>
+
+          Attention !
+
+        </h2>
+
+        <p>
+          Devant un nom féminin qui commence par une voyelle
+          ou un <strong>h muet</strong>, on utilise
+          <strong>mon</strong>, <strong>ton</strong>
+          et <strong>son</strong>.
+        </p>
+
+        <div class="example-pair">
+
+          <div class="example-card">
+
+            <strong class="correct-example">
+              Formes correctes
+            </strong>
+
+            <p>
+              ✓ mon amie<br>
+              ✓ ton école<br>
+              ✓ son histoire
+            </p>
+
+          </div>
+
+          <div class="example-card">
+
+            <strong class="incorrect-example">
+              Formes incorrectes
+            </strong>
+
+            <p>
+              ✗ ma amie<br>
+              ✗ ta école<br>
+              ✗ sa histoire
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="lesson-section important-box">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            💡
+          </span>
+
+          Important
+
+        </h2>
+
+        <p>
+          L’adjectif possessif dépend du
+          <strong>nom</strong>, et non de la personne
+          qui possède.
+        </p>
+
+        <ul class="examples-list">
+
+          <li>
+            Marie aime <strong>son</strong> frère.
+          </li>
+
+          <li>
+            Marie aime <strong>sa</strong> sœur.
+          </li>
+
+        </ul>
+
+        <p style="margin-top: 18px;">
+          Même si Marie est une femme, on utilise
+          <strong>son</strong> avec
+          <em>frère</em>, parce que ce nom est masculin,
+          et <strong>sa</strong> avec
+          <em>sœur</em>, parce que ce nom est féminin.
+        </p>
+
+      </section>
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            📝
+          </span>
+
+          Exemples
+
+        </h2>
+
+        <ul class="examples-list">
+
+          <li>
+            C’est <strong>mon</strong> sac.
+          </li>
+
+          <li>
+            Voici <strong>ma</strong> montre.
+          </li>
+
+          <li>
+            Ce sont <strong>mes</strong> lunettes.
+          </li>
+
+          <li>
+            Tu cherches <strong>ton</strong> téléphone.
+          </li>
+
+          <li>
+            Elle aime <strong>sa</strong> famille.
+          </li>
+
+          <li>
+            Nous visitons <strong>notre</strong> ville.
+          </li>
+
+          <li>
+            Vous prenez <strong>vos</strong> passeports.
+          </li>
+
+          <li>
+            Ils vendent <strong>leur</strong> maison.
+          </li>
+
+          <li>
+            Elles aiment <strong>leurs</strong> enfants.
+          </li>
+
+        </ul>
+
+      </section>
+
+      <section class="lesson-section">
+
+        <h2 class="section-title">
+
+          <span
+            class="section-icon"
+            aria-hidden="true"
+          >
+            🧠
+          </span>
+
+          À retenir
+
+        </h2>
+
+        <div class="memory-grid">
+
+          <div class="memory-card">
+            <strong>mon / ma / mes</strong>
+            <span>my</span>
+          </div>
+
+          <div class="memory-card">
+            <strong>ton / ta / tes</strong>
+            <span>your</span>
+          </div>
+
+          <div class="memory-card">
+            <strong>son / sa / ses</strong>
+            <span>his / her</span>
+          </div>
+
+          <div class="memory-card">
+            <strong>notre / nos</strong>
+            <span>our</span>
+          </div>
+
+          <div class="memory-card">
+            <strong>votre / vos</strong>
+            <span>your</span>
+          </div>
+
+          <div class="memory-card">
+            <strong>leur / leurs</strong>
+            <span>their</span>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="exercise-area">
+
+      <a
+        class="exercise-button"
+        href="exercices-adjectifs-possessifs.html"
+      >
+        Passez aux exercices
+        <span aria-hidden="true">→</span>
+      </a>
+
+    </div>
+
+    <footer class="brand-footer">
+
+      <img
+        class="footer-logo"
+        src="assets/logos/raghad-logo.png"
+        alt="Raghad Aboud — Français Sans Illusion"
+      >
+
+      <p>
+        Designed with ❤️ &amp; AI by Raghad Aboud
+      </p>
+
+    </footer>
+
+  </main>
+
+</body>
+</html>

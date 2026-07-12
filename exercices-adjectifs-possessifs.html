@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Exercices – Les adjectifs possessifs | Français Sans Illusion
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/logos/brand-symbol.png"
+  >
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --light-blue: #7EB4FF;
+      --very-light-blue: #EAF4FF;
+      --dark-text: #1F2937;
+      --white: #FFFFFF;
+
+      --a1-sand: #D9B98C;
+      --a1-dark: #8A4F17;
+      --a1-light: #F7EBDD;
+      --a1-border: #E8D0B2;
+      --a1-background: #F8F1E8;
+
+      --soft-gray: #667085;
+      --success: #187044;
+      --success-bg: #EDF8F1;
+      --error: #B42318;
+      --error-bg: #FFF0EE;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--dark-text);
+
+      background:
+        radial-gradient(
+          circle at top left,
+          var(--a1-light),
+          transparent 34%
+        ),
+        linear-gradient(
+          180deg,
+          #FFFFFF 0%,
+          var(--a1-background) 100%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page-container {
+      width: min(100%, 1050px);
+      margin: 0 auto;
+      padding: 30px 22px 55px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 34px;
+
+      color: var(--primary-blue);
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .exercise-header {
+      max-width: 800px;
+      margin: 0 auto 45px;
+
+      text-align: center;
+    }
+
+    .brand-symbol {
+      display: block;
+
+      width: 112px;
+      height: 112px;
+
+      margin: 0 auto 22px;
+
+      object-fit: contain;
+    }
+
+    .lesson-level {
+      display: inline-block;
+
+      margin-bottom: 15px;
+      padding: 8px 17px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 999px;
+
+      background: var(--a1-light);
+      color: var(--a1-dark);
+
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .exercise-header h1 {
+      margin-bottom: 18px;
+
+      color: var(--primary-blue);
+
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.12;
+    }
+
+    .exercise-header p {
+      color: var(--soft-gray);
+
+      font-size: clamp(18px, 2.5vw, 22px);
+      line-height: 1.7;
+    }
+
+    .exercise-section {
+      margin-bottom: 30px;
+      padding: 32px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      box-shadow:
+        0 14px 34px rgba(138, 79, 23, 0.08);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 12px;
+
+      color: var(--primary-blue);
+
+      font-size: 28px;
+      line-height: 1.3;
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 48px;
+
+      flex: 0 0 auto;
+
+      border-radius: 14px;
+
+      background: var(--a1-light);
+
+      font-size: 25px;
+    }
+
+    .instructions {
+      margin-bottom: 25px;
+
+      color: var(--soft-gray);
+
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .question-card {
+      margin-bottom: 20px;
+      padding: 22px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 20px;
+
+      background: #FFFCF8;
+    }
+
+    .question-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-text {
+      margin-bottom: 16px;
+
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(130px, 1fr));
+
+      gap: 12px;
+    }
+
+    .option-button {
+      padding: 13px 16px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 14px;
+
+      background: var(--white);
+      color: var(--dark-text);
+
+      cursor: pointer;
+
+      font-weight: 700;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .option-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-blue);
+    }
+
+    .option-button.selected {
+      border-color: var(--primary-blue);
+      background: var(--very-light-blue);
+      color: var(--primary-blue);
+    }
+
+    .option-button.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .option-button.incorrect {
+      border-color: var(--error);
+      background: var(--error-bg);
+      color: var(--error);
+    }
+
+    .fill-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .answer-input {
+      width: 150px;
+      padding: 10px 12px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 12px;
+
+      background: var(--white);
+      color: var(--dark-text);
+
+      outline: none;
+    }
+
+    .answer-input:focus {
+      border-color: var(--primary-blue);
+
+      box-shadow:
+        0 0 0 4px rgba(30, 91, 184, 0.12);
+    }
+
+    .answer-input.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .answer-input.incorrect {
+      border-color: var(--error);
+      background: var(--error-bg);
+    }
+
+    .feedback {
+      display: none;
+
+      margin-top: 14px;
+      padding: 12px 14px;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.correct {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .feedback.incorrect {
+      background: var(--error-bg);
+      color: var(--error);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+
+      margin-top: 35px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-width: 210px;
+      padding: 16px 25px;
+
+      border-radius: 999px;
+
+      cursor: pointer;
+
+      font-size: 18px;
+      font-weight: 800;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .primary-button {
+      border: none;
+
+      background: var(--primary-blue);
+      color: var(--white);
+
+      box-shadow:
+        0 14px 28px rgba(30, 91, 184, 0.22);
+    }
+
+    .secondary-button {
+      border: 2px solid var(--primary-blue);
+
+      background: var(--white);
+      color: var(--primary-blue);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .result-box {
+      display: none;
+
+      margin-top: 30px;
+      padding: 28px;
+
+      border: 2px solid var(--primary-blue);
+      border-radius: 24px;
+
+      background: var(--very-light-blue);
+
+      text-align: center;
+    }
+
+    .result-box.show {
+      display: block;
+    }
+
+    .result-box h2 {
+      margin-bottom: 10px;
+
+      color: var(--primary-blue);
+
+      font-size: 30px;
+    }
+
+    .score {
+      margin-bottom: 10px;
+
+      color: var(--primary-blue);
+
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    .result-message {
+      color: var(--dark-text);
+
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .brand-footer {
+      margin-top: 70px;
+      padding-top: 38px;
+
+      border-top: 1px solid var(--a1-border);
+
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: block;
+
+      width: min(330px, 78%);
+      max-height: 190px;
+
+      margin: 0 auto 16px;
+
+      object-fit: contain;
+    }
+
+    .brand-footer p {
+      color: var(--soft-gray);
+
+      font-size: 15px;
+    }
+
+    @media (max-width: 720px) {
+      .page-container {
+        padding: 24px 16px 45px;
+      }
+
+      .back-link {
+        margin-bottom: 28px;
+
+        font-size: 16px;
+      }
+
+      .brand-symbol {
+        width: 92px;
+        height: 92px;
+      }
+
+      .exercise-section {
+        padding: 23px 18px;
+
+        border-radius: 22px;
+      }
+
+      .section-title {
+        font-size: 23px;
+      }
+
+      .question-text,
+      .fill-row,
+      .instructions {
+        font-size: 17px;
+      }
+
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .answer-input {
+        width: 100%;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+      }
+
+      .footer-logo {
+        width: min(300px, 92%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page-container">
+
+    <a class="back-link" href="adjectifs-possessifs.html">
+      <span aria-hidden="true">←</span>
+      Retour à la leçon
+    </a>
+
+    <header class="exercise-header">
+
+      <img
+        class="brand-symbol"
+        src="assets/logos/brand-symbol.png"
+        alt="Français Sans Illusion"
+      >
+
+      <span class="lesson-level">
+        A1 · Exercices
+      </span>
+
+      <h1>
+        Les adjectifs possessifs
+      </h1>
+
+      <p>
+        Testez vos connaissances avec deux exercices
+        et vérifiez vos réponses automatiquement.
+      </p>
+
+    </header>
+
+    <section class="exercise-section">
+
+      <h2 class="section-title">
+
+        <span class="section-icon" aria-hidden="true">
+          ✅
+        </span>
+
+        Exercice 1 — Choisissez la bonne réponse
+
+      </h2>
+
+      <p class="instructions">
+        Choisissez l’adjectif possessif correct.
+      </p>
+
+      <div id="multiple-choice-exercise">
+
+        <div
+          class="question-card mcq"
+          data-answer="ma"
+          data-explanation="Voiture est un nom féminin singulier."
+        >
+          <p class="question-text">
+            1. C’est ___ voiture.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">mon</button>
+            <button class="option-button" type="button">ma</button>
+            <button class="option-button" type="button">mes</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="mes"
+          data-explanation="Clés est un nom pluriel."
+        >
+          <p class="question-text">
+            2. Où sont ___ clés ?
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">mon</button>
+            <button class="option-button" type="button">ma</button>
+            <button class="option-button" type="button">mes</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="ton"
+          data-explanation="Téléphone est masculin singulier."
+        >
+          <p class="question-text">
+            3. Tu cherches ___ téléphone.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">ton</button>
+            <button class="option-button" type="button">ta</button>
+            <button class="option-button" type="button">tes</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="ton"
+          data-explanation="École est féminin, mais commence par une voyelle."
+        >
+          <p class="question-text">
+            4. Voici ___ école.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">ton</button>
+            <button class="option-button" type="button">ta</button>
+            <button class="option-button" type="button">tes</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="sa"
+          data-explanation="Maison est un nom féminin singulier."
+        >
+          <p class="question-text">
+            5. Elle aime ___ maison.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">son</button>
+            <button class="option-button" type="button">sa</button>
+            <button class="option-button" type="button">ses</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="son"
+          data-explanation="Histoire est féminin, mais commence par un h muet."
+        >
+          <p class="question-text">
+            6. Il raconte ___ histoire.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">son</button>
+            <button class="option-button" type="button">sa</button>
+            <button class="option-button" type="button">ses</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="notre"
+          data-explanation="Professeur est un nom singulier."
+        >
+          <p class="question-text">
+            7. Nous aimons ___ professeur.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">notre</button>
+            <button class="option-button" type="button">nos</button>
+            <button class="option-button" type="button">leur</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="vos"
+          data-explanation="Passeports est un nom pluriel."
+        >
+          <p class="question-text">
+            8. Vous prenez ___ passeports.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">votre</button>
+            <button class="option-button" type="button">vos</button>
+            <button class="option-button" type="button">leurs</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="leur"
+          data-explanation="Appartement est un nom singulier."
+        >
+          <p class="question-text">
+            9. Ils visitent ___ appartement.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">leur</button>
+            <button class="option-button" type="button">leurs</button>
+            <button class="option-button" type="button">ses</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card mcq"
+          data-answer="leurs"
+          data-explanation="Enfants est un nom pluriel."
+        >
+          <p class="question-text">
+            10. Elles aiment ___ enfants.
+          </p>
+
+          <div class="options">
+            <button class="option-button" type="button">leur</button>
+            <button class="option-button" type="button">leurs</button>
+            <button class="option-button" type="button">ses</button>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="exercise-section">
+
+      <h2 class="section-title">
+
+        <span class="section-icon" aria-hidden="true">
+          ✍️
+        </span>
+
+        Exercice 2 — Complétez les phrases
+
+      </h2>
+
+      <p class="instructions">
+        Écrivez l’adjectif possessif correct dans chaque case.
+      </p>
+
+      <div id="fill-exercise">
+
+        <div
+          class="question-card fill-question"
+          data-answer="mon"
+          data-explanation="Livre est masculin singulier."
+        >
+          <div class="fill-row">
+            <span>1. C’est</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 1"
+            >
+            <span>livre.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="ma"
+          data-explanation="Sœur est féminin singulier."
+        >
+          <div class="fill-row">
+            <span>2. Voici</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 2"
+            >
+            <span>sœur.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="mes"
+          data-explanation="Amis est un nom pluriel."
+        >
+          <div class="fill-row">
+            <span>3. Ce sont</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 3"
+            >
+            <span>amis.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="ton"
+          data-explanation="École commence par une voyelle."
+        >
+          <div class="fill-row">
+            <span>4. Tu aimes</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 4"
+            >
+            <span>école.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="ses"
+          data-explanation="Lunettes est un nom pluriel."
+        >
+          <div class="fill-row">
+            <span>5. Elle cherche</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 5"
+            >
+            <span>lunettes.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="notre"
+          data-explanation="Ville est un nom singulier."
+        >
+          <div class="fill-row">
+            <span>6. Nous visitons</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 6"
+            >
+            <span>ville.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="nos"
+          data-explanation="Parents est un nom pluriel."
+        >
+          <div class="fill-row">
+            <span>7. Nous aimons</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 7"
+            >
+            <span>parents.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="votre"
+          data-explanation="Passeport est un nom singulier."
+        >
+          <div class="fill-row">
+            <span>8. Vous prenez</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 8"
+            >
+            <span>passeport.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="leur"
+          data-explanation="Voiture est un nom singulier."
+        >
+          <div class="fill-row">
+            <span>9. Ils vendent</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 9"
+            >
+            <span>voiture.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+        <div
+          class="question-card fill-question"
+          data-answer="leurs"
+          data-explanation="Livres est un nom pluriel."
+        >
+          <div class="fill-row">
+            <span>10. Elles lisent</span>
+            <input
+              class="answer-input"
+              type="text"
+              autocomplete="off"
+              aria-label="Question 10"
+            >
+            <span>livres.</span>
+          </div>
+
+          <div class="feedback"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="actions">
+
+      <button
+        id="check-button"
+        class="primary-button"
+        type="button"
+      >
+        Vérifier mes réponses
+      </button>
+
+      <button
+        id="restart-button"
+        class="secondary-button"
+        type="button"
+      >
+        Recommencer
+      </button>
+
+    </div>
+
+    <section
+      id="result-box"
+      class="result-box"
+      aria-live="polite"
+    >
+
+      <h2>Votre résultat</h2>
+
+      <div id="score" class="score">
+        0 / 20
+      </div>
+
+      <p id="result-message" class="result-message"></p>
+
+    </section>
+
+    <footer class="brand-footer">
+
+      <img
+        class="footer-logo"
+        src="assets/logos/raghad-logo.png"
+        alt="Raghad Aboud — Français Sans Illusion"
+      >
+
+      <p>
+        Designed with ❤️ &amp; AI by Raghad Aboud
+      </p>
+
+    </footer>
+
+  </main>
+
+  <script>
+    const multipleChoiceQuestions =
+      document.querySelectorAll(".mcq");
+
+    const fillQuestions =
+      document.querySelectorAll(".fill-question");
+
+    const checkButton =
+      document.getElementById("check-button");
+
+    const restartButton =
+      document.getElementById("restart-button");
+
+    const resultBox =
+      document.getElementById("result-box");
+
+    const scoreElement =
+      document.getElementById("score");
+
+    const resultMessage =
+      document.getElementById("result-message");
+
+    multipleChoiceQuestions.forEach((question) => {
+      const buttons =
+        question.querySelectorAll(".option-button");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          buttons.forEach((item) => {
+            item.classList.remove("selected");
+          });
+
+          button.classList.add("selected");
+        });
+      });
+    });
+
+    function normalizeAnswer(value) {
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      multipleChoiceQuestions.forEach((question) => {
+        const correctAnswer =
+          normalizeAnswer(question.dataset.answer);
+
+        const explanation =
+          question.dataset.explanation;
+
+        const selectedButton =
+          question.querySelector(
+            ".option-button.selected"
+          );
+
+        const feedback =
+          question.querySelector(".feedback");
+
+        const buttons =
+          question.querySelectorAll(".option-button");
+
+        buttons.forEach((button) => {
+          button.classList.remove(
+            "correct",
+            "incorrect"
+          );
+        });
+
+        if (!selectedButton) {
+          feedback.textContent =
+            "Choisissez une réponse.";
+
+          feedback.className =
+            "feedback show incorrect";
+
+          return;
+        }
+
+        const selectedAnswer =
+          normalizeAnswer(selectedButton.textContent);
+
+        if (selectedAnswer === correctAnswer) {
+          score++;
+
+          selectedButton.classList.add("correct");
+
+          feedback.textContent =
+            "Correct !";
+
+          feedback.className =
+            "feedback show correct";
+        } else {
+          selectedButton.classList.add("incorrect");
+
+          buttons.forEach((button) => {
+            if (
+              normalizeAnswer(button.textContent) ===
+              correctAnswer
+            ) {
+              button.classList.add("correct");
+            }
+          });
+
+          feedback.textContent =
+            `La bonne réponse est « ${question.dataset.answer} ». ${explanation}`;
+
+          feedback.className =
+            "feedback show incorrect";
+        }
+      });
+
+      fillQuestions.forEach((question) => {
+        const correctAnswer =
+          normalizeAnswer(question.dataset.answer);
+
+        const explanation =
+          question.dataset.explanation;
+
+        const input =
+          question.querySelector(".answer-input");
+
+        const feedback =
+          question.querySelector(".feedback");
+
+        const userAnswer =
+          normalizeAnswer(input.value);
+
+        input.classList.remove(
+          "correct",
+          "incorrect"
+        );
+
+        if (!userAnswer) {
+          input.classList.add("incorrect");
+
+          feedback.textContent =
+            "Écrivez une réponse.";
+
+          feedback.className =
+            "feedback show incorrect";
+
+          return;
+        }
+
+        if (userAnswer === correctAnswer) {
+          score++;
+
+          input.classList.add("correct");
+
+          feedback.textContent =
+            "Correct !";
+
+          feedback.className =
+            "feedback show correct";
+        } else {
+          input.classList.add("incorrect");
+
+          feedback.textContent =
+            `La bonne réponse est « ${question.dataset.answer} ». ${explanation}`;
+
+          feedback.className =
+            "feedback show incorrect";
+        }
+      });
+
+      scoreElement.textContent =
+        `${score} / 20`;
+
+      if (score === 20) {
+        resultMessage.textContent =
+          "Excellent ! Vous maîtrisez très bien les adjectifs possessifs.";
+      } else if (score >= 16) {
+        resultMessage.textContent =
+          "Très bien ! Relisez seulement les quelques réponses incorrectes.";
+      } else if (score >= 12) {
+        resultMessage.textContent =
+          "Bon travail ! Relisez la règle et essayez encore une fois.";
+      } else {
+        resultMessage.textContent =
+          "Relisez la leçon, puis recommencez les exercices. Vous allez progresser.";
+      }
+
+      resultBox.classList.add("show");
+
+      resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    function restartExercises() {
+      multipleChoiceQuestions.forEach((question) => {
+        const buttons =
+          question.querySelectorAll(".option-button");
+
+        const feedback =
+          question.querySelector(".feedback");
+
+        buttons.forEach((button) => {
+          button.classList.remove(
+            "selected",
+            "correct",
+            "incorrect"
+          );
+        });
+
+        feedback.className = "feedback";
+        feedback.textContent = "";
+      });
+
+      fillQuestions.forEach((question) => {
+        const input =
+          question.querySelector(".answer-input");
+
+        const feedback =
+          question.querySelector(".feedback");
+
+        input.value = "";
+
+        input.classList.remove(
+          "correct",
+          "incorrect"
+        );
+
+        feedback.className = "feedback";
+        feedback.textContent = "";
+      });
+
+      resultBox.classList.remove("show");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    checkButton.addEventListener(
+      "click",
+      checkAnswers
+    );
+
+    restartButton.addEventListener(
+      "click",
+      restartExercises
+    );
+  </script>
+
+</body>
+</html>

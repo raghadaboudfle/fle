@@ -28,44 +28,45 @@
 
   <meta
     name="description"
-    content="Apprenez à utiliser en, au, aux et à avec les noms de pays et de villes en français."
+    content="Apprenez à utiliser les prépositions en, au, aux et à avec les noms de pays et de villes."
   >
 
   <link
     rel="icon"
     type="image/png"
-    href="brand-symbol.png"
+    href="assets/logos/brand-symbol.png"
   >
 
   <style>
     :root {
       --primary-blue: #1E5BB8;
       --dark-blue: #174A96;
-      --light-blue: #EAF4FF;
-      --very-light-blue: #F5FAFF;
-
-      --background: #FFF9F1;
-      --card-background: #FFFFFF;
       --dark-text: #1F2937;
       --soft-text: #5B6472;
 
+      --background: #FFF9F1;
+      --white: #FFFFFF;
       --border-beige: #E9C99F;
       --soft-beige: #FFF4E5;
 
       --en-color: #2563EB;
-      --en-light: #EAF2FF;
+      --en-light: #EEF5FF;
+      --en-border: #B9D3FF;
 
       --au-color: #D97706;
-      --au-light: #FFF3DC;
+      --au-light: #FFF7E8;
+      --au-border: #F1C881;
 
       --aux-color: #7C3AED;
-      --aux-light: #F2EAFE;
+      --aux-light: #F7F1FF;
+      --aux-border: #D2BDF6;
 
       --a-color: #059669;
-      --a-light: #E8F8F2;
+      --a-light: #EDFAF5;
+      --a-border: #A7DDCB;
 
-      --attention-color: #C2410C;
-      --attention-light: #FFF3E8;
+      --warning-color: #C2410C;
+      --warning-light: #FFF3E8;
 
       --shadow:
         0 14px 35px rgba(46, 54, 70, 0.08);
@@ -81,10 +82,7 @@
 
     body {
       margin: 0;
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--dark-text);
       background:
         radial-gradient(
@@ -177,7 +175,7 @@
       padding: 34px;
       border: 1.5px solid var(--border-beige);
       border-radius: 28px;
-      background: var(--card-background);
+      background: var(--white);
       box-shadow: var(--shadow);
     }
 
@@ -214,7 +212,7 @@
       width: 100%;
       min-width: 820px;
       border-collapse: collapse;
-      background: #FFFFFF;
+      background: var(--white);
     }
 
     th,
@@ -259,22 +257,22 @@
 
     .prep-en {
       color: var(--en-color);
-      background: var(--en-light);
+      background: #EAF2FF;
     }
 
     .prep-au {
       color: var(--au-color);
-      background: var(--au-light);
+      background: #FFF3DC;
     }
 
     .prep-aux {
       color: var(--aux-color);
-      background: var(--aux-light);
+      background: #F2EAFE;
     }
 
     .prep-a {
       color: var(--a-color);
-      background: var(--a-light);
+      background: #E8F8F2;
     }
 
     .rule-card {
@@ -292,7 +290,7 @@
     }
 
     .rule-en {
-      border-color: #B9D3FF;
+      border-color: var(--en-border);
       background:
         linear-gradient(
           135deg,
@@ -306,7 +304,7 @@
     }
 
     .rule-au {
-      border-color: #F1C881;
+      border-color: var(--au-border);
       background:
         linear-gradient(
           135deg,
@@ -320,7 +318,7 @@
     }
 
     .rule-aux {
-      border-color: #D2BDF6;
+      border-color: var(--aux-border);
       background:
         linear-gradient(
           135deg,
@@ -334,7 +332,7 @@
     }
 
     .rule-a {
-      border-color: #A7DDCB;
+      border-color: var(--a-border);
       background:
         linear-gradient(
           135deg,
@@ -391,7 +389,7 @@
       margin: 0;
       padding: 15px 18px 15px 52px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.86);
       font-size: 18px;
     }
 
@@ -411,12 +409,12 @@
       border: 1px solid #F0B78F;
       border-radius: 18px;
       color: #7C2D12;
-      background: var(--attention-light);
+      background: var(--warning-light);
       font-size: 17px;
     }
 
     .attention-box strong {
-      color: var(--attention-color);
+      color: var(--warning-color);
     }
 
     .country-table td:first-child {
@@ -444,32 +442,43 @@
     }
 
     .memory-box {
-      margin: 28px 0;
-      padding: 28px;
-      border: 1.5px solid #B9D3FF;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 28px 0 42px;
+      padding: 30px 34px;
+      border: 2px solid #F2C66D;
       border-radius: 24px;
-      text-align: center;
       background:
         linear-gradient(
           135deg,
-          #F8FBFF,
-          #EAF4FF
+          #FFF9E8,
+          #FFF1C9
         );
       box-shadow: var(--shadow);
-      font-size: clamp(19px, 2.2vw, 23px);
-      font-weight: 700;
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .memory-box p {
+      margin: 8px 0 0;
+    }
+
+    .memory-icon {
+      flex: 0 0 auto;
+      font-size: 42px;
     }
 
     .memory-word {
       display: inline-block;
-      padding: 1px 8px;
-      border-radius: 8px;
+      padding: 2px 12px;
+      border-radius: 9px;
       color: #FFFFFF;
       background: var(--primary-blue);
+      font-size: 1.15em;
       font-weight: 900;
     }
 
-    .coming-soon {
+    .exercise-area {
       display: flex;
       justify-content: center;
       margin: 42px 0 60px;
@@ -480,16 +489,16 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 16px 30px;
+      padding: 16px 32px;
       border: none;
       border-radius: 999px;
       color: #FFFFFF;
-      background: #8795A8;
+      background: var(--primary-blue);
       box-shadow:
-        0 12px 26px rgba(72, 86, 110, 0.2);
+        0 12px 26px rgba(30, 91, 184, 0.25);
       font-size: 18px;
       font-weight: 800;
-      cursor: not-allowed;
+      cursor: default;
     }
 
     .footer {
@@ -560,7 +569,17 @@
       }
 
       .memory-box {
-        padding: 22px 17px;
+        align-items: flex-start;
+        padding: 22px 18px;
+      }
+
+      .memory-icon {
+        font-size: 34px;
+      }
+
+      .exercise-button {
+        width: 100%;
+        max-width: 330px;
       }
     }
   </style>
@@ -583,7 +602,7 @@
 
       <img
         class="brand-symbol"
-        src="brand-symbol.png"
+        src="assets/logos/brand-symbol.png"
         alt="Français Sans Illusion"
       >
 
@@ -682,7 +701,7 @@
                 Devant un pays au pluriel
               </td>
               <td>
-                Before a plural country
+                Before a plural country name
               </td>
               <td>
                 Nous sommes <strong>aux États-Unis</strong>.
@@ -826,8 +845,7 @@
       </h2>
 
       <p>
-        On utilise <strong>aux</strong> devant un nom de pays
-        au pluriel.
+        On utilise <strong>aux</strong> devant un pays au pluriel.
       </p>
 
       <h3 class="examples-title">
@@ -992,25 +1010,35 @@
 
     <aside class="memory-box">
 
-      Comment distinguer les pays masculins des pays féminins ?
-      Malheureusement, il faut les
-
-      <span class="memory-word">
-        mémoriser
+      <span class="memory-icon" aria-hidden="true">
+        🧠
       </span>
 
-      !
+      <div>
+
+        <strong>
+          Comment distinguer les pays masculins des pays féminins ?
+        </strong>
+
+        <p>
+          Malheureusement, il faut les
+          <span class="memory-word">
+            mémoriser
+          </span>
+          !
+        </p>
+
+      </div>
 
     </aside>
 
-    <div class="coming-soon">
+    <div class="exercise-area">
 
       <button
         class="exercise-button"
         type="button"
-        disabled
       >
-        Exercices bientôt disponibles
+        Passez aux exercices
         <span aria-hidden="true">→</span>
       </button>
 
@@ -1020,7 +1048,7 @@
 
       <img
         class="footer-logo"
-        src="raghad-logo.png"
+        src="assets/logos/raghad-logo.png"
         alt="Raghad Aboud — Français Sans Illusion"
       >
 

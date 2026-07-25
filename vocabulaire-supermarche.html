@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Activité de vocabulaire A1 : au supermarché.">
+  <title>Au supermarché – Vocabulaire A1 | Français Sans Illusion</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZNHDB8N2L');
+  </script>
+
+  <style>
+    :root {
+      --blue: #1E5BB8;
+      --blue-light: #EAF4FF;
+      --blue-mid: #7EB4FF;
+      --ink: #1F2937;
+      --sand: #F8F1E8;
+      --white: #FFFFFF;
+      --green: #2E9B65;
+      --red: #D94A55;
+      --border: #D6E5FA;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #F8FBFF 0%, var(--sand) 100%);
+      color: var(--ink);
+    }
+    .page { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+    .back-link { color: var(--blue); text-decoration: none; font-weight: 700; display: inline-block; margin-bottom: 28px; }
+    .back-link:hover { text-decoration: underline; }
+    header { text-align: center; margin-bottom: 28px; }
+    .level { color: var(--blue); font-size: .85rem; letter-spacing: .12em; font-weight: 800; text-transform: uppercase; }
+    h1 { margin: 10px 0 8px; font-size: clamp(2rem, 5vw, 3rem); color: var(--blue); }
+    .subtitle { margin: 0; font-size: 1.05rem; line-height: 1.6; }
+    .activity {
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(30, 91, 184, .10);
+      border-radius: 24px;
+      padding: clamp(20px, 4vw, 38px);
+    }
+    h2 { color: var(--blue); font-size: 1.2rem; margin: 0 0 12px; }
+    .instructions { background: var(--blue-light); border-radius: 14px; padding: 14px 16px; margin: 0 0 22px; line-height: 1.5; }
+    .word-bank { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+    .word {
+      appearance: none; border: 2px solid var(--blue-mid); background: var(--white); color: var(--blue);
+      border-radius: 999px; padding: 10px 14px; cursor: pointer; font: inherit; font-weight: 700;
+      transition: transform .15s, background .15s, color .15s;
+    }
+    .word:hover:not(:disabled) { transform: translateY(-2px); background: var(--blue-light); }
+    .word.selected { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .word:disabled { opacity: .48; cursor: default; }
+    .matching-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .card {
+      display: flex; align-items: center; gap: 12px; background: #FCFDFF;
+      border: 1px solid var(--border); border-radius: 16px; padding: 12px;
+    }
+    .icon { width: 54px; height: 54px; flex: 0 0 54px; display: grid; place-items: center; border-radius: 13px; background: var(--blue-light); font-size: 1.9rem; }
+    .slot {
+      appearance: none; width: 100%; min-height: 46px; border: 2px dashed var(--blue-mid); border-radius: 10px;
+      background: var(--white); color: var(--ink); padding: 8px 10px; text-align: left; cursor: pointer; font: inherit; font-weight: 700;
+      transition: border .15s, background .15s;
+    }
+    .slot:hover:not(:disabled) { background: var(--blue-light); }
+    .slot.correct { background: #E9F8EF; border: 2px solid var(--green); color: #17613B; cursor: default; }
+    .slot.wrong { background: #FFF0F1; border-color: var(--red); animation: shake .28s linear; }
+    @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+    .result { display: none; text-align: center; background: #E9F8EF; color: #17613B; border-radius: 14px; padding: 16px; margin-top: 26px; font-weight: 700; line-height: 1.5; }
+    .result.show { display: block; }
+    .actions { display: flex; justify-content: center; margin-top: 22px; }
+    .restart { border: none; background: var(--blue); color: white; padding: 12px 20px; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700; }
+    .restart:hover { background: #17488F; }
+    .next-step { text-align: center; margin: 28px 0 0; line-height: 1.6; }
+    .next-step a { color: var(--blue); font-weight: 700; }
+    footer { text-align: center; color: #607087; font-size: .9rem; margin-top: 34px; }
+    @media (max-width: 650px) { .matching-grid { grid-template-columns: 1fr; } .page { width: min(100% - 22px, 980px); } .activity { padding: 20px 14px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="videos-a1.html">← Retour </a>
+
+    <header>
+      <div class="level">A1 · Vocabulaire</div>
+      <h1>Au supermarché</h1>
+      <p class="subtitle">Apprenez le vocabulaire essentiel du supermarché.</p>
+    </header>
+
+    <section class="activity" aria-labelledby="activity-title">
+      <h2 id="activity-title">Associez les mots aux images</h2>
+      <p class="instructions"><strong>Consigne :</strong> cliquez sur un mot, puis sur le rectangle vide devant l’image correspondante.</p>
+
+      <div class="word-bank" id="word-bank" aria-label="Mots à placer"></div>
+      <div class="matching-grid" id="matching-grid" aria-label="Images et rectangles de réponse"></div>
+
+      <div class="result" id="result" role="status">
+        Bravo ! Vous avez trouvé les 16 mots. 🎉
+      </div>
+      <div class="actions"><button class="restart" id="restart" type="button">Recommencer</button></div>
+    </section>
+
+    <p class="next-step">Vous voulez revoir la situation ? <a href="supermarket.html">Regardez la vidéo « Au supermarché »</a>.</p>
+    <footer>Français Sans Illusion — Activité conçue par Raghad Aboud</footer>
+  </main>
+
+  <script>
+    const items = [
+      { word: 'un chariot', icon: '🛒' }, { word: 'un panier', icon: '🧺' },
+      { word: 'une cliente / un client', icon: '🧑' }, { word: 'du lait', icon: '🥛' },
+      { word: 'du fromage', icon: '🧀' }, { word: 'des œufs', icon: '🥚' },
+      { word: 'du beurre', icon: '🧈' }, { word: 'du pain', icon: '🥖' },
+      { word: 'des fruits', icon: '🍎' }, { word: 'des légumes', icon: '🥕' },
+      { word: 'une liste de courses', icon: '📝' }, { word: 'un ticket de caisse', icon: '🧾' },
+      { word: 'une carte bancaire', icon: '💳' }, { word: 'des espèces', icon: '💶' },
+      { word: 'un terminal de paiement', icon: '📟' }, { word: 'une caisse', icon: '🏪' }
+    ];
+    let selectedWord = null;
+    const wordBank = document.getElementById('word-bank');
+    const matchingGrid = document.getElementById('matching-grid');
+    const result = document.getElementById('result');
+
+    const shuffled = array => [...array].sort(() => Math.random() - 0.5);
+
+    function buildActivity() {
+      selectedWord = null;
+      result.classList.remove('show');
+      wordBank.innerHTML = '';
+      matchingGrid.innerHTML = '';
+
+      shuffled(items).forEach(item => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'word'; button.textContent = item.word;
+        button.dataset.word = item.word;
+        button.addEventListener('click', () => selectWord(button));
+        wordBank.appendChild(button);
+      });
+
+      shuffled(items).forEach(item => {
+        const card = document.createElement('div'); card.className = 'card';
+        card.innerHTML = `<div class="icon" aria-hidden="true">${item.icon}</div>`;
+        const slot = document.createElement('button');
+        slot.type = 'button'; slot.className = 'slot'; slot.dataset.answer = item.word;
+        slot.setAttribute('aria-label', 'Réponse pour ' + item.word);
+        slot.addEventListener('click', () => placeWord(slot));
+        card.appendChild(slot); matchingGrid.appendChild(card);
+      });
+    }
+
+    function selectWord(button) {
+      if (button.disabled) return;
+      document.querySelectorAll('.word').forEach(word => word.classList.remove('selected'));
+      button.classList.add('selected'); selectedWord = button.dataset.word;
+    }
+
+    function placeWord(slot) {
+      if (!selectedWord || slot.disabled) return;
+      if (slot.dataset.answer === selectedWord) {
+        slot.textContent = selectedWord; slot.classList.add('correct'); slot.disabled = true;
+        const chosen = document.querySelector(`.word[data-word="${CSS.escape(selectedWord)}"]`);
+        chosen.disabled = true; chosen.classList.remove('selected'); selectedWord = null;
+        if (document.querySelectorAll('.slot.correct').length === items.length) result.classList.add('show');
+      } else {
+        slot.classList.add('wrong');
+        setTimeout(() => slot.classList.remove('wrong'), 450);
+      }
+    }
+
+    document.getElementById('restart').addEventListener('click', buildActivity);
+    buildActivity();
+  </script>
+</body>
+</html>

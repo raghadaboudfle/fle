@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-5ZNHDB8N2L");
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>L’histoire de la baguette — Activité A2</title>
+  <meta
+    name="description"
+    content="Activité A2 de compréhension orale et de culture française sur l’histoire de la baguette."
+  />
+
+  <style>
+    :root {
+      --background: #fff4ed;
+      --surface: #fffdfb;
+      --surface-soft: #ffe9dc;
+
+      --primary: #f28c52;
+      --primary-dark: #b94f1d;
+      --primary-light: #ffc7a6;
+      --sand: #ffae7a;
+      --cream: #fff7f1;
+
+      --text: #352821;
+      --text-soft: #7a6155;
+      --border: #f4c5a9;
+
+      --correct: #257a4b;
+      --correct-bg: #e9f7ef;
+
+      --incorrect: #b43c3c;
+      --incorrect-bg: #fff0f0;
+
+      --shadow: 0 12px 35px rgba(112, 74, 36, 0.11);
+      --radius-large: 24px;
+      --radius-medium: 16px;
+      --radius-small: 11px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffd9c3 0, transparent 30%),
+        radial-gradient(circle at bottom right, #ffe6d7 0, transparent 28%),
+        linear-gradient(180deg, var(--background), #fff9f5);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .page-wrapper {
+      width: min(960px, calc(100% - 28px));
+      margin: 42px auto 70px;
+    }
+
+    .card {
+      margin-bottom: 24px;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .header-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-card::after {
+      content: "🥖";
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-size: 74px;
+      opacity: 0.13;
+      transform: rotate(-9deg);
+    }
+
+    .brand {
+      margin: 0 0 12px;
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .level-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary-light), var(--sand));
+      color: #5f3617;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+      color: #2b241f;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.15;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: clamp(1.35rem, 4vw, 1.8rem);
+      line-height: 1.3;
+    }
+
+    h3 {
+      color: #5d3a20;
+      font-size: 1.14rem;
+      line-height: 1.4;
+    }
+
+    .subtitle {
+      margin-bottom: 22px;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+    .consigne {
+      margin-bottom: 0;
+      font-size: 1.04rem;
+    }
+
+    .video-card h2,
+    .info-section h2 {
+      margin-bottom: 18px;
+    }
+
+    .video-container {
+      position: relative;
+      width: min(100%, 420px);
+      margin: 0 auto;
+      overflow: hidden;
+      border: 8px solid #2f2926;
+      border-radius: 24px;
+      background: #000;
+      box-shadow: 0 18px 38px rgba(47, 41, 38, 0.18);
+      aspect-ratio: 9 / 16;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .instruction {
+      margin: 18px 0 0;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      position: relative;
+      min-height: 250px;
+      padding: 84px 22px 24px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      background: var(--card-bg);
+      box-shadow: 0 10px 24px rgba(190, 85, 34, 0.09);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      animation: cardFloat 5s ease-in-out infinite;
+    }
+
+    .info-card:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .info-card:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .info-card:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-7px) rotate(-0.4deg);
+      box-shadow: 0 18px 34px rgba(190, 85, 34, 0.16);
+    }
+
+    .info-card::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      top: -45px;
+      right: -35px;
+      border-radius: 50%;
+      background: var(--bubble);
+      opacity: 0.65;
+    }
+
+    .info-card::after {
+      content: attr(data-icon);
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 7px 16px rgba(128, 67, 34, 0.11);
+      font-size: 1.8rem;
+      transform: rotate(-5deg);
+    }
+
+    .info-card:nth-child(1) {
+      --card-bg: linear-gradient(145deg, #fff0e7, #ffe1cf);
+      --card-border: #f6bd99;
+      --bubble: #ffb786;
+    }
+
+    .info-card:nth-child(2) {
+      --card-bg: linear-gradient(145deg, #fff4dd, #ffe7ad);
+      --card-border: #efc76f;
+      --bubble: #ffd36c;
+    }
+
+    .info-card:nth-child(3) {
+      --card-bg: linear-gradient(145deg, #fff0f0, #ffd8d4);
+      --card-border: #efa8a1;
+      --bubble: #ffaca4;
+    }
+
+    .info-card:nth-child(4) {
+      --card-bg: linear-gradient(145deg, #fff1e5, #ffd7b8);
+      --card-border: #efad7e;
+      --bubble: #ff9f62;
+    }
+
+    .info-card h3 {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 10px;
+      color: #8f3f19;
+    }
+
+    .info-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    .exercise-heading {
+      margin-bottom: 6px;
+    }
+
+    .exercise-intro {
+      margin-bottom: 26px;
+      color: var(--text-soft);
+    }
+
+    .part-title {
+      margin: 34px 0 8px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    .part-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .part-description {
+      margin-bottom: 20px;
+      color: var(--text-soft);
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-medium);
+      background: #fffaf4;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .question:hover {
+      border-color: var(--primary-light);
+      box-shadow: 0 8px 20px rgba(138, 79, 23, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .question-title {
+      margin-bottom: 15px;
+      color: #3b2b24;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .question-number {
+      color: var(--primary-dark);
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 12px 14px;
+      border: 1px solid #ead8c5;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .option:hover {
+      border-color: var(--primary);
+      background: #fff5e8;
+      transform: translateX(2px);
+    }
+
+    .option input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--primary-dark);
+      cursor: pointer;
+    }
+
+    .option.correct-answer,
+    .order-row.correct-answer {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: #185b36;
+      font-weight: 700;
+    }
+
+    .option.incorrect-answer,
+    .order-row.incorrect-answer {
+      border-color: var(--incorrect);
+      background: var(--incorrect-bg);
+      color: #8c2929;
+    }
+
+    .question-feedback {
+      min-height: 26px;
+      margin: 12px 0 0;
+      font-weight: 800;
+    }
+
+    .feedback-correct {
+      color: var(--correct);
+    }
+
+    .feedback-incorrect {
+      color: var(--incorrect);
+    }
+
+    .order-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .order-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid #ead8c5;
+      border-radius: 12px;
+      background: white;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .order-row select {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid var(--primary-light);
+      border-radius: 10px;
+      background: white;
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .order-sentence {
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-width: 180px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(120, 64, 34, 0.18);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--primary-light);
+      background: white;
+      color: var(--primary-dark);
+    }
+
+    .result {
+      display: none;
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid var(--primary-light);
+      border-radius: var(--radius-medium);
+      background: linear-gradient(135deg, #ffd8bf, #fff2e8);
+      color: #71340f;
+      text-align: center;
+    }
+
+    .result.visible {
+      display: block;
+      animation: appear 0.35s ease;
+    }
+
+    .result-score {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+      font-size: 2.15rem;
+      font-weight: 900;
+    }
+
+    .result-message {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 18px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-wrapper {
+        width: min(100% - 18px, 960px);
+        margin-top: 18px;
+      }
+
+      .card {
+        padding: 23px 19px;
+        border-radius: 18px;
+      }
+
+      .header-card::after {
+        top: 12px;
+        right: 8px;
+        font-size: 52px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question {
+        padding: 18px 14px;
+      }
+
+      .option {
+        padding: 11px;
+      }
+
+      .order-row {
+        grid-template-columns: 72px 1fr;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .order-row {
+        grid-template-columns: 1fr;
+      }
+
+      .order-row select {
+        max-width: 110px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page-wrapper">
+
+    <!-- Introduction -->
+    <section class="card header-card">
+      <p class="brand">Français Sans Illusion — Raghad Aboud</p>
+
+      <span class="level-badge">Niveau A2</span>
+
+      <h1>🥖 L’histoire de la baguette</h1>
+
+      <p class="subtitle">
+        Compréhension orale et découverte de la culture française
+      </p>
+
+      <p class="consigne">
+        <strong>Consigne :</strong> Regardez la vidéo, puis lisez les
+        informations complémentaires avant de répondre aux questions.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="card video-card">
+      <h2>🎥 Vidéo</h2>
+
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/fm7htZ92XuA"
+          title="L’histoire de la baguette — Niveau A2"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="instruction">
+        Vous pouvez regarder la vidéo plusieurs fois avant de répondre.
+      </p>
+    </section>
+
+    <!-- Informations complémentaires -->
+    <section class="card info-section">
+      <h2>📖 Informations complémentaires</h2>
+
+      <div class="info-grid">
+        <article class="info-card" data-icon="🥖">
+          <h3>1. La signature du boulanger</h3>
+          <p>
+            Les petites entailles sur la baguette s’appellent les
+            <strong>grignes</strong>. Elles permettent au pain de bien gonfler
+            pendant la cuisson. Leur forme peut aussi représenter la signature
+            du boulanger.
+          </p>
+        </article>
+
+        <article class="info-card" data-icon="🇫🇷">
+          <h3>2. Six milliards de baguettes</h3>
+          <p>
+            En France, environ <strong>six milliards de baguettes</strong> sont
+            produites chaque année. Cela représente près de seize millions de
+            baguettes par jour !
+          </p>
+        </article>
+
+        <article class="info-card" data-icon="🍽️">
+          <h3>3. Sur la table</h3>
+          <p>
+            Traditionnellement, en France, la baguette est souvent posée
+            directement sur la table ou sur la nappe, à côté de l’assiette.
+            Elle peut aussi être placée dans une corbeille à pain.
+          </p>
+        </article>
+
+        <article class="info-card" data-icon="✋">
+          <h3>4. À la main</h3>
+          <p>
+            À table, on rompt souvent la baguette avec les mains au lieu de la
+            couper avec un couteau. C’est une habitude traditionnelle et
+            pratique, car la baguette se partage facilement.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Exercices -->
+    <section class="card">
+      <h2 class="exercise-heading">📝 Exercices</h2>
+
+      <p class="exercise-intro">
+        Répondez aux trois parties, puis cliquez sur
+        <strong>Vérifier mes réponses</strong>. La note finale est sur 20.
+      </p>
+
+      <form id="quiz-form">
+
+        <!-- Partie 1 -->
+        <h3 class="part-title">Partie 1 – QCM (10 points)</h3>
+        <p class="part-description">
+          Choisissez une seule réponse pour chaque question.
+        </p>
+
+        <article class="question" data-question="q1">
+          <p class="question-title">
+            <span class="question-number">1.</span>
+            La baguette moderne est...
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q1" value="ancienne" />
+              <span>plus ancienne que la tour Eiffel.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" value="recente" />
+              <span>plus récente que la tour Eiffel.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" value="meme-age" />
+              <span>aussi ancienne que la tour Eiffel.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q2">
+          <p class="question-title">
+            <span class="question-number">2.</span>
+            Selon une légende, qui a inventé la baguette ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q2" value="napoleon" />
+              <span>Napoléon</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="victor-hugo" />
+              <span>Victor Hugo</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="louis-xiv" />
+              <span>Louis XIV</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q3">
+          <p class="question-title">
+            <span class="question-number">3.</span>
+            Les historiens ont trouvé...
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q3" value="quelques" />
+              <span>quelques preuves.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="beaucoup" />
+              <span>beaucoup de preuves.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="aucune" />
+              <span>aucune preuve.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q4">
+          <p class="question-title">
+            <span class="question-number">4.</span>
+            La baguette est apparue...
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q4" value="xixe" />
+              <span>au début du XIXᵉ siècle.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="xxe" />
+              <span>au début du XXᵉ siècle.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="xxie" />
+              <span>au début du XXIᵉ siècle.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q5">
+          <p class="question-title">
+            <span class="question-number">5.</span>
+            Pourquoi les Français achètent-ils du pain chaque jour ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q5" value="pain-frais" />
+              <span>Parce qu’ils préfèrent le pain frais.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" value="moins-cher" />
+              <span>Parce qu’il est moins cher.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" value="mangent-plus" />
+              <span>Parce qu’ils mangent plus.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q6">
+          <p class="question-title">
+            <span class="question-number">6.</span>
+            Pourquoi les boulangers ont-ils commencé à faire des pains plus
+            longs et plus fins ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q6" value="moins-chers" />
+              <span>Parce qu’ils étaient moins chers.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q6" value="plus-beaux" />
+              <span>Parce qu’ils étaient plus beaux.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q6" value="cuisaient-plus-vite" />
+              <span>Parce qu’ils cuisaient plus vite.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q7">
+          <p class="question-title">
+            <span class="question-number">7.</span>
+            En quelle année l’UNESCO a-t-elle inscrit les savoir-faire liés à
+            la baguette au patrimoine culturel immatériel de l’humanité ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q7" value="2012" />
+              <span>2012</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q7" value="2022" />
+              <span>2022</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q7" value="2025" />
+              <span>2025</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q8">
+          <p class="question-title">
+            <span class="question-number">8.</span>
+            Comment s’appellent les petites entailles sur la baguette ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q8" value="grignes" />
+              <span>Les grignes</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q8" value="marques" />
+              <span>Les marques</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q8" value="lignes" />
+              <span>Les lignes</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q9">
+          <p class="question-title">
+            <span class="question-number">9.</span>
+            Environ combien de baguettes sont produites chaque année en France ?
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q9" value="six-millions" />
+              <span>Six millions</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q9" value="six-milliards" />
+              <span>Six milliards</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q9" value="soixante-milliards" />
+              <span>Soixante milliards</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q10">
+          <p class="question-title">
+            <span class="question-number">10.</span>
+            Aujourd’hui, la baguette est...
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q10" value="dessert" />
+              <span>un dessert français.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q10" value="seulement-pain" />
+              <span>seulement du pain.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q10" value="symbole" />
+              <span>un symbole de la France.</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Partie 2 -->
+        <h3 class="part-title">Partie 2 – Vrai ou Faux (5 points)</h3>
+        <p class="part-description">
+          Indiquez si chaque affirmation est vraie ou fausse.
+        </p>
+
+        <article class="question" data-question="q11">
+          <p class="question-title">
+            <span class="question-number">1.</span>
+            Napoléon a vraiment inventé la baguette.
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q11" value="vrai" />
+              <span>Vrai</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q11" value="faux" />
+              <span>Faux</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q12">
+          <p class="question-title">
+            <span class="question-number">2.</span>
+            Les grignes permettent au pain de bien gonfler pendant la cuisson.
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q12" value="faux" />
+              <span>Faux</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q12" value="vrai" />
+              <span>Vrai</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q13">
+          <p class="question-title">
+            <span class="question-number">3.</span>
+            Les Français mettent toujours la baguette dans une corbeille à pain.
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q13" value="vrai" />
+              <span>Vrai</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q13" value="faux" />
+              <span>Faux</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q14">
+          <p class="question-title">
+            <span class="question-number">4.</span>
+            On rompt souvent la baguette avec les mains.
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q14" value="faux" />
+              <span>Faux</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q14" value="vrai" />
+              <span>Vrai</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="question" data-question="q15">
+          <p class="question-title">
+            <span class="question-number">5.</span>
+            Acheter une baguette fait partie du quotidien de nombreux Français.
+          </p>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q15" value="vrai" />
+              <span>Vrai</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q15" value="faux" />
+              <span>Faux</span>
+            </label>
+          </div>
+          <p class="question-feedback" aria-live="polite"></p>
+        </article>
+
+        <!-- Partie 3 -->
+        <h3 class="part-title">
+          Partie 3 – Remettez les phrases dans le bon ordre (5 points)
+        </h3>
+        <p class="part-description">
+          Pour chaque phrase, choisissez sa position correcte selon l’ordre de
+          la vidéo. Chaque phrase bien placée vaut un point.
+        </p>
+
+        <div class="order-list" id="order-list">
+          <div class="order-row" data-order-item="o4">
+            <select name="o4" aria-label="Position de la phrase sur l’UNESCO">
+              <option value="">Position</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class="order-sentence">
+              En 2022, l’UNESCO a inscrit les savoir-faire liés à la baguette au
+              patrimoine culturel immatériel de l’humanité.
+            </p>
+          </div>
+
+          <div class="order-row" data-order-item="o1">
+            <select name="o1" aria-label="Position de la phrase sur Napoléon">
+              <option value="">Position</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class="order-sentence">
+              Une légende raconte que Napoléon a inventé la baguette.
+            </p>
+          </div>
+
+          <div class="order-row" data-order-item="o5">
+            <select name="o5" aria-label="Position de la phrase finale">
+              <option value="">Position</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class="order-sentence">
+              Aujourd’hui, la baguette est un symbole de la France.
+            </p>
+          </div>
+
+          <div class="order-row" data-order-item="o2">
+            <select name="o2" aria-label="Position de la phrase sur les historiens">
+              <option value="">Position</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class="order-sentence">
+              Les historiens n’ont trouvé aucune preuve.
+            </p>
+          </div>
+
+          <div class="order-row" data-order-item="o3">
+            <select name="o3" aria-label="Position de la phrase sur le vingtième siècle">
+              <option value="">Position</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class="order-sentence">
+              La baguette est apparue progressivement au début du XXᵉ siècle.
+            </p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="button button-primary" type="submit">
+            Vérifier mes réponses
+          </button>
+
+          <button
+            class="button button-secondary"
+            id="reset-button"
+            type="button">
+            Recommencer
+          </button>
+        </div>
+
+        <div class="result" id="result" aria-live="polite">
+          <span class="result-score" id="result-score"></span>
+          <span class="result-message" id="result-message"></span>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      Français Sans Illusion — Activité conçue par Raghad Aboud
+    </footer>
+  </main>
+
+  <script>
+    const correctAnswers = {
+      q1: "recente",
+      q2: "napoleon",
+      q3: "aucune",
+      q4: "xxe",
+      q5: "pain-frais",
+      q6: "cuisaient-plus-vite",
+      q7: "2022",
+      q8: "grignes",
+      q9: "six-milliards",
+      q10: "symbole",
+      q11: "faux",
+      q12: "vrai",
+      q13: "faux",
+      q14: "vrai",
+      q15: "vrai"
+    };
+
+    const correctOrder = {
+      o1: "1",
+      o2: "2",
+      o3: "3",
+      o4: "4",
+      o5: "5"
+    };
+
+    const quizForm = document.getElementById("quiz-form");
+    const resetButton = document.getElementById("reset-button");
+    const resultBox = document.getElementById("result");
+    const resultScore = document.getElementById("result-score");
+    const resultMessage = document.getElementById("result-message");
+
+    function clearQuestionStyles(questionElement) {
+      const options = questionElement.querySelectorAll(".option");
+
+      options.forEach((option) => {
+        option.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      const feedback = questionElement.querySelector(".question-feedback");
+      feedback.textContent = "";
+      feedback.className = "question-feedback";
+    }
+
+    function clearOrderStyles() {
+      document.querySelectorAll(".order-row").forEach((row) => {
+        row.classList.remove("correct-answer", "incorrect-answer");
+      });
+    }
+
+    function showResultMessage(score) {
+      resultScore.textContent = `${score} / 20`;
+
+      if (score >= 18) {
+        resultMessage.textContent = "Excellent ! 🥖🇫🇷";
+      } else if (score >= 15) {
+        resultMessage.textContent = "Très bien ! Continuez comme ça ! 👏";
+      } else if (score >= 10) {
+        resultMessage.textContent =
+          "Bien ! Regardez encore une fois la vidéo. 😊";
+      } else {
+        resultMessage.textContent =
+          "Regardez la vidéo et relisez les informations avant de réessayer. 💪";
+      }
+
+      resultBox.classList.add("visible");
+      resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    quizForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      let score = 0;
+
+      Object.entries(correctAnswers).forEach(
+        ([questionName, correctValue]) => {
+          const questionElement = document.querySelector(
+            `[data-question="${questionName}"]`
+          );
+
+          clearQuestionStyles(questionElement);
+
+          const selectedInput = quizForm.querySelector(
+            `input[name="${questionName}"]:checked`
+          );
+
+          const correctInput = quizForm.querySelector(
+            `input[name="${questionName}"][value="${correctValue}"]`
+          );
+
+          const correctOption = correctInput.closest(".option");
+          const feedback =
+            questionElement.querySelector(".question-feedback");
+
+          correctOption.classList.add("correct-answer");
+
+          if (!selectedInput) {
+            feedback.textContent = "Veuillez choisir une réponse.";
+            feedback.classList.add("feedback-incorrect");
+            return;
+          }
+
+          const selectedOption = selectedInput.closest(".option");
+
+          if (selectedInput.value === correctValue) {
+            score += 1;
+            feedback.textContent = "Bonne réponse !";
+            feedback.classList.add("feedback-correct");
+          } else {
+            selectedOption.classList.add("incorrect-answer");
+            feedback.textContent = "Ce n’est pas la bonne réponse.";
+            feedback.classList.add("feedback-incorrect");
+          }
+        }
+      );
+
+      clearOrderStyles();
+
+      Object.entries(correctOrder).forEach(([itemName, correctPosition]) => {
+        const row = document.querySelector(`[data-order-item="${itemName}"]`);
+        const select = quizForm.querySelector(`select[name="${itemName}"]`);
+
+        if (select.value === correctPosition) {
+          score += 1;
+          row.classList.add("correct-answer");
+        } else {
+          row.classList.add("incorrect-answer");
+        }
+      });
+
+      showResultMessage(score);
+    });
+
+    resetButton.addEventListener("click", function () {
+      quizForm.reset();
+
+      document.querySelectorAll(".question").forEach((questionElement) => {
+        clearQuestionStyles(questionElement);
+      });
+
+      clearOrderStyles();
+
+      resultBox.classList.remove("visible");
+      resultScore.textContent = "";
+      resultMessage.textContent = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+</body>
+</html>

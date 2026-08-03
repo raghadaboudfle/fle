@@ -29,7 +29,7 @@
 
       --cream: #FFF9F1;
       --soft-beige: #F4E7D5;
-      --brown: #8A542A;
+--brown: #D9784A;
       --border: #E4CFB6;
 
       --green: #2F7D32;
@@ -55,8 +55,8 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, #FFFDF9 0, transparent 40%),
-        linear-gradient(135deg, #FFF9F1, #F7EBDC);
+    radial-gradient(circle at top left, #FFFDF9 0, transparent 40%),
+linear-gradient(135deg, #FFF5ED, #FFDCC8);
       color: var(--dark-text);
       line-height: 1.7;
       min-height: 100vh;
@@ -130,7 +130,6 @@
 
     h1 {
       font-size: clamp(30px, 5vw, 45px);
-      color: var(--dark-text);
       margin-bottom: 8px;
       line-height: 1.2;
     }
@@ -140,12 +139,6 @@
       color: var(--brown);
       margin-bottom: 14px;
       line-height: 1.3;
-    }
-
-    h3 {
-      font-size: 19px;
-      margin-bottom: 13px;
-      color: var(--dark-text);
     }
 
     .subtitle {
@@ -183,8 +176,8 @@
     }
 
     .culture-card {
-      background: linear-gradient(135deg, #F8EBD9, #FFF8EF);
-      border-left: 7px solid #B87838;
+     background: linear-gradient(135deg, #FFE1CF, #FFF5ED);
+border-left: 7px solid #F09A6B;
     }
 
     .culture-card p + p {
@@ -372,7 +365,7 @@
       border-radius: 14px;
       padding: 13px 22px;
       cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     button:hover {
@@ -473,10 +466,6 @@
         gap: 7px;
       }
 
-      .option {
-        padding: 11px;
-      }
-
       .button-row {
         flex-direction: column;
       }
@@ -527,6 +516,7 @@
         <span class="word">faire chauffer</span>
         <span class="word">verser</span>
         <span class="word">faire revenir</span>
+        <span class="word">mélanger</span>
         <span class="word">ajouter</span>
         <span class="word">retourner</span>
         <span class="word">une poêle</span>
@@ -575,10 +565,10 @@
       <section class="card">
         <div class="exercise-heading">
           <h2>🥚 Exercice 1 – Choisissez la bonne réponse.</h2>
-          <span class="points">5 points</span>
+          <span class="points">6 points</span>
         </div>
 
-        <div class="question" data-question="q1">
+        <div class="question">
           <p class="question-title">
             1. Qu'est-ce que la jeune femme prépare ?
           </p>
@@ -604,7 +594,7 @@
           </label>
         </div>
 
-        <div class="question" data-question="q2">
+        <div class="question">
           <p class="question-title">
             2. Quel ingrédient est râpé ?
           </p>
@@ -630,7 +620,7 @@
           </label>
         </div>
 
-        <div class="question" data-question="q3">
+        <div class="question">
           <p class="question-title">
             3. Que fait-elle après avoir chauffé la poêle ?
           </p>
@@ -656,7 +646,7 @@
           </label>
         </div>
 
-        <div class="question" data-question="q4">
+        <div class="question">
           <p class="question-title">
             4. Quels légumes ajoute-t-elle dans la poêle ?
           </p>
@@ -682,7 +672,7 @@
           </label>
         </div>
 
-        <div class="question" data-question="q5">
+        <div class="question">
           <p class="question-title">
             5. Quelle expression entend-on à la fin de la vidéo ?
           </p>
@@ -707,13 +697,39 @@
             Bonne journée !
           </label>
         </div>
+
+        <div class="question">
+          <p class="question-title">
+            6. Quel ingrédient n'apparaît PAS dans cette omelette ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q6" value="tomates">
+            Des tomates
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="oignon">
+            De l'oignon
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="fromage">
+            Du fromage
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="champignons">
+            Des champignons
+          </label>
+        </div>
       </section>
 
       <!-- EXERCICE 2 -->
       <section class="card">
         <div class="exercise-heading">
           <h2>✍️ Exercice 2 – Associez le verbe au bon complément.</h2>
-          <span class="points">10 points</span>
+          <span class="points">9 points</span>
         </div>
 
         <div class="matching-grid">
@@ -722,14 +738,13 @@
             <span class="verb">1. couper</span>
             <select id="m1">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -739,14 +754,13 @@
             <span class="verb">2. râper</span>
             <select id="m2">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -756,14 +770,13 @@
             <span class="verb">3. casser</span>
             <select id="m3">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -773,14 +786,13 @@
             <span class="verb">4. faire chauffer</span>
             <select id="m4">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -790,14 +802,13 @@
             <span class="verb">5. verser</span>
             <select id="m5">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -807,82 +818,61 @@
             <span class="verb">6. faire revenir</span>
             <select id="m6">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
           </div>
 
           <div class="matching-row">
-            <span class="verb">7. ajouter</span>
+            <span class="verb">7. mélanger</span>
             <select id="m7">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
           </div>
 
           <div class="matching-row">
-            <span class="verb">8. verser</span>
+            <span class="verb">8. ajouter</span>
             <select id="m8">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
           </div>
 
           <div class="matching-row">
-            <span class="verb">9. ajouter</span>
+            <span class="verb">9. retourner</span>
             <select id="m9">
               <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
+              <option value="oignon-coupe">l'oignon</option>
               <option value="fromage">du fromage</option>
               <option value="oeufs">deux œufs</option>
               <option value="poele">la poêle</option>
               <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
-              <option value="sel">un peu de sel</option>
-              <option value="omelette">l'omelette</option>
-            </select>
-          </div>
-
-          <div class="matching-row">
-            <span class="verb">10. retourner</span>
-            <select id="m10">
-              <option value="">Choisissez une réponse</option>
-              <option value="oignon">de l'oignon</option>
-              <option value="fromage">du fromage</option>
-              <option value="oeufs">deux œufs</option>
-              <option value="poele">la poêle</option>
-              <option value="huile">un peu d'huile d'olive</option>
-              <option value="faire-revenir-oignon">l'oignon</option>
-              <option value="tomates">les tomates</option>
-              <option value="melange">le mélange</option>
+              <option value="oignon-revenir">l'oignon</option>
+              <option value="tout">le tout</option>
               <option value="sel">un peu de sel</option>
               <option value="omelette">l'omelette</option>
             </select>
@@ -901,7 +891,7 @@
         <div class="image-box">
           <img
             src="assets/images/kitchen-utensils.png"
-            alt="Cinq ustensiles de cuisine numérotés : une poêle, un couteau, une planche à découper, un bol et une râpe"
+            alt="Cinq ustensiles de cuisine numérotés"
           >
 
           <p class="image-note">
@@ -909,50 +899,31 @@
           </p>
         </div>
 
-        <div class="question" data-question="q6">
+        <div class="question">
           <p class="question-title">1. Quel est cet ustensile ?</p>
 
           <label class="option">
-            <input type="radio" name="q6" value="rape">
+            <input type="radio" name="q7" value="rape">
             La râpe
           </label>
 
           <label class="option">
-            <input type="radio" name="q6" value="poele">
+            <input type="radio" name="q7" value="poele">
             La poêle
           </label>
 
           <label class="option">
-            <input type="radio" name="q6" value="fourchette">
+            <input type="radio" name="q7" value="fourchette">
             La fourchette
           </label>
         </div>
 
-        <div class="question" data-question="q7">
+        <div class="question">
           <p class="question-title">2. Quel est cet ustensile ?</p>
 
           <label class="option">
-            <input type="radio" name="q7" value="bol">
+            <input type="radio" name="q8" value="bol">
             Le bol
-          </label>
-
-          <label class="option">
-            <input type="radio" name="q7" value="couteau">
-            Le couteau
-          </label>
-
-          <label class="option">
-            <input type="radio" name="q7" value="planche">
-            La planche à découper
-          </label>
-        </div>
-
-        <div class="question" data-question="q8">
-          <p class="question-title">3. Quel est cet ustensile ?</p>
-
-          <label class="option">
-            <input type="radio" name="q8" value="planche">
-            La planche à découper
           </label>
 
           <label class="option">
@@ -961,32 +932,37 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="q8" value="poele">
-            La poêle
+            <input type="radio" name="q8" value="planche">
+            La planche à découper
           </label>
         </div>
 
-        <div class="question" data-question="q9">
-          <p class="question-title">4. Quel est cet ustensile ?</p>
+        <div class="question">
+          <p class="question-title">3. Quel est cet ustensile ?</p>
 
           <label class="option">
-            <input type="radio" name="q9" value="bol">
-            Le bol
-          </label>
-
-          <label class="option">
-            <input type="radio" name="q9" value="rape">
-            La râpe
+            <input type="radio" name="q9" value="planche">
+            La planche à découper
           </label>
 
           <label class="option">
             <input type="radio" name="q9" value="couteau">
             Le couteau
           </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="poele">
+            La poêle
+          </label>
         </div>
 
-        <div class="question" data-question="q10">
-          <p class="question-title">5. Quel est cet ustensile ?</p>
+        <div class="question">
+          <p class="question-title">4. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q10" value="bol">
+            Le bol
+          </label>
 
           <label class="option">
             <input type="radio" name="q10" value="rape">
@@ -994,30 +970,36 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="q10" value="poele">
+            <input type="radio" name="q10" value="couteau">
+            Le couteau
+          </label>
+        </div>
+
+        <div class="question">
+          <p class="question-title">5. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q11" value="rape">
+            La râpe
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q11" value="poele">
             La poêle
           </label>
 
           <label class="option">
-            <input type="radio" name="q10" value="bol">
+            <input type="radio" name="q11" value="bol">
             Le bol
           </label>
         </div>
 
         <div class="button-row">
-          <button
-            type="button"
-            class="check-button"
-            onclick="checkAnswers()"
-          >
+          <button type="button" class="check-button" onclick="checkAnswers()">
             Vérifier les réponses
           </button>
 
-          <button
-            type="button"
-            class="reset-button"
-            onclick="resetQuiz()"
-          >
+          <button type="button" class="reset-button" onclick="resetQuiz()">
             Recommencer
           </button>
         </div>
@@ -1047,25 +1029,25 @@
       q3: "huile",
       q4: "oignon-tomates",
       q5: "bon-appetit",
+      q6: "champignons",
 
-      q6: "poele",
-      q7: "couteau",
-      q8: "planche",
-      q9: "bol",
-      q10: "rape"
+      q7: "poele",
+      q8: "couteau",
+      q9: "planche",
+      q10: "bol",
+      q11: "rape"
     };
 
     const matchingAnswers = {
-      m1: "oignon",
+      m1: "oignon-coupe",
       m2: "fromage",
       m3: "oeufs",
       m4: "poele",
       m5: "huile",
-      m6: "faire-revenir-oignon",
-      m7: "tomates",
-      m8: "melange",
-      m9: "sel",
-      m10: "omelette"
+      m6: "oignon-revenir",
+      m7: "tout",
+      m8: "sel",
+      m9: "omelette"
     };
 
     function clearFeedback() {
@@ -1079,9 +1061,7 @@
     }
 
     function allQuestionsAnswered() {
-      const radioGroups = Object.keys(radioAnswers);
-
-      for (const groupName of radioGroups) {
+      for (const groupName of Object.keys(radioAnswers)) {
         const selected = document.querySelector(
           'input[name="' + groupName + '"]:checked'
         );
@@ -1091,9 +1071,7 @@
         }
       }
 
-      const matchingFields = Object.keys(matchingAnswers);
-
-      for (const fieldId of matchingFields) {
+      for (const fieldId of Object.keys(matchingAnswers)) {
         const field = document.getElementById(fieldId);
 
         if (!field || field.value === "") {
@@ -1136,7 +1114,7 @@
         );
 
         if (selected.value === correctAnswer) {
-          score += 1;
+          score++;
           selected.closest(".option").classList.add("correct");
         } else {
           selected.closest(".option").classList.add("wrong");
@@ -1158,7 +1136,7 @@
         const field = document.getElementById(fieldId);
 
         if (field.value === correctAnswer) {
-          score += 1;
+          score++;
           field.classList.add("correct");
         } else {
           field.classList.add("wrong");

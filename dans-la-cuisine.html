@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dans la cuisine – Activité A2 | Français Sans Illusion</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "G-5ZNHDB8N2L");
+  </script>
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --light-blue: #7EB4FF;
+      --very-light-blue: #EAF4FF;
+      --white: #FFFFFF;
+      --dark-text: #1F2937;
+
+      --cream: #FFF9F1;
+      --soft-beige: #F4E7D5;
+      --brown: #8A542A;
+      --border: #E4CFB6;
+
+      --green: #2F7D32;
+      --green-light: #E8F5E9;
+
+      --red: #B42318;
+      --red-light: #FDECEC;
+
+      --orange: #A85D00;
+      --orange-light: #FFF2D8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #FFFDF9 0, transparent 40%),
+        linear-gradient(135deg, #FFF9F1, #F7EBDC);
+      color: var(--dark-text);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 24px 16px 50px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .back-row {
+      margin-bottom: 18px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 17px;
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 1px solid #C9DDF8;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(30, 91, 184, 0.09);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .back-button:hover {
+      background: var(--very-light-blue);
+      transform: translateX(-3px);
+    }
+
+    .back-arrow {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(88, 57, 30, 0.08);
+    }
+
+    .brand {
+      color: var(--primary-blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .level-badge {
+      display: inline-block;
+      background: var(--very-light-blue);
+      color: var(--primary-blue);
+      border: 1px solid #C9DDF8;
+      border-radius: 999px;
+      padding: 5px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 45px);
+      color: var(--dark-text);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3.2vw, 29px);
+      color: var(--brown);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin-bottom: 13px;
+      color: var(--dark-text);
+    }
+
+    .subtitle {
+      color: #667085;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .intro-text {
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .words-title {
+      font-weight: 800;
+      color: var(--brown);
+      font-size: 19px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+
+    .words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .word {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 15px;
+      box-shadow: 0 4px 10px rgba(88, 57, 30, 0.05);
+    }
+
+    .culture-card {
+      background: linear-gradient(135deg, #F8EBD9, #FFF8EF);
+      border-left: 7px solid #B87838;
+    }
+
+    .culture-card p + p {
+      margin-top: 10px;
+    }
+
+    .video-card h2 {
+      text-align: center;
+    }
+
+    .video-wrapper {
+      width: min(100%, 420px);
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .exercise-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .points {
+      background: var(--very-light-blue);
+      color: var(--primary-blue);
+      border-radius: 999px;
+      padding: 6px 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .question {
+      background: #FFFCF8;
+      border: 1px solid #EADCCB;
+      border-radius: 18px;
+      padding: 19px;
+      margin-bottom: 16px;
+    }
+
+    .question-title {
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .option {
+      display: block;
+      background: var(--white);
+      border: 1px solid #D9DDE5;
+      border-radius: 13px;
+      padding: 11px 13px;
+      margin: 9px 0;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .option:hover {
+      background: var(--very-light-blue);
+      border-color: var(--light-blue);
+    }
+
+    .option input {
+      margin-right: 9px;
+      accent-color: var(--primary-blue);
+    }
+
+    .option.correct {
+      background: var(--green-light);
+      border-color: #77B779;
+      color: #245C27;
+    }
+
+    .option.wrong {
+      background: var(--red-light);
+      border-color: #E29A94;
+      color: #8C1D14;
+    }
+
+    .matching-grid {
+      display: grid;
+      gap: 13px;
+    }
+
+    .matching-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.8fr) minmax(220px, 1.2fr);
+      gap: 13px;
+      align-items: center;
+      background: #FFFCF8;
+      border: 1px solid #EADCCB;
+      border-radius: 15px;
+      padding: 13px;
+    }
+
+    .verb {
+      font-weight: 800;
+      color: var(--brown);
+    }
+
+    select {
+      width: 100%;
+      padding: 11px 12px;
+      background: var(--white);
+      border: 1px solid #C9CED8;
+      border-radius: 11px;
+      color: var(--dark-text);
+      font-size: 15px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    select:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(30, 91, 184, 0.12);
+    }
+
+    select.correct {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+
+    select.wrong {
+      border-color: var(--red);
+      background: var(--red-light);
+    }
+
+    .image-box {
+      margin: 10px auto 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 13px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .image-box img {
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 14px;
+    }
+
+    .image-note {
+      color: #667085;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    button {
+      font: inherit;
+      font-weight: 800;
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 22px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .check-button {
+      background: var(--primary-blue);
+      color: var(--white);
+      box-shadow: 0 9px 20px rgba(30, 91, 184, 0.22);
+    }
+
+    .reset-button {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 1px solid #BCD4F3;
+    }
+
+    .missing-message {
+      display: none;
+      background: var(--orange-light);
+      color: var(--orange);
+      border: 1px solid #F1CA86;
+      border-radius: 15px;
+      padding: 14px 17px;
+      margin-top: 18px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .score-box {
+      display: none;
+      text-align: center;
+      margin-top: 22px;
+      padding: 24px 18px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+    }
+
+    .score-box.show {
+      display: block;
+    }
+
+    .score-number {
+      font-size: clamp(32px, 6vw, 50px);
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .score-message {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .score-excellent {
+      background: var(--green-light);
+      color: #245C27;
+      border-color: #89C78B;
+    }
+
+    .score-good {
+      background: var(--very-light-blue);
+      color: var(--primary-blue);
+      border-color: #A9CCF5;
+    }
+
+    .score-medium {
+      background: var(--orange-light);
+      color: var(--orange);
+      border-color: #F0C67D;
+    }
+
+    .score-low {
+      background: var(--red-light);
+      color: var(--red);
+      border-color: #E4A09B;
+    }
+
+    footer {
+      text-align: center;
+      color: #667085;
+      padding: 18px 10px 5px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 15px 10px 35px;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 19px;
+      }
+
+      .matching-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .option {
+        padding: 11px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <div class="back-row">
+      <a class="back-button" href="videos-a2.html">
+        <span class="back-arrow">←</span>
+        Retour aux vidéos A2
+      </a>
+    </div>
+
+    <section class="card">
+      <div class="brand">Français Sans Illusion – Raghad Aboud</div>
+      <span class="level-badge">Niveau A2</span>
+
+      <h1>🍳 Dans la cuisine</h1>
+
+      <p class="subtitle">
+        Activité de compréhension orale et de vocabulaire
+      </p>
+
+      <p class="intro-text">
+        Vous allez regarder une courte vidéo dans laquelle une jeune femme prépare une omelette.
+      </p>
+
+      <p class="intro-text">
+        Observez attentivement les ingrédients, les ustensiles et les différentes étapes de la recette.
+      </p>
+
+      <p class="words-title">
+        Concentrez-vous sur ces mots et expressions :
+      </p>
+
+      <div class="words">
+        <span class="word">couper</span>
+        <span class="word">râper</span>
+        <span class="word">casser</span>
+        <span class="word">faire chauffer</span>
+        <span class="word">verser</span>
+        <span class="word">faire revenir</span>
+        <span class="word">ajouter</span>
+        <span class="word">retourner</span>
+        <span class="word">une poêle</span>
+        <span class="word">une râpe</span>
+      </div>
+    </section>
+
+    <section class="card culture-card">
+      <h2>✨ Un petit clin d'œil culturel</h2>
+
+      <p>
+        L'omelette est un incontournable de la cuisine française. Selon la tradition,
+        la célèbre Mère Poulard l'a rendue célèbre au Mont-Saint-Michel il y a plus de 150 ans.
+      </p>
+
+      <p>
+        Malgré sa simplicité, une bonne omelette demande beaucoup de technique,
+        surtout pour réussir sa cuisson. C'est pourquoi certains grands chefs
+        la considèrent comme l'un des plats les plus difficiles à réaliser.
+      </p>
+
+      <p>
+        L'omelette existe aussi dans de nombreux pays, avec différentes versions :
+        la tortilla en Espagne, la frittata en Italie ou encore le menemen en Turquie.
+      </p>
+    </section>
+
+    <section class="card video-card">
+      <h2>🎥 Regardez la vidéo</h2>
+
+      <div class="video-wrapper">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/YBmWovJk_Jo"
+            title="Dans la cuisine – Préparer une omelette"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <form id="quizForm" novalidate>
+
+      <!-- EXERCICE 1 -->
+      <section class="card">
+        <div class="exercise-heading">
+          <h2>🥚 Exercice 1 – Choisissez la bonne réponse.</h2>
+          <span class="points">5 points</span>
+        </div>
+
+        <div class="question" data-question="q1">
+          <p class="question-title">
+            1. Qu'est-ce que la jeune femme prépare ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q1" value="pizza">
+            Une pizza
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="omelette">
+            Une omelette
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="soupe">
+            Une soupe
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="salade">
+            Une salade
+          </label>
+        </div>
+
+        <div class="question" data-question="q2">
+          <p class="question-title">
+            2. Quel ingrédient est râpé ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q2" value="beurre">
+            Le beurre
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="fromage">
+            Le fromage
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="pomme-de-terre">
+            La pomme de terre
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="pain">
+            Le pain
+          </label>
+        </div>
+
+        <div class="question" data-question="q3">
+          <p class="question-title">
+            3. Que fait-elle après avoir chauffé la poêle ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q3" value="casse">
+            Elle casse les œufs.
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="huile">
+            Elle ajoute de l'huile.
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="coupe">
+            Elle coupe le fromage.
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="mange">
+            Elle mange.
+          </label>
+        </div>
+
+        <div class="question" data-question="q4">
+          <p class="question-title">
+            4. Quels légumes ajoute-t-elle dans la poêle ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q4" value="pommes-carottes">
+            Des pommes de terre et des carottes
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="champignons-poivrons">
+            Des champignons et des poivrons
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="oignon-tomates">
+            De l'oignon et des tomates
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="courgettes-epinards">
+            Des courgettes et des épinards
+          </label>
+        </div>
+
+        <div class="question" data-question="q5">
+          <p class="question-title">
+            5. Quelle expression entend-on à la fin de la vidéo ?
+          </p>
+
+          <label class="option">
+            <input type="radio" name="q5" value="merci">
+            Merci !
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="a-bientot">
+            À bientôt !
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="bon-appetit">
+            Bon appétit !
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="bonne-journee">
+            Bonne journée !
+          </label>
+        </div>
+      </section>
+
+      <!-- EXERCICE 2 -->
+      <section class="card">
+        <div class="exercise-heading">
+          <h2>✍️ Exercice 2 – Associez le verbe au bon complément.</h2>
+          <span class="points">10 points</span>
+        </div>
+
+        <div class="matching-grid">
+
+          <div class="matching-row">
+            <span class="verb">1. couper</span>
+            <select id="m1">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">2. râper</span>
+            <select id="m2">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">3. casser</span>
+            <select id="m3">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">4. faire chauffer</span>
+            <select id="m4">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">5. verser</span>
+            <select id="m5">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">6. faire revenir</span>
+            <select id="m6">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">7. ajouter</span>
+            <select id="m7">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">8. verser</span>
+            <select id="m8">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">9. ajouter</span>
+            <select id="m9">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+          <div class="matching-row">
+            <span class="verb">10. retourner</span>
+            <select id="m10">
+              <option value="">Choisissez une réponse</option>
+              <option value="oignon">de l'oignon</option>
+              <option value="fromage">du fromage</option>
+              <option value="oeufs">deux œufs</option>
+              <option value="poele">la poêle</option>
+              <option value="huile">un peu d'huile d'olive</option>
+              <option value="faire-revenir-oignon">l'oignon</option>
+              <option value="tomates">les tomates</option>
+              <option value="melange">le mélange</option>
+              <option value="sel">un peu de sel</option>
+              <option value="omelette">l'omelette</option>
+            </select>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- EXERCICE 3 -->
+      <section class="card">
+        <div class="exercise-heading">
+          <h2>🍴 Exercice 3 – Identifiez les ustensiles de cuisine.</h2>
+          <span class="points">5 points</span>
+        </div>
+
+        <div class="image-box">
+          <img
+            src="assets/images/kitchen-utensils.png"
+            alt="Cinq ustensiles de cuisine numérotés : une poêle, un couteau, une planche à découper, un bol et une râpe"
+          >
+
+          <p class="image-note">
+            Observez l'image, puis choisissez le nom correct pour chaque numéro.
+          </p>
+        </div>
+
+        <div class="question" data-question="q6">
+          <p class="question-title">1. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q6" value="rape">
+            La râpe
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="poele">
+            La poêle
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="fourchette">
+            La fourchette
+          </label>
+        </div>
+
+        <div class="question" data-question="q7">
+          <p class="question-title">2. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q7" value="bol">
+            Le bol
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="couteau">
+            Le couteau
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="planche">
+            La planche à découper
+          </label>
+        </div>
+
+        <div class="question" data-question="q8">
+          <p class="question-title">3. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q8" value="planche">
+            La planche à découper
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="couteau">
+            Le couteau
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="poele">
+            La poêle
+          </label>
+        </div>
+
+        <div class="question" data-question="q9">
+          <p class="question-title">4. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q9" value="bol">
+            Le bol
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="rape">
+            La râpe
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="couteau">
+            Le couteau
+          </label>
+        </div>
+
+        <div class="question" data-question="q10">
+          <p class="question-title">5. Quel est cet ustensile ?</p>
+
+          <label class="option">
+            <input type="radio" name="q10" value="rape">
+            La râpe
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="poele">
+            La poêle
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="bol">
+            Le bol
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button
+            type="button"
+            class="check-button"
+            onclick="checkAnswers()"
+          >
+            Vérifier les réponses
+          </button>
+
+          <button
+            type="button"
+            class="reset-button"
+            onclick="resetQuiz()"
+          >
+            Recommencer
+          </button>
+        </div>
+
+        <div id="missingMessage" class="missing-message">
+          Répondez à toutes les questions avant de vérifier vos réponses.
+        </div>
+
+        <div id="scoreBox" class="score-box">
+          <div id="scoreNumber" class="score-number"></div>
+          <div id="scoreMessage" class="score-message"></div>
+        </div>
+      </section>
+
+    </form>
+
+    <footer>
+      Français Sans Illusion – Raghad Aboud
+    </footer>
+
+  </main>
+
+  <script>
+    const radioAnswers = {
+      q1: "omelette",
+      q2: "fromage",
+      q3: "huile",
+      q4: "oignon-tomates",
+      q5: "bon-appetit",
+
+      q6: "poele",
+      q7: "couteau",
+      q8: "planche",
+      q9: "bol",
+      q10: "rape"
+    };
+
+    const matchingAnswers = {
+      m1: "oignon",
+      m2: "fromage",
+      m3: "oeufs",
+      m4: "poele",
+      m5: "huile",
+      m6: "faire-revenir-oignon",
+      m7: "tomates",
+      m8: "melange",
+      m9: "sel",
+      m10: "omelette"
+    };
+
+    function clearFeedback() {
+      document.querySelectorAll(".option").forEach(function(option) {
+        option.classList.remove("correct", "wrong");
+      });
+
+      document.querySelectorAll("select").forEach(function(select) {
+        select.classList.remove("correct", "wrong");
+      });
+    }
+
+    function allQuestionsAnswered() {
+      const radioGroups = Object.keys(radioAnswers);
+
+      for (const groupName of radioGroups) {
+        const selected = document.querySelector(
+          'input[name="' + groupName + '"]:checked'
+        );
+
+        if (!selected) {
+          return false;
+        }
+      }
+
+      const matchingFields = Object.keys(matchingAnswers);
+
+      for (const fieldId of matchingFields) {
+        const field = document.getElementById(fieldId);
+
+        if (!field || field.value === "") {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    function checkAnswers() {
+      clearFeedback();
+
+      const missingMessage = document.getElementById("missingMessage");
+      const scoreBox = document.getElementById("scoreBox");
+
+      if (!allQuestionsAnswered()) {
+        missingMessage.style.display = "block";
+        scoreBox.className = "score-box";
+        scoreBox.style.display = "none";
+
+        missingMessage.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        return;
+      }
+
+      missingMessage.style.display = "none";
+
+      let score = 0;
+
+      Object.entries(radioAnswers).forEach(function(entry) {
+        const groupName = entry[0];
+        const correctAnswer = entry[1];
+
+        const selected = document.querySelector(
+          'input[name="' + groupName + '"]:checked'
+        );
+
+        if (selected.value === correctAnswer) {
+          score += 1;
+          selected.closest(".option").classList.add("correct");
+        } else {
+          selected.closest(".option").classList.add("wrong");
+
+          const correctInput = document.querySelector(
+            'input[name="' + groupName + '"][value="' + correctAnswer + '"]'
+          );
+
+          if (correctInput) {
+            correctInput.closest(".option").classList.add("correct");
+          }
+        }
+      });
+
+      Object.entries(matchingAnswers).forEach(function(entry) {
+        const fieldId = entry[0];
+        const correctAnswer = entry[1];
+
+        const field = document.getElementById(fieldId);
+
+        if (field.value === correctAnswer) {
+          score += 1;
+          field.classList.add("correct");
+        } else {
+          field.classList.add("wrong");
+        }
+      });
+
+      showScore(score);
+    }
+
+    function showScore(score) {
+      const scoreBox = document.getElementById("scoreBox");
+      const scoreNumber = document.getElementById("scoreNumber");
+      const scoreMessage = document.getElementById("scoreMessage");
+
+      scoreBox.className = "score-box show";
+
+      let message = "";
+
+      if (score >= 18) {
+        scoreBox.classList.add("score-excellent");
+        message = "Excellent travail ! Vous avez très bien compris la vidéo. 🎉";
+      } else if (score >= 15) {
+        scoreBox.classList.add("score-good");
+        message = "Très bien ! Encore un petit effort pour obtenir un score parfait. 👏";
+      } else if (score >= 10) {
+        scoreBox.classList.add("score-medium");
+        message = "Bon travail ! Regardez la vidéo une deuxième fois pour progresser. ✨";
+      } else {
+        scoreBox.classList.add("score-low");
+        message = "Courage ! Regardez de nouveau la vidéo et réessayez. 💪";
+      }
+
+      scoreNumber.textContent = "🎉 Votre score : " + score + " / 20";
+      scoreMessage.textContent = message;
+
+      scoreBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    function resetQuiz() {
+      document.getElementById("quizForm").reset();
+
+      clearFeedback();
+
+      document.getElementById("missingMessage").style.display = "none";
+
+      const scoreBox = document.getElementById("scoreBox");
+      scoreBox.className = "score-box";
+      scoreBox.style.display = "none";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+</body>
+</html>

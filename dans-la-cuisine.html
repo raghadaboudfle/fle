@@ -1135,12 +1135,16 @@ border-left: 7px solid #F09A6B;
 
         const field = document.getElementById(fieldId);
 
-        if (field.value === correctAnswer) {
-          score++;
-          field.classList.add("correct");
-        } else {
-          field.classList.add("wrong");
-        }
+       if (
+    field.value === correctAnswer ||
+    (field.id === "m1" && field.value === "oignon-revenir") ||
+    (field.id === "m6" && field.value === "oignon-coupe")
+) {
+    score++;
+    field.classList.add("correct");
+} else {
+    field.classList.add("wrong");
+}
       });
 
       showScore(score);

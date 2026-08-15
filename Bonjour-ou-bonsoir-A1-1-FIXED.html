@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonjour ou bonsoir ? — Les salutations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        
+        /* Tooltip for text selection */
+        #selection-tooltip {
+            position: absolute;
+            display: none;
+            background: #1f2937;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 50;
+            white-space: nowrap;
+        }
+        /* Triangle pointer for tooltip */
+        #selection-tooltip::after {
+            content: '';
+            position: absolute;
+            border-width: 5px;
+            border-style: solid;
+        }
+        /* Top pointer */
+        #selection-tooltip.pointer-top::after {
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: transparent transparent #1f2937 transparent;
+        }
+        /* Bottom pointer */
+        #selection-tooltip.pointer-bottom::after {
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: #1f2937 transparent transparent transparent;
+        }
+
+        /* Flashcards */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .flashcard-inner { transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
+        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+
+        /* Recording Animation */
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .recording-pulse { animation: pulse-red 2s infinite; }
+        
+        /* Modal */
+        .modal-enter { opacity: 0; transform: scale(0.9); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 300ms, transform 300ms; }
+        .modal-exit { opacity: 1; }
+        .modal-exit-active { opacity: 0; transform: scale(0.9); transition: opacity 300ms, transform 300ms; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased h-screen flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg z-10 flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-2xl font-bold">Bonjour ou bonsoir ? — Les salutations</h1>
+                <p class="text-indigo-200 text-sm mt-1">Niveau Cible : <span class="font-semibold text-white bg-indigo-500 px-2 py-0.5 rounded">A1.1</span> | Salutations, Compréhension & Production</p>
+            </div>
+            <div class="flex items-center space-x-4 w-full md:w-auto justify-between md:justify-end">
+                <!-- API Key Input -->
+                <div class="flex items-center bg-indigo-700 rounded-lg p-1 gap-1">
+                    <select id="api-model-select" class="bg-indigo-800 border-none text-xs text-white focus:outline-none focus:ring-0 px-1 py-1 rounded cursor-pointer" onchange="saveApiKey()">
+                        <option value="gemini-3-flash-preview">3.0 Flash (Nouveau)</option>
+                        <option value="gemini-2.5-flash">2.5 Flash</option>
+                        <option value="gemini-1.5-flash">1.5 Flash</option>
+                        <option value="gemini-1.5-pro">1.5 Pro</option>
+                    </select>
+                    <input type="password" id="api-key-input" placeholder="Clé API Gemini" class="bg-transparent border-none text-sm text-white placeholder-indigo-300 focus:outline-none focus:ring-0 px-2 w-28 md:w-40" />
+                    <button onclick="saveApiKey()" class="text-xs bg-indigo-500 hover:bg-indigo-400 text-white px-2 py-1 rounded transition-colors" title="Sauvegarder">
+                        <i class="fas fa-save"></i>
+                    </button>
+                </div>
+                <div id="score-display" class="bg-indigo-800 px-4 py-2 rounded-full font-bold shadow-inner whitespace-nowrap">
+                    Score: <span id="current-score">0</span> XP
+                </div>
+            </div>
+        </div>
+        <!-- API Key Status Message -->
+        <div id="api-status-msg" class="text-center text-xs py-1 hidden font-medium"></div>
+    </header>
+
+    <!-- Main Application Area -->
+    <div class="flex flex-1 overflow-hidden max-w-7xl mx-auto w-full">
+        
+        <!-- Sidebar Navigation -->
+        <nav class="w-64 bg-white shadow-md flex-shrink-0 flex flex-col p-4 space-y-2 z-0 overflow-y-auto">
+            <button onclick="switchTab('intro')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-indigo-50 text-indigo-700 bg-indigo-50 font-medium transition-colors" data-target="intro">
+                <i class="fas fa-info-circle w-6"></i> Mise en situation
+            </button>
+            <button onclick="switchTab('reading')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-indigo-50 text-gray-600 font-medium transition-colors" data-target="reading">
+                <i class="fas fa-book-open w-6"></i> Lecture & Analyse
+            </button>
+            <button onclick="switchTab('vocab')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-indigo-50 text-gray-600 font-medium transition-colors" data-target="vocab">
+                <i class="fas fa-layer-group w-6"></i> Flashcards
+            </button>
+            <button onclick="switchTab('quiz')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-indigo-50 text-gray-600 font-medium transition-colors" data-target="quiz">
+                <i class="fas fa-tasks w-6"></i> Quiz Interactif
+            </button>
+            <button onclick="switchTab('speaking')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-indigo-50 text-gray-600 font-medium transition-colors" data-target="speaking">
+                <i class="fas fa-microphone-alt w-6"></i> Production Orale
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-6 overflow-y-auto relative bg-gray-50" id="main-content-area">
+            
+            <!-- Tooltip for selected text -->
+            <div id="selection-tooltip" class="pointer-bottom">
+                <button onclick="handleSelectedTextAction('dictionary')" class="hover:bg-gray-700 px-2 py-1 rounded text-sm mx-1 focus:outline-none"><i class="fas fa-book text-yellow-300 mr-1"></i>Dictionnaire</button>
+                <button onclick="handleSelectedTextAction('summarize')" class="hover:bg-gray-700 px-2 py-1 rounded text-sm mx-1 focus:outline-none"><i class="fas fa-compress-alt text-blue-300 mr-1"></i>Résumer</button>
+            </div>
+
+            <!-- TAB: Intro -->
+            <section id="tab-intro" class="tab-content max-w-4xl mx-auto space-y-6 block">
+                <div class="glass-panel p-8 rounded-2xl shadow-sm">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2"><i class="fas fa-comments text-indigo-500 mr-2"></i>On commence !</h2>
+                    <ul class="list-disc pl-6 space-y-3 text-gray-700 text-lg">
+                        <li>Il est 9 h. Vous rencontrez votre professeur. Que dites-vous ?</li>
+                        <li>Il est 19 h. Vous entrez dans un restaurant. Que dites-vous ?</li>
+                        <li>Vous quittez un ami. Que dites-vous ?</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl shadow-sm">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2"><i class="fas fa-key text-yellow-500 mr-2"></i>Mots-clés de la leçon</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold shadow-sm">Bonjour</span>
+                        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full font-semibold shadow-sm">Bonsoir</span>
+                        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold shadow-sm">Salut</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold shadow-sm">Au revoir</span>
+                        <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full font-semibold shadow-sm">Bonne nuit</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Reading -->
+            <section id="tab-reading" class="tab-content max-w-4xl mx-auto hidden">
+                <div class="glass-panel p-8 rounded-2xl shadow-sm">
+                    <div class="flex justify-between items-center mb-6 border-b pb-4">
+                        <h2 class="text-2xl font-bold text-gray-800"><i class="fas fa-book-reader text-indigo-500 mr-2"></i>Compréhension Écrite</h2>
+                        <p class="text-sm text-gray-500 italic">Sélectionnez n'importe quel texte pour obtenir de l'aide avec l'IA.</p>
+                    </div>
+                    
+                    <div id="article-text" class="prose prose-lg prose-indigo max-w-none text-gray-700 leading-relaxed space-y-4">
+                        <p><strong>Le matin</strong>, Lina arrive à l’école. Elle rencontre son professeur : « Bonjour, Monsieur ! » Le professeur répond : « Bonjour, Lina ! »</p>
+                        <p>À midi, Lina voit son amie Sara. Elle dit : « Salut, Sara ! » Sara répond : « Salut ! » Entre amis, on peut utiliser <strong>salut</strong>.</p>
+                        <p>À 18 h 30, Lina entre dans un café. Elle dit : « Bonsoir ! » Quand elle part, elle dit : « Au revoir ! Bonne soirée ! »</p>
+                        <p>Avant de dormir, Lina dit à sa famille : « Bonne nuit ! »</p>
+                        <p><strong>À retenir :</strong> Bonjour le matin et pendant la journée. Bonsoir le soir. Salut avec des amis ou des personnes que l’on connaît bien. Bonne nuit avant de dormir.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Vocab -->
+            <section id="tab-vocab" class="tab-content max-w-6xl mx-auto hidden">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800"><i class="fas fa-clone text-indigo-500 mr-2"></i>Flashcards de Vocabulaire</h2>
+                    <button id="generateVocabQuizBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow flex items-center focus:outline-none">
+                        <i class="fas fa-magic mr-2"></i> Générer un exercice avec l'IA
+                    </button>
+                </div>
+                <div id="flashcards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Flashcards injected via JS -->
+                </div>
+            </section>
+
+            <!-- TAB: Quiz -->
+            <section id="tab-quiz" class="tab-content max-w-3xl mx-auto hidden">
+                <div class="glass-panel p-8 rounded-2xl shadow-sm relative overflow-hidden">
+                    <!-- Progress bar -->
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gray-200">
+                        <div id="quiz-progress" class="h-full bg-indigo-500 transition-all duration-500" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div id="quiz-header" class="flex justify-between items-center mb-6 mt-2">
+                        <h2 class="text-2xl font-bold text-gray-800">Quiz de Compréhension</h2>
+                        <span id="quiz-counter" class="text-sm font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">1 / 6</span>
+                    </div>
+
+                    <div id="quiz-question-container" class="min-h-[200px]">
+                        <!-- Question injected via JS -->
+                    </div>
+
+                    <div id="quiz-feedback" class="mt-4 p-4 rounded-lg hidden"></div>
+
+                    <div class="mt-8 flex justify-end space-x-3">
+                        <button id="quiz-submit-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold transition-colors shadow focus:outline-none">Valider la réponse</button>
+                        <button id="quiz-next-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-bold transition-colors shadow hidden focus:outline-none">Question suivante <i class="fas fa-arrow-right ml-2"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Speaking -->
+            <section id="tab-speaking" class="tab-content max-w-4xl mx-auto hidden">
+                <div class="glass-panel p-8 rounded-2xl shadow-sm">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2"><i class="fas fa-microphone text-indigo-500 mr-2"></i>À vous de parler</h2>
+                    
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg mb-8">
+                        <p id="debate-question-text" class="text-xl font-medium text-indigo-900 mb-2">
+                            Vous rencontrez votre professeur le matin. Saluez-le. Puis imaginez que vous partez : prenez congé poliment.
+                        </p>
+                        <p class="text-indigo-700 text-sm">Parlez simplement : « Bonjour… » puis « Au revoir, bonne journée ! » (Niveau visé : A1.1)</p>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-xl bg-white">
+                        
+                        <div class="flex items-center space-x-6 mb-6">
+                            <button id="btn-record" class="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-lg flex items-center justify-center transition-all focus:outline-none">
+                                <i class="fas fa-microphone text-2xl"></i>
+                            </button>
+                            <button id="btn-stop" class="w-16 h-16 rounded-full bg-gray-800 hover:bg-gray-900 text-white shadow-lg flex items-center justify-center transition-all focus:outline-none hidden">
+                                <i class="fas fa-stop text-2xl"></i>
+                            </button>
+                        </div>
+                        
+                        <div id="recording-status" class="text-gray-500 font-medium h-6 mb-4">Prêt à enregistrer...</div>
+                        
+                        <div id="download-actions" class="flex space-x-4 mb-6 hidden w-full justify-center">
+                            <button id="btn-download-audio" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm shadow flex items-center focus:outline-none">
+                                <i class="fas fa-file-audio mr-2"></i> Télécharger l'audio
+                            </button>
+                            <button id="btn-download-text" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm shadow flex items-center focus:outline-none">
+                                <i class="fas fa-file-alt mr-2"></i> Télécharger le texte
+                            </button>
+                        </div>
+
+                        <div class="w-full">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Transcription vocale :</label>
+                            <textarea id="transcript-result" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Votre discours apparaîtra ici... vous pouvez aussi taper directement."></textarea>
+                        </div>
+
+                        <button id="btn-analyze-speech" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold transition-colors shadow disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none">
+                            <i class="fas fa-robot mr-2"></i> Demander une évaluation à l'IA
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- AI Modal -->
+    <div id="ai-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] flex flex-col transform scale-95 transition-transform duration-300 relative">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-indigo-50 rounded-t-2xl">
+                <h3 id="ai-modal-title" class="text-xl font-bold text-indigo-900"><i class="fas fa-brain mr-2"></i> Assistant IA</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="ai-modal-content" class="p-6 overflow-y-auto prose prose-indigo max-w-none text-gray-700">
+                <!-- AI Content injected here -->
+                <div class="flex justify-center items-center py-8">
+                    <i class="fas fa-circle-notch fa-spin text-indigo-500 text-4xl"></i>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-100 bg-gray-50 rounded-b-2xl flex justify-end">
+                <button onclick="closeModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Box for Alerts -->
+    <div id="message-box" class="fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center">
+        <i id="message-box-icon" class="fas fa-info-circle mr-3"></i>
+        <span id="message-box-text">Message</span>
+    </div>
+
+    <script>
+        
+        // API Configuration
+        let apiKey = localStorage.getItem('geminiApiKey') || "";
+        
+        // Initialize API input field
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedModel = localStorage.getItem('geminiApiModel');
+            if (savedModel) {
+                document.getElementById('api-model-select').value = savedModel;
+            }
+
+            if (apiKey) {
+                document.getElementById('api-key-input').value = apiKey;
+                showApiStatus("Clé API chargée depuis le stockage local.", "success");
+            } else {
+                showApiStatus("Veuillez entrer votre clé API Gemini pour utiliser l'IA.", "warning");
+            }
+        });
+
+        function saveApiKey() {
+            const inputVal = document.getElementById('api-key-input').value.trim();
+            const modelVal = document.getElementById('api-model-select').value;
+            localStorage.setItem('geminiApiModel', modelVal);
+
+            if (inputVal) {
+                apiKey = inputVal;
+                localStorage.setItem('geminiApiKey', apiKey);
+                showApiStatus("Configuration IA sauvegardée !", "success");
+                showMessage("Configuration IA sauvegardée avec succès.", "success");
+            } else {
+                apiKey = "";
+                localStorage.removeItem('geminiApiKey');
+                showApiStatus("Clé API supprimée.", "warning");
+                showMessage("Clé API supprimée.", "warning");
+            }
+        }
+
+        function showApiStatus(msg, type) {
+            const statusEl = document.getElementById('api-status-msg');
+            statusEl.textContent = msg;
+            statusEl.classList.remove('hidden', 'bg-green-500', 'bg-yellow-500', 'text-white');
+            if (type === 'success') {
+                statusEl.classList.add('bg-green-500', 'text-white');
+            } else {
+                statusEl.classList.add('bg-yellow-500', 'text-gray-900');
+            }
+            
+            // Hide after a few seconds
+            setTimeout(() => {
+                statusEl.classList.add('hidden');
+            }, 3000);
+        }
+
+        function getApiUrl() {
+            const model = document.getElementById('api-model-select').value || 'gemini-3-flash-preview';
+            return `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+        }
+
+        // Custom Message Box (replacing alert)
+        function showMessage(text, type = 'info') {
+            const box = document.getElementById('message-box');
+            const icon = document.getElementById('message-box-icon');
+            const textEl = document.getElementById('message-box-text');
+
+            textEl.textContent = text;
+            
+            // Reset classes
+            box.className = 'fixed bottom-4 right-4 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 z-50 flex items-center';
+            icon.className = 'mr-3 fas';
+
+            if (type === 'error') {
+                box.classList.add('bg-red-600');
+                icon.classList.add('fa-exclamation-circle');
+            } else if (type === 'success') {
+                box.classList.add('bg-green-600');
+                icon.classList.add('fa-check-circle');
+            } else if (type === 'warning') {
+                box.classList.add('bg-yellow-500');
+                icon.classList.add('fa-exclamation-triangle');
+            } else {
+                box.classList.add('bg-gray-800');
+                icon.classList.add('fa-info-circle');
+            }
+
+            // Show
+            box.classList.remove('translate-y-20', 'opacity-0');
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                box.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+        
+        let score = parseInt(localStorage.getItem('eduAppScore')) || 0;
+        document.getElementById('current-score').innerText = score;
+
+        function updateScore(points) {
+            score += points;
+            document.getElementById('current-score').innerText = score;
+            localStorage.setItem('eduAppScore', score);
+        }
+
+        // B1 Vocabulary Data
+        const termsData = [
+            { term: "Bonjour", definition: "Pour saluer le matin et pendant la journée." },
+            { term: "Bonsoir", definition: "Pour saluer le soir." },
+            { term: "Salut", definition: "Salutation familière, surtout avec des amis." },
+            { term: "Au revoir", definition: "Pour prendre congé d’une personne." },
+            { term: "À bientôt", definition: "Pour dire : on se revoit bientôt." },
+            { term: "Bonne journée", definition: "Pour souhaiter une bonne journée quand on part." },
+            { term: "Bonne soirée", definition: "Pour souhaiter une bonne soirée quand on part." },
+            { term: "Bonne nuit", definition: "Pour souhaiter une bonne nuit avant de dormir." }
+        ];
+
+        // B1 Quiz Data based on the text
+        const quizData = [
+            { type:'mcq', question:"Il est 9 h. Vous arrivez en classe. Que dites-vous ?", options:["Bonjour !","Bonsoir !","Bonne nuit !"], answer:0, justification:"Le matin, on dit « Bonjour ! »." },
+            { type:'mcq', question:"Il est 19 h. Vous entrez dans un restaurant. Que dites-vous ?", options:["Bonne nuit !","Bonsoir !","À bientôt !"], answer:1, justification:"Le soir, pour saluer, on dit « Bonsoir ! »." },
+            { type:'mcq', question:"Vous rencontrez un ami proche. Quelle salutation est familière ?", options:["Salut !","Bonne journée !","Au revoir !"], answer:0, justification:"« Salut ! » est une salutation familière." },
+            { type:'mcq', question:"Vous quittez votre professeur. Que dites-vous ?", options:["Bonjour !","Au revoir !","Bonne nuit !"], answer:1, justification:"Pour prendre congé, on peut dire « Au revoir ! »." },
+            { type:'mcq', question:"Vous quittez un magasin à 11 h. Que pouvez-vous ajouter après « Au revoir » ?", options:["Bonne journée !","Bonne nuit !","Bonsoir !"], answer:0, justification:"Pendant la journée, on peut souhaiter « Bonne journée ! »." },
+            { type:'mcq', question:"Vous allez dormir. Que dites-vous à votre famille ?", options:["Bonjour !","Bonne soirée !","Bonne nuit !"], answer:2, justification:"Avant de dormir, on dit « Bonne nuit ! »." }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            if (tabId === 'quiz') { renderQuiz(); }
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-indigo-700', 'bg-indigo-50');
+                btn.classList.add('text-gray-600');
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('text-indigo-700', 'bg-indigo-50');
+                    btn.classList.remove('text-gray-600');
+                }
+            });
+            // Hide tooltip when switching tabs
+            document.getElementById('selection-tooltip').style.display = 'none';
+        }
+
+        function openModal(title) {
+            const modal = document.getElementById('ai-modal');
+            document.getElementById('ai-modal-title').innerHTML = `<i class="fas fa-brain mr-2"></i> ${title}`;
+            document.getElementById('ai-modal-content').innerHTML = `<div class="flex justify-center items-center py-8"><i class="fas fa-circle-notch fa-spin text-indigo-500 text-4xl"></i></div>`;
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        async function callGemini(promptText) {
+            if (!apiKey) {
+                return `<div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                            <p class='text-red-700 font-bold'><i class="fas fa-exclamation-triangle mr-2"></i> Clé API manquante</p>
+                            <p class="text-red-600 text-sm mt-1">Veuillez entrer votre clé API Gemini dans la barre en haut de la page pour utiliser les fonctionnalités d'IA.</p>
+                        </div>`;
+            }
+
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+            };
+
+            try {
+                const response = await fetch(getApiUrl(), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error?.message || `HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                if (result.candidates && result.candidates[0].content.parts[0].text) {
+                    let rawText = result.candidates[0].content.parts[0].text;
+                    
+                    // Remove markdown code block syntax if the AI included it (e.g. ```html ... ```)
+                    rawText = rawText.replace(/```[a-z]*\n/gi, '');
+                    rawText = rawText.replace(/```/g, '');
+
+                    // Convert basic markdown to HTML
+                    let html = rawText;
+                    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                    // Avoid converting newlines to <p> if it looks like there's already HTML block tags
+                    if(!html.includes('</h3>') && !html.includes('</li>')) {
+                         html = html.replace(/\n\n/g, '</p><p class="mt-2">');
+                         return `<p>${html}</p>`;
+                    }
+                    return html;
+                } else {
+                    throw new Error("Format de réponse de l'API invalide.");
+                }
+            } catch (error) {
+                console.error("API Error:", error);
+                // Check if it might be an auth error
+                if (error.message.includes("API key not valid") || error.message.includes("400")) {
+                    return `<p class='text-red-500 font-bold'><i class="fas fa-times-circle mr-2"></i> Erreur d'authentification.</p><p class="text-red-400 mt-2">Vérifiez que votre clé API Gemini est correcte.</p>`;
+                } else if (error.message.includes("is not found") || error.message.includes("404")) {
+                    return `<div class='bg-yellow-50 p-4 rounded border-l-4 border-yellow-500'><p class='text-yellow-700 font-bold'><i class="fas fa-exclamation-triangle mr-2"></i> Modèle IA non autorisé ou introuvable.</p><p class="text-yellow-600 mt-2 text-sm">Votre clé API n'a pas accès au modèle actuellement sélectionné. <strong>Veuillez sélectionner un autre modèle (ex: 3.0 Flash ou 2.5 Flash) dans le menu déroulant en haut de la page.</strong></p><p class="text-xs text-yellow-500 mt-2 font-mono">${error.message}</p></div>`;
+                }
+                return `<p class='text-red-500'><i class="fas fa-exclamation-circle mr-2"></i> Désolé, une erreur s'est produite lors de la connexion à l'IA : ${error.message}</p>`;
+            }
+        }
+
+        let selectedTextForAI = "";
+        
+        document.addEventListener('selectionchange', () => {
+            const selection = window.getSelection();
+            const tooltip = document.getElementById('selection-tooltip');
+            
+            // Check if selection is inside the reading area
+            const article = document.getElementById('article-text');
+            if (!article) return;
+
+            if (selection.rangeCount > 0 && !selection.isCollapsed && article.contains(selection.anchorNode)) {
+                selectedTextForAI = selection.toString().trim();
+                
+                if (selectedTextForAI.length > 5) {
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    const mainContent = document.getElementById('main-content-area');
+                    
+                    // Display tooltip to get its dimensions
+                    tooltip.style.display = 'block';
+                    tooltip.classList.remove('pointer-top', 'pointer-bottom');
+                    
+                    // Calculate tooltip dimensions
+                    const tooltipRect = tooltip.getBoundingClientRect();
+                    const tooltipWidth = tooltipRect.width;
+                    const tooltipHeight = tooltipRect.height;
+                    
+                    // Calculate target position relative to viewport
+                    let targetLeft = rect.left + (rect.width / 2);
+                    let targetTop = rect.top - tooltipHeight - 10; // Try placing above first
+                    
+                    let pointerClass = 'pointer-bottom'; // Default pointer pointing down
+                    
+                    // Vertical Boundary Check (Top)
+                    if (targetTop < 60) { // 60px buffer from top of viewport
+                        // Place below selection instead
+                        targetTop = rect.bottom + 10;
+                        pointerClass = 'pointer-top';
+                    }
+                    
+                    // Horizontal Boundary Checks
+                    // Left edge
+                    if (targetLeft - (tooltipWidth / 2) < 20) {
+                        targetLeft = 20 + (tooltipWidth / 2);
+                    }
+                    // Right edge
+                    const maxRight = window.innerWidth - 20;
+                    if (targetLeft + (tooltipWidth / 2) > maxRight) {
+                        targetLeft = maxRight - (tooltipWidth / 2);
+                    }
+
+                    // Apply positioning and translation for centering horizontally based on calculation
+                    tooltip.style.left = `${targetLeft}px`;
+                    tooltip.style.top = `${targetTop}px`;
+                    // Transform is handled in CSS (translateX(-50%)), so targetLeft is the absolute center point we want
+                    
+                    tooltip.classList.add(pointerClass);
+                    
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            } else {
+                tooltip.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('mousedown', (e) => {
+            const tooltip = document.getElementById('selection-tooltip');
+            // Check if click is outside tooltip and not within an active selection process
+            if (!tooltip.contains(e.target) && tooltip.style.display === 'block') {
+                 // Small delay to allow button clicks inside tooltip to register before hiding
+                setTimeout(() => {
+                    const currentSelection = window.getSelection();
+                    if(currentSelection.isCollapsed) {
+                         tooltip.style.display = 'none';
+                    }
+                }, 150);
+            }
+        });
+
+        async function handleSelectedTextAction(action) {
+            document.getElementById('selection-tooltip').style.display = 'none';
+            if (!selectedTextForAI) return;
+
+            if(!apiKey) {
+                showMessage("Veuillez entrer une clé API pour utiliser cette fonction.", "warning");
+                return;
+            }
+
+            let prompt = "";
+            let modalTitle = "";
+
+            if (action === 'dictionary') {
+                modalTitle = "Dictionnaire";
+                prompt = `Agis comme un dictionnaire de français pour un apprenant de niveau A1.1. Pour le mot ou l'expression "${selectedTextForAI}" :
+                1. Donne la catégorie grammaticale courte (ex: n.m., v., adj.).
+                2. Donne une définition brève et simple.
+                3. Donne un exemple de phrase courte l'utilisant en contexte.
+                Formatte la réponse clairement, en utilisant des balises HTML basiques comme <strong> pour mettre en évidence.`;
+            } else if (action === 'summarize') {
+                modalTitle = "Résumé";
+                prompt = `Tu es un professeur de français. Résume ce passage en une seule phrase très simple, adaptée à un étudiant de niveau A1.1 : "${selectedTextForAI}"`;
+            }
+
+            openModal(modalTitle);
+            const response = await callGemini(prompt);
+            document.getElementById('ai-modal-content').innerHTML = response;
+            // Clear selection after action
+            window.getSelection().removeAllRanges();
+        }
+
+        function renderFlashcards() {
+            const container = document.getElementById('flashcards-container');
+            container.innerHTML = '';
+            
+            termsData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'flashcard h-48 perspective-1000 cursor-pointer w-full';
+                card.onclick = () => card.classList.toggle('flipped');
+                
+                card.innerHTML = `
+                    <div class="flashcard-inner relative w-full h-full transform-style-3d shadow-md rounded-xl">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full backface-hidden bg-white border-2 border-indigo-100 rounded-xl flex items-center justify-center p-4">
+                            <h3 class="text-xl font-bold text-indigo-900 text-center">${item.term}</h3>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full backface-hidden bg-indigo-600 rounded-xl flex items-center justify-center p-6 rotate-y-180 overflow-y-auto">
+                            <p class="text-white text-center font-medium leading-tight">${item.definition}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('generateVocabQuizBtn').addEventListener('click', async () => {
+            if(!apiKey) {
+                showMessage("Veuillez entrer une clé API pour générer un exercice.", "warning");
+                return;
+            }
+            openModal("Exercice de Vocabulaire Généré");
+            const termsList = termsData.map(t => t.term).join(', ');
+            const prompt = `Tu es un professeur de français (Niveau A1.1). Crée un petit exercice à trous (fill-in-the-blanks) composé d'un petit dialogue très simple sur le thème des salutations en utilisant obligatoirement tous ces mots : ${termsList}. 
+            Ne donne pas la correction immédiatement, mets juste des lignes (______) à la place des mots à trouver. Formatte bien le texte pour qu'il soit lisible.`;
+            const response = await callGemini(prompt);
+            document.getElementById('ai-modal-content').innerHTML = response + `<hr class="my-6 border-gray-200"><div class="flex justify-center"><button onclick="document.getElementById('vocab-hint').classList.remove('hidden'); this.style.display='none';" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-4 py-2 rounded-lg font-medium transition-colors">Afficher une aide</button></div><p id="vocab-hint" class='mt-4 font-medium text-indigo-600 hidden text-center bg-indigo-50 p-4 rounded-lg'>Référez-vous aux définitions des flashcards pour trouver les bons mots !</p>`;
+        });
+
+        let currentQuizIndex = 0;
+        
+        function renderQuiz() {
+            const q = quizData[currentQuizIndex];
+            const container = document.getElementById('quiz-question-container');
+            document.getElementById('quiz-counter').innerText = `${currentQuizIndex + 1} / ${quizData.length}`;
+            document.getElementById('quiz-progress').style.width = `${((currentQuizIndex) / quizData.length) * 100}%`;
+            
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('quiz-submit-btn').classList.remove('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            let html = `<h3 class="text-xl font-semibold mb-6 text-gray-800 leading-snug">${q.question}</h3>`;
+
+            if (q.type === 'mcq') {
+                html += `<div class="space-y-3">`;
+                q.options.forEach((opt, idx) => {
+                    html += `
+                        <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-indigo-50 transition-colors">
+                            <input type="radio" name="quiz-option" value="${idx}" class="w-5 h-5 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                            <span class="ml-3 text-gray-700">${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            } else if (q.type === 'open') {
+                html += `
+                    <textarea id="quiz-open-answer" rows="3" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Rédigez votre courte réponse ici..."></textarea>
+                    <p class="text-xs text-gray-500 mt-2"><i class="fas fa-info-circle"></i> La validation par l'IA sera utilisée si la réponse n'est pas exacte mot pour mot.</p>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        document.getElementById('quiz-submit-btn').addEventListener('click', async () => {
+            const q = quizData[currentQuizIndex];
+            const feedbackEl = document.getElementById('quiz-feedback');
+            const submitBtn = document.getElementById('quiz-submit-btn');
+            let isCorrect = false;
+
+            if (q.type === 'mcq') {
+                const selected = document.querySelector('input[name="quiz-option"]:checked');
+                if (!selected) {
+                    showMessage("Veuillez sélectionner une réponse.", "warning");
+                    return;
+                }
+                isCorrect = parseInt(selected.value) === q.answer;
+                showQuizFeedback(isCorrect, q.justification);
+            } else if (q.type === 'open') {
+                const answer = document.getElementById('quiz-open-answer').value.trim().toLowerCase();
+                if (!answer) {
+                    showMessage("Veuillez écrire une réponse.", "warning");
+                    return;
+                }
+                
+                // Simple keyword check first
+                isCorrect = q.answerKeywords.some(kw => answer.includes(kw));
+                
+                if(isCorrect) {
+                    showQuizFeedback(true, q.justification);
+                } else {
+                    if(!apiKey) {
+                        showMessage("Clé API requise pour analyser les réponses ouvertes complexes. Vérification stricte appliquée.", "warning");
+                        showQuizFeedback(false, "Réponse non reconnue avec certitude sans l'IA. <br><strong>Réponse attendue :</strong> " + q.justification);
+                        return;
+                    }
+
+                    // Fallback to AI evaluation if keywords miss
+                    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> Analyse...`;
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    
+                    const prompt = `Tu es un correcteur automatique. La question de compréhension de texte est : "${q.question}". L'information dans le texte qui sert de réponse est : "${q.justification}". 
+                    L'élève a répondu : "${answer}". 
+                    Évalue si la réponse de l'élève est globalement correcte ou acceptable par rapport au sens attendu. 
+                    Réponds STRICTEMENT par le mot "OUI" ou "NON", suivi d'une courte phrase justifiant pourquoi.`;
+                    
+                    try {
+                        const responseStr = await callGemini(prompt);
+                        const cleanRes = responseStr.replace(/<[^>]*>?/gm, ''); // strip html tags
+                        
+                        if(cleanRes.trim().toUpperCase().startsWith("OUI")) {
+                            showQuizFeedback(true, cleanRes.substring(3).trim() + "<br><em>Référence : " + q.justification + "</em>");
+                        } else {
+                            showQuizFeedback(false, cleanRes.substring(3).trim() + "<br><strong>Attendu :</strong> " + q.justification);
+                        }
+                    } catch (e) {
+                         showQuizFeedback(false, "Erreur d'analyse IA. <br><strong>Réponse attendue :</strong> " + q.justification);
+                    } finally {
+                        submitBtn.innerHTML = `Valider la réponse`;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    }
+                }
+            }
+        });
+
+        function showQuizFeedback(isCorrect, text) {
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            
+            if (isCorrect) {
+                feedbackEl.classList.add('bg-green-50', 'text-green-800', 'border', 'border-green-200');
+                feedbackEl.innerHTML = `<h4 class="font-bold mb-2 flex items-center"><i class="fas fa-check-circle text-green-500 mr-2 text-xl"></i> Bonne réponse !</h4><p class="text-sm">${text}</p>`;
+                updateScore(10);
+            } else {
+                feedbackEl.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                feedbackEl.innerHTML = `<h4 class="font-bold mb-2 flex items-center"><i class="fas fa-times-circle text-red-500 mr-2 text-xl"></i> Incorrect</h4><p class="text-sm">${text}</p>`;
+            }
+
+            document.getElementById('quiz-submit-btn').classList.add('hidden');
+            
+            if (currentQuizIndex < quizData.length - 1) {
+                document.getElementById('quiz-next-btn').classList.remove('hidden');
+                document.getElementById('quiz-next-btn').innerHTML = 'Question suivante <i class="fas fa-arrow-right ml-2"></i>';
+            } else {
+                document.getElementById('quiz-next-btn').classList.remove('hidden');
+                document.getElementById('quiz-next-btn').innerHTML = '<i class="fas fa-flag-checkered mr-2"></i> Terminer le quiz';
+                document.getElementById('quiz-progress').style.width = `100%`;
+            }
+        }
+
+        document.getElementById('quiz-next-btn').addEventListener('click', () => {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                renderQuiz();
+            } else {
+                document.getElementById('quiz-question-container').innerHTML = `
+                    <div class="text-center py-10 bg-indigo-50 rounded-xl border border-indigo-100">
+                        <i class="fas fa-trophy text-yellow-400 text-6xl mb-4 drop-shadow-md"></i>
+                        <h3 class="text-3xl font-bold text-gray-800">Quiz terminé !</h3>
+                        <p class="text-gray-600 mt-3 text-lg">Votre score total actuel est de <span class="font-bold text-indigo-700">${score} XP</span>.</p>
+                        <button onclick="currentQuizIndex=0; renderQuiz();" class="mt-8 bg-white border border-indigo-200 text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-indigo-100 transition shadow-sm"><i class="fas fa-redo mr-2"></i> Recommencer le quiz</button>
+                    </div>
+                `;
+                document.getElementById('quiz-feedback').classList.add('hidden');
+                document.getElementById('quiz-next-btn').classList.add('hidden');
+                document.getElementById('quiz-counter').innerText = `Terminé`;
+            }
+        });
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let recognition;
+        let isRecording = false;
+        let finalAudioBlob = null; 
+
+        // Initialize Speech Recognition
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'fr-FR';
+            recognition.continuous = true;
+            recognition.interimResults = true;
+
+            recognition.onresult = (event) => {
+                let interimTranscript = '';
+                let finalTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                
+                const textArea = document.getElementById('transcript-result');
+                if (finalTranscript) {
+                    textArea.value += (textArea.value ? ' ' : '') + finalTranscript;
+                }
+            };
+            
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error", event.error);
+                if (event.error === 'not-allowed') {
+                    showMessage("Accès au microphone refusé pour la transcription.", "error");
+                }
+            }
+        } else {
+            console.warn("Speech Recognition API not supported in this browser.");
+            document.getElementById('recording-status').innerHTML = "<i class='fas fa-exclamation-triangle text-yellow-500'></i> La dictée vocale automatique n'est pas supportée. Vous devez taper votre texte manuellement.";
+            document.getElementById('btn-record').disabled = true;
+            document.getElementById('btn-record').classList.add('opacity-50', 'cursor-not-allowed');
+        }
+
+        const btnRecord = document.getElementById('btn-record');
+        const btnStop = document.getElementById('btn-stop');
+        const statusText = document.getElementById('recording-status');
+
+        btnRecord.addEventListener('click', async () => {
+            if(!recognition) return;
+            try {
+                document.getElementById('download-actions').classList.add('hidden');
+                finalAudioBlob = null;
+                document.getElementById('transcript-result').value = '';
+
+                // Just requesting microphone access for visual recording cue and potential future audio upload
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = event => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.start();
+                recognition.start();
+                isRecording = true;
+                
+                btnRecord.classList.add('hidden');
+                btnStop.classList.remove('hidden');
+                btnStop.classList.add('recording-pulse');
+                statusText.innerHTML = "<span class='text-red-500 font-bold'><i class='fas fa-circle mr-2'></i>Enregistrement et transcription en cours...</span>";
+                
+            } catch (err) {
+                console.error("Microphone error:", err);
+                showMessage("Impossible d'accéder au microphone. Vérifiez vos permissions.", "error");
+            }
+        });
+
+        btnStop.addEventListener('click', () => {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.onstop = () => {
+                    const audioType = mediaRecorder.mimeType;
+                    finalAudioBlob = new Blob(audioChunks, { type: audioType });
+                    document.getElementById('download-actions').classList.remove('hidden');
+                };
+
+                mediaRecorder.stop();
+                if(recognition) {
+                    try { recognition.stop(); } catch(e){}
+                }
+                
+                // Release microphone tracks
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                
+                isRecording = false;
+                btnStop.classList.add('hidden');
+                btnStop.classList.remove('recording-pulse');
+                btnRecord.classList.remove('hidden');
+                statusText.innerHTML = "<span class='text-green-600 font-medium'><i class='fas fa-check mr-1'></i> Enregistrement terminé. Vous pouvez télécharger ou évaluer.</span>";
+            }
+        });
+
+        document.getElementById('btn-download-audio').addEventListener('click', () => {
+            if (finalAudioBlob) {
+                const url = URL.createObjectURL(finalAudioBlob);
+                const a = document.createElement('a');
+                document.body.appendChild(a);
+                a.style = 'display: none';
+                a.href = url;
+                // Try to infer extension, default to webm as it's common for mediaRecorder
+                const ext = finalAudioBlob.type.includes('mp4') ? 'mp4' : (finalAudioBlob.type.includes('ogg') ? 'ogg' : 'webm');
+                a.download = `enregistrement-oral.${ext}`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                showMessage("Aucun audio disponible à télécharger.", "warning");
+            }
+        });
+
+        document.getElementById('btn-download-text').addEventListener('click', () => {
+            const text = document.getElementById('transcript-result').value.trim();
+            if (text) {
+                const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                document.body.appendChild(a);
+                a.style = 'display: none';
+                a.href = url;
+                a.download = 'transcription-orale.txt';
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                showMessage("La transcription est vide.", "warning");
+            }
+        });
+
+        document.getElementById('btn-analyze-speech').addEventListener('click', async () => {
+            const text = document.getElementById('transcript-result').value.trim();
+            if (!text || text.split(' ').length < 2) {
+                showMessage("La transcription est trop courte (minimum 2 mots).", "warning");
+                return;
+            }
+            if(!apiKey) {
+                showMessage("Veuillez entrer une clé API pour évaluer votre production.", "warning");
+                return;
+            }
+
+            const subject = document.getElementById('debate-question-text').innerText;
+            const prompt = `Tu es un professeur de FLE (Français Langue Étrangère). Ton rôle est d'évaluer la production orale (retranscrite en texte) d'un apprenant de niveau A1.1.
+            La situation orale était : "${subject}". 
+            Voici ce que l'élève a dit : "${text}". 
+            
+            Formatte ta réponse en HTML clair (utilise des balises <h3>, <ul>, <li>, <strong>) avec les sections suivantes :
+            1. Un encouragement bref et bienveillant.
+            2. Points forts (idées, vocabulaire utilisé).
+            3. Corrections principales (erreurs de grammaire ou de vocabulaire évidentes dans le texte).
+            4. Une phrase modèle très simple que l’apprenant peut répéter pour améliorer sa production.`;
+
+            openModal("Évaluation de votre production orale");
+            const response = await callGemini(prompt);
+            document.getElementById('ai-modal-content').innerHTML = response;
+            updateScore(20);
+        });
+
+        function initializeActivity() {
+            renderFlashcards();
+            renderQuiz();
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeActivity);
+        } else {
+            initializeActivity();
+        }
+
+    </script>
+</body>
+</html>

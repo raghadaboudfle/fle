@@ -390,14 +390,14 @@
 
         // B1 Vocabulary Data
         const termsData = [
-            { term: "Bonjour", definition: "Pour saluer le matin et pendant la journée." },
-            { term: "Bonsoir", definition: "Pour saluer le soir." },
-            { term: "Salut", definition: "Salutation familière, surtout avec des amis." },
-            { term: "Au revoir", definition: "Pour prendre congé d’une personne." },
-            { term: "À bientôt", definition: "Pour dire : on se revoit bientôt." },
-            { term: "Bonne journée", definition: "Pour souhaiter une bonne journée quand on part." },
-            { term: "Bonne soirée", definition: "Pour souhaiter une bonne soirée quand on part." },
-            { term: "Bonne nuit", definition: "Pour souhaiter une bonne nuit avant de dormir." }
+{ term: "Bonjour", definition: "Pour saluer le matin et pendant la journée.", image: "assets/images/bonjour.png" },            
+            { term: "Bonsoir", definition: "Pour saluer le soir." , image: "assets/images/bonsoir.png" },
+            { term: "Salut", definition: "Salutation familière, surtout avec des amis." , image: "assets/images/salut.png" },
+            { term: "Au revoir", definition: "Pour prendre congé d’une personne." , image: "assets/images/au-revoir.png" },
+            { term: "À bientôt", definition: "Pour dire : on se revoit bientôt." , image: "assets/images/a-bientot.png" },
+            { term: "Bonne journée", definition: "Pour souhaiter une bonne journée quand on part." , image: "assets/images/bonne-journee.png" },
+            { term: "Bonne soirée", definition: "Pour souhaiter une bonne soirée quand on part." , image: "assets/images/bonne-soiree.png" },
+            { term: "Bonne nuit", definition: "Pour souhaiter une bonne nuit avant de dormir." , image: "assets/images/bonne-nuit.png" }
         ];
 
         // B1 Quiz Data based on the text
@@ -630,7 +630,8 @@
                         </div>
                         <!-- Back -->
                         <div class="absolute w-full h-full backface-hidden bg-indigo-600 rounded-xl flex items-center justify-center p-6 rotate-y-180 overflow-y-auto">
-                            <p class="text-white text-center font-medium leading-tight">${item.definition}</p>
+                           <img src="${item.image}" alt="${item.term}" class="w-full h-24 object-cover rounded-lg mb-3">
+<p class="text-white text-center font-medium leading-tight">${item.definition}</p>
                         </div>
                     </div>
                 `;

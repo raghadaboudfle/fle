@@ -629,10 +629,9 @@
                             <h3 class="text-xl font-bold text-indigo-900 text-center">${item.term}</h3>
                         </div>
                         <!-- Back -->
-                        <div class="absolute w-full h-full backface-hidden bg-indigo-600 rounded-xl flex items-center justify-center p-6 rotate-y-180 overflow-y-auto">
-                           <img src="${item.image}" alt="${item.term}" class="w-full h-24 object-cover rounded-lg mb-3">
-<p class="text-white text-center font-medium leading-tight">${item.definition}</p>
-                        </div>
+                        <div class="absolute w-full h-full backface-hidden bg-indigo-600 rounded-xl flex flex-col items-center justify-center p-6 rotate-y-180 overflow-y-auto">
+<img src="${item.image}" alt="${item.term}" class="w-full h-28 object-cover rounded-lg mb-2">
+<p class="text-white text-center text-sm leading-tight">${item.definition}</p>                        </div>
                     </div>
                 `;
                 container.appendChild(card);

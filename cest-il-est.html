@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5ZNHDB8N2L');
+  </script>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="C'est ou il est ? Découvrez comment choisir entre c'est et il est en français grâce à des explications claires et des exemples simples."
+  >
+
+  <title>C’EST ou IL EST ? | Français Sans Illusion</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/logos/icon-light.svg"
+  >
+
+  <style>
+
+    :root {
+      --primary-blue: #1E5BB8;
+      --dark-blue: #174A96;
+
+      --dark-text: #1F2937;
+      --medium-text: #5F6570;
+      --white: #FFFFFF;
+
+      /* A2 palette */
+      --a2-orange: #F59E42;
+      --a2-dark: #D97706;
+      --a2-peach: #FFD8B5;
+      --a2-light: #FFF1E5;
+      --a2-soft: #FFF8F2;
+      --a2-border: #F6C99D;
+
+      /*
+        Lesson colours:
+        C'EST = orange
+        IL EST = blue
+      */
+      --cest: #E97817;
+      --cest-soft: #FFF1E5;
+
+      --ilest: #1E5BB8;
+      --ilest-soft: #EAF4FF;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      min-height: 100vh;
+
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark-text);
+
+      background:
+        radial-gradient(
+          circle at top left,
+          var(--a2-light),
+          transparent 38%
+        ),
+        linear-gradient(
+          180deg,
+          #FFFFFF 0%,
+          var(--a2-soft) 100%
+        );
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    .page-container {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      padding: 32px 22px 55px;
+    }
+
+
+    /* =========================
+       BACK LINK
+       ========================= */
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 36px;
+
+      color: var(--primary-blue);
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .lesson-header {
+      max-width: 820px;
+      margin: 0 auto 42px;
+
+      text-align: center;
+    }
+
+
+    .lesson-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-bottom: 24px;
+    }
+
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 8px 16px;
+
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+
+    .level-badge {
+      background: var(--a2-orange);
+      color: var(--white);
+
+      box-shadow:
+        0 7px 18px rgba(245, 158, 66, 0.22);
+    }
+
+
+    .grammar-badge {
+      background: var(--a2-light);
+      color: var(--a2-dark);
+
+      border: 1px solid var(--a2-border);
+    }
+
+
+    .lesson-header h1 {
+      margin-bottom: 16px;
+
+      color: var(--primary-blue);
+
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.08;
+    }
+
+
+    .lesson-header .subtitle {
+      margin-bottom: 18px;
+
+      color: var(--a2-dark);
+
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+    }
+
+
+    .lesson-header .intro {
+      max-width: 760px;
+      margin: 0 auto;
+
+      color: var(--medium-text);
+
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+
+    /* =========================
+       COLOURED KEYWORDS
+       ========================= */
+
+    .cest {
+      color: var(--cest);
+      font-weight: 800;
+    }
+
+
+    .ilest {
+      color: var(--ilest);
+      font-weight: 800;
+    }
+
+
+    /* =========================
+       VIDEO
+       ========================= */
+
+    .video-section {
+      margin: 40px 0 60px;
+      padding: 32px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #FFFFFF,
+          var(--a2-soft)
+        );
+
+      border: 2px solid var(--a2-border);
+      border-radius: 30px;
+
+      text-align: center;
+
+      box-shadow:
+        0 16px 36px rgba(217, 119, 6, 0.09);
+    }
+
+
+    .video-section h2 {
+      margin-bottom: 12px;
+
+      color: var(--primary-blue);
+
+      font-size: 28px;
+    }
+
+
+    .video-intro {
+      max-width: 700px;
+      margin: 0 auto 26px;
+
+      color: var(--medium-text);
+
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+
+    .video-wrapper {
+      width: min(100%, 390px);
+      aspect-ratio: 9 / 16;
+
+      margin: 0 auto;
+
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      background: #000000;
+
+      box-shadow:
+        0 18px 38px rgba(31, 41, 55, 0.17);
+    }
+
+
+    .video-wrapper iframe {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      border: 0;
+    }
+
+
+    /* =========================
+       LESSON SECTIONS
+       ========================= */
+
+    .lesson-section {
+      margin-bottom: 32px;
+      padding: 34px;
+
+      background:
+        rgba(255, 255, 255, 0.96);
+
+      border: 2px solid var(--a2-border);
+      border-radius: 28px;
+
+      box-shadow:
+        0 12px 30px rgba(217, 119, 6, 0.07);
+    }
+
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .section-number {
+      flex: 0 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 46px;
+      height: 46px;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--a2-peach),
+          var(--a2-orange)
+        );
+
+      color: #7C3F00;
+
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+
+    .section-title h2 {
+      color: var(--primary-blue);
+
+      font-size: clamp(23px, 4vw, 30px);
+      line-height: 1.25;
+    }
+
+
+    .lesson-section p {
+      margin-bottom: 17px;
+
+      color: #414A58;
+
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+
+    .lesson-section p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .lesson-section h3 {
+      margin: 28px 0 14px;
+
+      color: var(--a2-dark);
+
+      font-size: 21px;
+    }
+
+
+    /* =========================
+       EXAMPLES
+       ========================= */
+
+    .examples {
+      display: grid;
+      gap: 13px;
+
+      margin: 20px 0;
+    }
+
+
+    .example {
+      padding: 17px 20px;
+
+      border-left: 5px solid var(--a2-orange);
+      border-radius: 14px;
+
+      background: var(--a2-soft);
+
+      color: var(--dark-text);
+
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+
+    .example.cest-example {
+      border-left-color: var(--cest);
+      background: var(--cest-soft);
+    }
+
+
+    .example.ilest-example {
+      border-left-color: var(--ilest);
+      background: var(--ilest-soft);
+    }
+
+
+    .dialogue {
+      display: grid;
+      gap: 7px;
+    }
+
+
+    .explanation {
+      margin-top: 10px;
+
+      color: #667085;
+
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       COMPARE
+       ========================= */
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
+
+      margin-top: 22px;
+    }
+
+
+    .comparison-card {
+      padding: 24px;
+
+      border-radius: 22px;
+    }
+
+
+    .comparison-card.cest-card {
+      background: var(--cest-soft);
+      border: 2px solid #F7C28D;
+    }
+
+
+    .comparison-card.ilest-card {
+      background: var(--ilest-soft);
+      border: 2px solid #BBD8FF;
+    }
+
+
+    .comparison-card h3 {
+      margin: 0 0 12px;
+
+      font-size: 23px;
+    }
+
+
+    .comparison-card p {
+      margin: 0;
+
+      font-size: 16px;
+    }
+
+
+    /* =========================
+       PROFESSION
+       ========================= */
+
+    .profession-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
+
+      margin-top: 22px;
+    }
+
+
+    .mini-card {
+      padding: 24px;
+
+      border: 1px solid var(--a2-border);
+      border-radius: 20px;
+
+      background: var(--a2-soft);
+    }
+
+
+    .mini-card h3 {
+      margin: 0 0 15px;
+
+      color: var(--a2-dark);
+
+      font-size: 19px;
+    }
+
+
+    .mini-card p {
+      margin: 8px 0;
+
+      font-size: 17px;
+    }
+
+
+    /* =========================
+       NOTE
+       ========================= */
+
+    .note {
+      margin-top: 22px;
+      padding: 20px 22px;
+
+      border-radius: 18px;
+
+      background: #FFF7ED;
+      border: 1px solid var(--a2-border);
+
+      color: #68411C;
+
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       GOLDEN RULE
+       ========================= */
+
+    .golden-rule {
+      margin: 48px 0 32px;
+      padding: 36px;
+
+      border: 3px solid var(--a2-orange);
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #FFFDFB 0%,
+          #FFF0DF 100%
+        );
+
+      box-shadow:
+        0 18px 40px rgba(217, 119, 6, 0.13);
+    }
+
+
+    .golden-rule-header {
+      margin-bottom: 28px;
+
+      text-align: center;
+    }
+
+
+    .golden-rule-header .star {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 36px;
+    }
+
+
+    .golden-rule-header h2 {
+      color: var(--a2-dark);
+
+      font-size: clamp(28px, 5vw, 38px);
+    }
+
+
+    .rule-block {
+      margin-bottom: 24px;
+      padding: 24px;
+
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+
+    .rule-block:last-of-type {
+      margin-bottom: 0;
+    }
+
+
+    .rule-block h3 {
+      margin-bottom: 15px;
+
+      font-size: 25px;
+    }
+
+
+    .rule-block p {
+      margin: 8px 0;
+
+      color: #414A58;
+
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+
+    .reflex-box {
+      margin-top: 28px;
+      padding: 24px;
+
+      border-radius: 20px;
+
+      background: var(--white);
+      border: 2px dashed var(--a2-orange);
+    }
+
+
+    .reflex-box h3 {
+      margin-bottom: 14px;
+
+      color: var(--primary-blue);
+
+      font-size: 21px;
+    }
+
+
+    .reflex-box p {
+      margin: 8px 0;
+
+      color: #414A58;
+
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+
+    /* =========================
+       EXERCISE CTA
+       ========================= */
+
+    .exercise-link {
+      display: block;
+
+      margin-top: 32px;
+      padding: 30px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #F7B267,
+          var(--a2-orange),
+          #E98719
+        );
+
+      color: var(--white);
+
+      box-shadow:
+        0 18px 38px rgba(217, 119, 6, 0.22);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .exercise-link:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 24px 46px rgba(217, 119, 6, 0.30);
+    }
+
+
+    .exercise-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+    }
+
+
+    .exercise-text h2 {
+      margin-bottom: 8px;
+
+      font-size: 28px;
+    }
+
+
+    .exercise-text p {
+      color: rgba(255, 255, 255, 0.92);
+
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+
+    .exercise-arrow {
+      flex: 0 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 54px;
+      height: 54px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.22);
+
+      font-size: 29px;
+      font-weight: 800;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    .brand-footer {
+      margin-top: 65px;
+      padding-top: 35px;
+
+      border-top: 1px solid var(--a2-border);
+
+      text-align: center;
+    }
+
+
+    .footer-logo {
+      display: block;
+
+      width: 84px;
+      height: 84px;
+
+      margin: 0 auto 16px;
+
+      object-fit: contain;
+    }
+
+
+    .brand-footer h2 {
+      margin-bottom: 8px;
+
+      color: var(--primary-blue);
+
+      font-size: 24px;
+    }
+
+
+    .brand-footer p {
+      color: #6B7280;
+
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+      .page-container {
+        padding:
+          24px 16px
+          40px;
+      }
+
+
+      .back-link {
+        margin-bottom: 28px;
+
+        font-size: 16px;
+      }
+
+
+      .lesson-header {
+        margin-bottom: 32px;
+      }
+
+
+      .lesson-header .intro {
+        font-size: 16px;
+      }
+
+
+      .video-section {
+        padding: 22px 16px;
+
+        border-radius: 24px;
+      }
+
+
+      .video-wrapper {
+        width: min(100%, 330px);
+      }
+
+
+      .lesson-section {
+        padding: 24px 19px;
+
+        border-radius: 23px;
+      }
+
+
+      .section-title {
+        align-items: flex-start;
+      }
+
+
+      .section-number {
+        width: 40px;
+        height: 40px;
+
+        border-radius: 13px;
+
+        font-size: 17px;
+      }
+
+
+      .lesson-section p,
+      .example {
+        font-size: 16px;
+      }
+
+
+      .comparison-grid,
+      .profession-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .golden-rule {
+        padding: 26px 18px;
+
+        border-radius: 25px;
+      }
+
+
+      .rule-block {
+        padding: 20px;
+      }
+
+
+      .exercise-link {
+        padding: 25px 21px;
+      }
+
+
+      .exercise-content {
+        align-items: center;
+      }
+
+
+      .exercise-text h2 {
+        font-size: 23px;
+      }
+
+
+      .exercise-text p {
+        font-size: 15px;
+      }
+
+
+      .exercise-arrow {
+        width: 46px;
+        height: 46px;
+
+        font-size: 24px;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main class="page-container">
+
+
+    <!-- BACK -->
+
+    <a
+      class="back-link"
+      href="grammar-a2.html"
+    >
+      <span aria-hidden="true">←</span>
+      Retour à la grammaire A2
+    </a>
+
+
+
+    <!-- HEADER -->
+
+    <header class="lesson-header">
+
+      <div class="lesson-meta">
+
+        <span class="meta-badge level-badge">
+          A2
+        </span>
+
+        <span class="meta-badge grammar-badge">
+          Grammaire
+        </span>
+
+      </div>
+
+
+      <h1>
+        <span class="cest">C’EST</span>
+        ou
+        <span class="ilest">IL EST</span> ?
+      </h1>
+
+
+      <p class="subtitle">
+        Comment choisir ?
+      </p>
+
+
+      <p class="intro">
+        En français,
+        <span class="cest">C’EST</span>
+        et
+        <span class="ilest">IL EST</span>
+        peuvent parfois sembler très proches.
+        Pourtant, ils ne remplissent pas toujours la même fonction.
+        Pour bien choisir, il faut surtout comprendre
+        ce que l’on veut exprimer.
+      </p>
+
+    </header>
+
+
+
+    <!-- VIDEO -->
+
+    <section class="video-section">
+
+      <h2>▶ Observez d’abord</h2>
+
+      <p class="video-intro">
+        Regardez ces situations et observez l’emploi de
+        <span class="cest">C’EST</span>
+        et
+        <span class="ilest">IL EST</span>.
+        Pourquoi utilise-t-on parfois l’un et parfois l’autre ?
+      </p>
+
+
+      <div class="video-wrapper">
+
+        <iframe
+          src="https://www.youtube.com/embed/Ia_GirFGopQ"
+          title="C’EST ou IL EST ? — Français Sans Illusion"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 1 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          1
+        </span>
+
+        <h2>
+          <span class="cest">C’EST</span>
+          pour identifier ou présenter
+        </h2>
+
+      </div>
+
+
+      <p>
+        On utilise
+        <span class="cest">C’EST</span>
+        pour
+        <strong>identifier ou présenter une personne ou une chose</strong>.
+      </p>
+
+
+      <h3>Avec un nom propre</h3>
+
+
+      <div class="examples">
+
+        <div class="example cest-example">
+
+          <div class="dialogue">
+            <span>— Qui est cet homme ?</span>
+            <span>— <strong>C’est Paul.</strong></span>
+          </div>
+
+        </div>
+
+
+        <div class="example cest-example">
+
+          <div class="dialogue">
+            <span>— Qui est cette femme ?</span>
+            <span>— <strong>C’est Marie.</strong></span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <h3>Avec un déterminant + nom</h3>
+
+
+      <div class="examples">
+
+        <div class="example cest-example">
+          <strong>C’est mon voisin.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est une amie.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est le directeur.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est un gâteau au chocolat.</strong>
+        </div>
+
+      </div>
+
+
+      <p>
+        Le déterminant peut être, par exemple,
+        un article, un possessif ou un démonstratif :
+        <strong>
+          un, une, le, la, mon, ma, ton, ta, ce, cette…
+        </strong>
+      </p>
+
+    </section>
+
+
+
+    <!-- SECTION 2 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          2
+        </span>
+
+        <h2>
+          <span class="ilest">IL EST</span>
+          pour reprendre et décrire un élément précis
+        </h2>
+
+      </div>
+
+
+      <p>
+        On utilise
+        <span class="ilest">IL EST</span>
+        lorsque
+        <strong>il</strong>
+        reprend une personne ou une chose précise,
+        déjà identifiée ou clairement comprise dans le contexte.
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example ilest-example">
+
+          <div class="dialogue">
+            <span>— C’est Paul.</span>
+            <span>— <strong>Il est très sympathique.</strong></span>
+          </div>
+
+          <div class="explanation">
+            Ici, <strong>il</strong> reprend <strong>Paul</strong>.
+          </div>
+
+        </div>
+
+
+        <div class="example ilest-example">
+
+          <div class="dialogue">
+            <span>Regarde ce gâteau.</span>
+            <span><strong>Il est magnifique.</strong></span>
+          </div>
+
+          <div class="explanation">
+            Ici, <strong>il</strong> reprend <strong>ce gâteau</strong>.
+          </div>
+
+        </div>
+
+
+        <div class="example ilest-example">
+
+          <div class="dialogue">
+            <span>J’ai goûté le gâteau.</span>
+            <span><strong>Il est délicieux.</strong></span>
+          </div>
+
+          <div class="explanation">
+            Ici, <strong>il</strong> reprend <strong>le gâteau</strong>.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        <span class="ilest">IL EST</span>
+        permet donc de reprendre un élément précis pour
+        <strong>le décrire ou donner une information à son sujet</strong>.
+      </p>
+
+    </section>
+
+
+
+    <!-- SECTION 3 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          3
+        </span>
+
+        <h2>
+          Attention :
+          <span class="cest">C’EST + adjectif</span>
+          est aussi possible !
+        </h2>
+
+      </div>
+
+
+      <p>
+        La formule
+        <strong>
+          « C’est + nom / Il est + adjectif »
+        </strong>
+        peut être utile pour débuter,
+        mais elle ne suffit pas à expliquer tous les emplois.
+      </p>
+
+
+      <p>
+        On peut parfaitement dire :
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example cest-example">
+          <strong>C’est magnifique !</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est génial !</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est intéressant.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est difficile.</strong>
+        </div>
+
+      </div>
+
+
+      <p>
+        Dans cet emploi,
+        <strong>ce</strong>
+        a une
+        <strong>valeur neutre</strong> :
+        il peut renvoyer globalement à une situation,
+        à un fait, à une idée, à une action
+        ou à ce que l’on perçoit.
+      </p>
+
+
+      <div class="example cest-example">
+
+        <div class="dialogue">
+          <span>— J’ai fait ce gâteau moi-même.</span>
+          <span>— <strong>C’est magnifique !</strong></span>
+        </div>
+
+      </div>
+
+
+      <p>
+        Ici,
+        <strong>C’est magnifique !</strong>
+        peut porter sur
+        <strong>le fait d’avoir fait le gâteau soi-même</strong>.
+      </p>
+
+
+      <h3>Comparez</h3>
+
+
+      <div class="comparison-grid">
+
+
+        <div class="comparison-card cest-card">
+
+          <h3 class="cest">
+            C’est magnifique !
+          </h3>
+
+          <p>
+            On porte un jugement global sur
+            <strong>la situation, le fait ou ce que l’on perçoit</strong>.
+          </p>
+
+        </div>
+
+
+        <div class="comparison-card ilest-card">
+
+          <h3 class="ilest">
+            Il est magnifique.
+          </h3>
+
+          <p>
+            <strong>Il</strong>
+            reprend précisément un nom masculin,
+            par exemple
+            <strong>le gâteau</strong>.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="note">
+        💡 <strong>Le contexte est essentiel.</strong>
+        Il permet de comprendre ce que représentent
+        <strong>ce</strong>
+        et
+        <strong>il</strong>.
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 4 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          4
+        </span>
+
+        <h2>
+          Les professions :
+          <span class="cest">C’EST</span>
+          ou
+          <span class="ilest">IL EST</span> ?
+        </h2>
+
+      </div>
+
+
+      <div class="profession-grid">
+
+
+        <div class="mini-card">
+
+          <h3>
+            Avec un déterminant
+          </h3>
+
+          <p>
+            <strong class="cest">
+              C’est un médecin.
+            </strong>
+          </p>
+
+          <p>
+            <strong class="cest">
+              C’est une professeure.
+            </strong>
+          </p>
+
+          <p>
+            <strong class="cest">
+              C’est un excellent cuisinier.
+            </strong>
+          </p>
+
+        </div>
+
+
+        <div class="mini-card">
+
+          <h3>
+            Profession sans déterminant
+          </h3>
+
+          <p>
+            <strong class="ilest">
+              Il est médecin.
+            </strong>
+          </p>
+
+          <p>
+            <strong class="ilest">
+              Il est professeur.
+            </strong>
+          </p>
+
+          <p>
+            <strong class="ilest">
+              Il est cuisinier.
+            </strong>
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p style="margin-top:22px;">
+        Pour indiquer simplement la profession,
+        le nom de profession s’emploie généralement
+        <strong>sans déterminant</strong>
+        après
+        <span class="ilest">IL EST</span>.
+      </p>
+
+    </section>
+
+
+
+    <!-- SECTION 5 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          5
+        </span>
+
+        <h2>
+          Et les nationalités ?
+        </h2>
+
+      </div>
+
+
+      <p>
+        Une nationalité peut fonctionner comme
+        <strong>nom</strong>
+        ou comme
+        <strong>adjectif</strong>.
+      </p>
+
+
+      <div class="comparison-grid">
+
+
+        <div class="comparison-card cest-card">
+
+          <h3 class="cest">
+            C’est un Français.
+          </h3>
+
+          <p>
+            <strong>Français</strong>
+            est ici un nom qui désigne
+            une personne de nationalité française.
+          </p>
+
+        </div>
+
+
+        <div class="comparison-card ilest-card">
+
+          <h3 class="ilest">
+            Il est français.
+          </h3>
+
+          <p>
+            <strong>français</strong>
+            est ici un adjectif qui indique sa nationalité.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="note">
+        ✍️ Attention à la majuscule :
+        <strong>un Français</strong>
+        → nom ;
+        <strong>il est français</strong>
+        → adjectif.
+      </div>
+
+    </section>
+
+
+
+    <!-- SECTION 6 -->
+
+    <section class="lesson-section">
+
+      <div class="section-title">
+
+        <span class="section-number">
+          6
+        </span>
+
+        <h2>
+          Féminin et pluriel
+        </h2>
+
+      </div>
+
+
+      <p>
+        Les mêmes principes s’appliquent
+        au féminin et au pluriel.
+      </p>
+
+
+      <h3>Au féminin</h3>
+
+
+      <p>
+        <span class="cest">C’EST</span>
+        ne change pas :
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example cest-example">
+          <strong>C’est Marie.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est ma voisine.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>C’est une médecin.</strong>
+        </div>
+
+      </div>
+
+
+      <p>
+        Lorsque le nom repris est féminin,
+        <span class="ilest">IL EST</span>
+        devient
+        <strong class="ilest">ELLE EST</strong>.
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example ilest-example">
+          Marie ?
+          <strong>Elle est sympathique.</strong>
+        </div>
+
+        <div class="example ilest-example">
+          Cette maison ?
+          <strong>Elle est magnifique.</strong>
+        </div>
+
+        <div class="example ilest-example">
+          Ma voisine ?
+          <strong>Elle est médecin.</strong>
+        </div>
+
+      </div>
+
+
+      <h3>Au pluriel</h3>
+
+
+      <p>
+        Devant un groupe nominal pluriel,
+        on utilise dans la langue standard
+        <strong class="cest">CE SONT</strong>.
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example cest-example">
+          <strong>Ce sont mes voisins.</strong>
+        </div>
+
+        <div class="example cest-example">
+          <strong>Ce sont mes amis.</strong>
+        </div>
+
+      </div>
+
+
+      <p>
+        Lorsque le pronom reprend un nom pluriel,
+        on utilise
+        <strong class="ilest">ILS SONT</strong>
+        ou
+        <strong class="ilest">ELLES SONT</strong>.
+      </p>
+
+
+      <div class="examples">
+
+        <div class="example ilest-example">
+          Mes voisins ?
+          <strong>Ils sont sympathiques.</strong>
+        </div>
+
+        <div class="example ilest-example">
+          Ces maisons ?
+          <strong>Elles sont magnifiques.</strong>
+        </div>
+
+      </div>
+
+
+      <div class="note">
+        <strong>C’EST → CE SONT</strong><br>
+        <strong>IL EST → ELLE EST / ILS SONT / ELLES SONT</strong>
+      </div>
+
+    </section>
+
+
+
+    <!-- GOLDEN RULE -->
+
+    <section class="golden-rule">
+
+      <div class="golden-rule-header">
+
+        <span class="star">
+          ⭐
+        </span>
+
+        <h2>
+          LA RÈGLE D’OR
+        </h2>
+
+      </div>
+
+
+      <div class="rule-block">
+
+        <h3 class="cest">
+          C’EST
+        </h3>
+
+        <p>
+          → pour
+          <strong>identifier ou présenter</strong>
+        </p>
+
+        <p>
+          <strong>C’est Paul.</strong>
+        </p>
+
+        <p>
+          <strong>C’est mon voisin.</strong>
+        </p>
+
+
+        <p style="margin-top:16px;">
+          → avec
+          <strong>un déterminant + nom</strong>
+        </p>
+
+        <p>
+          <strong>C’est un gâteau au chocolat.</strong>
+        </p>
+
+
+        <p style="margin-top:16px;">
+          → avec un adjectif,
+          pour porter un
+          <strong>jugement global</strong>
+          sur une situation, un fait,
+          une idée ou ce que l’on perçoit
+        </p>
+
+        <p>
+          <strong>C’est magnifique !</strong>
+        </p>
+
+      </div>
+
+
+      <div class="rule-block">
+
+        <h3 class="ilest">
+          IL EST
+        </h3>
+
+        <p>
+          → pour
+          <strong>reprendre une personne ou une chose précise</strong>
+          et donner une information à son sujet
+        </p>
+
+        <p>
+          <strong>Paul ? Il est sympathique.</strong>
+        </p>
+
+        <p>
+          <strong>Le gâteau ? Il est délicieux.</strong>
+        </p>
+
+
+        <p style="margin-top:16px;">
+          → avec une profession
+          <strong>sans déterminant</strong>
+        </p>
+
+        <p>
+          <strong>Il est médecin.</strong>
+        </p>
+
+      </div>
+
+
+      <div class="reflex-box">
+
+        <h3>
+          💡 LE BON RÉFLEXE
+        </h3>
+
+        <p>
+          Pour choisir, ne regardez pas seulement
+          le mot qui suit :
+          <strong>
+            demandez-vous ce que vous voulez exprimer.
+          </strong>
+        </p>
+
+        <p>
+          <strong>J’identifie ?</strong>
+          →
+          <span class="cest">C’EST</span>
+        </p>
+
+        <p>
+          <strong>
+            Je reprends un élément précis pour le décrire ?
+          </strong>
+          →
+          <span class="ilest">IL EST</span>
+        </p>
+
+        <p>
+          <strong>
+            Je commente globalement une situation,
+            un fait ou une idée ?
+          </strong>
+          →
+          <span class="cest">C’EST</span>
+        </p>
+
+        <p style="margin-top:18px;">
+          <strong>
+            Au féminin et au pluriel,
+            le principe reste le même :
+          </strong>
+        </p>
+
+        <p>
+          <span class="cest">
+            C’EST → CE SONT
+          </span>
+        </p>
+
+        <p>
+          <span class="ilest">
+            IL EST → ELLE EST / ILS SONT / ELLES SONT
+          </span>
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- EXERCISES -->
+
+    <a
+      class="exercise-link"
+      href="exercices-cest-il-est.html"
+      aria-label="Faire les exercices sur C'est et Il est"
+    >
+
+      <div class="exercise-content">
+
+        <div class="exercise-text">
+
+          <h2>
+            ✏️ À vous de jouer !
+          </h2>
+
+          <p>
+            Testez votre compréhension avec
+            quelques exercices sur
+            C’EST et IL EST.
+          </p>
+
+        </div>
+
+
+        <span
+          class="exercise-arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </div>
+
+    </a>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="brand-footer">
+
+      <img
+        class="footer-logo"
+        src="assets/logos/icon-light.svg"
+        alt="Français Sans Illusion logo"
+      >
+
+      <h2>
+        Français Sans Illusion
+      </h2>
+
+      <p>
+        Designed with ❤️ &amp; AI by Raghad Aboud
+      </p>
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>

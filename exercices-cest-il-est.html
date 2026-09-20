@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Exercices – C’EST ou IL EST ? | Français Sans Illusion</title>
+
+  <meta
+    name="description"
+    content="Exercices interactifs A2 pour apprendre à choisir entre C’EST et IL EST en français."
+  >
+
+  <link rel="icon" href="assets/logos/icon-light.svg" type="image/svg+xml">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZNHDB8N2L');
+  </script>
+
+  <style>
+    :root {
+      --blue: #1E5BB8;
+      --blue-soft: #EAF4FF;
+
+      --orange: #E97817;
+      --orange-dark: #D97706;
+      --orange-soft: #FFF1E5;
+
+      --a2-orange: #F59E42;
+      --peach: #FFD8B5;
+      --soft: #FFF8F2;
+      --border: #F6C99D;
+
+      --green: #218A54;
+      --green-soft: #EAF8F0;
+
+      --red: #C94444;
+      --red-soft: #FFF0F0;
+
+      --text: #2E2E2E;
+      --muted: #6B7280;
+      --white: #FFFFFF;
+
+      --shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #FFF8F2 0%, #FFFFFF 35%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* BACK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 28px 0 16px;
+      color: var(--orange-dark);
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
+    .hero {
+      text-align: center;
+      padding: 28px 18px 36px;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .badge-a2 {
+      background: var(--orange);
+      color: white;
+    }
+
+    .badge-exercises {
+      background: var(--orange-soft);
+      color: var(--orange-dark);
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+    }
+
+    .cest {
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .ilest {
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* PROGRESS */
+    .progress-card {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #F4E4D6;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--a2-orange), var(--orange));
+      transition: width 0.3s ease;
+    }
+
+    /* ACTIVITY */
+    .activity {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      margin: 0 0 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .activity h2 {
+      margin: 0 0 8px;
+      color: var(--orange-dark);
+      font-size: 1.45rem;
+    }
+
+    .activity-intro {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+
+    /* QUESTIONS */
+    .question {
+      padding: 22px 0;
+      border-top: 1px solid #F1E4D9;
+    }
+
+    .question:first-of-type {
+      border-top: 0;
+      padding-top: 8px;
+    }
+
+    .question-title {
+      margin: 0 0 14px;
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .question-number {
+      color: var(--orange-dark);
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #E4E4E4;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition: 0.18s ease;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .option:hover:not(:disabled) {
+      border-color: var(--a2-orange);
+      background: var(--soft);
+      transform: translateY(-1px);
+    }
+
+    .option:disabled {
+      cursor: default;
+    }
+
+    .option.correct {
+      border-color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .option.wrong {
+      border-color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .option.show-correct {
+      border-color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #F4F4F4;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    /* TEXT INPUT */
+    .answer-row {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .text-answer {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1.5px solid #D8D8D8;
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.18s ease;
+    }
+
+    .text-answer:focus {
+      border-color: var(--a2-orange);
+      box-shadow: 0 0 0 3px rgba(245,158,66,0.12);
+    }
+
+    .check-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 0 18px;
+      background: var(--orange);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .check-btn:hover {
+      background: var(--orange-dark);
+    }
+
+    .check-btn:disabled,
+    .text-answer:disabled {
+      opacity: 0.75;
+      cursor: default;
+    }
+
+    /* FEEDBACK */
+    .feedback {
+      display: none;
+      margin-top: 13px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      font-size: 0.94rem;
+    }
+
+    .feedback.correct-feedback {
+      display: block;
+      background: var(--green-soft);
+      color: #17683E;
+      border-left: 4px solid var(--green);
+    }
+
+    .feedback.wrong-feedback {
+      display: block;
+      background: var(--red-soft);
+      color: #923434;
+      border-left: 4px solid var(--red);
+    }
+
+    .mini-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: var(--orange-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    /* FINAL RESULT */
+    .result-card {
+      display: none;
+      text-align: center;
+      background: linear-gradient(135deg, #FFF1E5, #FFFFFF);
+      border: 2px solid var(--a2-orange);
+      border-radius: 24px;
+      padding: 34px 24px;
+      margin: 34px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .result-card.show {
+      display: block;
+    }
+
+    .result-card h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: var(--orange-dark);
+    }
+
+    .score {
+      font-size: 2.8rem;
+      line-height: 1;
+      font-weight: 900;
+      margin: 18px 0;
+      color: var(--orange);
+    }
+
+    .result-message {
+      max-width: 560px;
+      margin: 0 auto 24px;
+      font-size: 1.05rem;
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      border: 0;
+      font-size: 0.95rem;
+    }
+
+    .restart-btn {
+      background: var(--orange);
+      color: white;
+    }
+
+    .lesson-btn {
+      background: var(--blue);
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 38px 20px 34px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .footer-brand img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        width: min(100% - 20px, 920px);
+      }
+
+      .activity {
+        padding: 20px 16px;
+        border-radius: 18px;
+      }
+
+      .answer-row {
+        flex-direction: column;
+      }
+
+      .check-btn {
+        min-height: 44px;
+      }
+
+      .progress-card {
+        top: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="cest-il-est.html" class="back-link">
+      ← Revoir la leçon
+    </a>
+
+    <header class="hero">
+
+      <div class="badges">
+        <span class="badge badge-a2">A2</span>
+        <span class="badge badge-exercises">Exercices</span>
+      </div>
+
+      <h1>
+        <span class="cest">C’EST</span>
+        ou
+        <span class="ilest">IL EST</span> ?
+      </h1>
+
+      <p>
+        Testez votre compréhension !
+        Choisissez la bonne réponse et observez attentivement le contexte.
+      </p>
+
+    </header>
+
+    <div class="progress-card">
+      <div class="progress-top">
+        <span id="progressText">0 / 20 questions</span>
+        <span id="scoreText">Score : 0</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+
+    <!-- =========================
+         ACTIVITÉ 1
+    ========================== -->
+
+    <section class="activity">
+
+      <h2>1. C’EST ou IL / ELLE EST ?</h2>
+
+      <p class="activity-intro">
+        Choisissez la bonne réponse.
+      </p>
+
+      <div class="question" data-question="1">
+        <p class="question-title">
+          <span class="question-number">1.</span>
+          Qui est cet homme ? — ___ mon voisin.
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est — on identifie une personne."
+             data-error="La bonne réponse est « C’est ». On identifie une personne.">
+        </div>
+      </div>
+
+
+      <div class="question" data-question="2">
+        <p class="question-title">
+          <span class="question-number">2.</span>
+          Tu connais Paul ? — Oui, ___ très sympathique.
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Il est — « il » reprend Paul, déjà identifié."
+             data-error="La bonne réponse est « Il est ». « Il » reprend Paul, déjà identifié.">
+        </div>
+      </div>
+
+
+      <div class="question" data-question="3">
+        <p class="question-title">
+          <span class="question-number">3.</span>
+          Qu’est-ce que c’est ? — ___ un gâteau au chocolat.
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est — on identifie ce que c’est."
+             data-error="La bonne réponse est « C’est ». On identifie ce que c’est.">
+        </div>
+      </div>
+
+
+      <div class="question" data-question="4">
+        <p class="question-title">
+          <span class="question-number">4.</span>
+          Et le gâteau ? — ___ délicieux !
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Il est — « il » reprend « le gâteau », déjà identifié."
+             data-error="La bonne réponse est « Il est ». « Il » reprend « le gâteau », déjà identifié.">
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVITÉ 2
+    ========================== -->
+
+    <section class="activity">
+
+      <h2>2. Pourquoi ?</h2>
+
+      <p class="activity-intro">
+        Choisissez la bonne explication.
+      </p>
+
+
+      <div class="question" data-question="5">
+
+        <p class="question-title">
+          <span class="question-number">5.</span>
+          « C’est ma nouvelle collègue. » Pourquoi utilise-t-on C’EST ?
+        </p>
+
+        <div class="options">
+
+          <button class="option">
+            <span class="option-letter">A</span>
+            On décrit une personne déjà identifiée.
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span>
+            On identifie ou présente une personne.
+          </button>
+
+          <button class="option">
+            <span class="option-letter">C</span>
+            On indique sa profession.
+          </button>
+
+        </div>
+
+        <div class="feedback"
+             data-success="✓ On identifie ou présente une personne."
+             data-error="Ici, C’EST sert à identifier ou à présenter une personne.">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="6">
+
+        <p class="question-title">
+          <span class="question-number">6.</span>
+          « Ma nouvelle collègue ? Elle est très sympa. »
+          Pourquoi utilise-t-on ELLE EST ?
+        </p>
+
+        <div class="options">
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span>
+            On reprend une personne déjà identifiée pour la décrire.
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span>
+            On présente une nouvelle personne.
+          </button>
+
+          <button class="option">
+            <span class="option-letter">C</span>
+            On commente une situation en général.
+          </button>
+
+        </div>
+
+        <div class="feedback"
+             data-success="✓ « Elle » reprend une personne déjà identifiée pour la décrire."
+             data-error="« Elle » reprend ici « ma nouvelle collègue », déjà identifiée.">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="7">
+
+        <p class="question-title">
+          <span class="question-number">7.</span>
+          « J’ai préparé tout ce repas moi-même. — C’est incroyable ! »
+          Pourquoi utilise-t-on C’EST ?
+        </p>
+
+        <div class="options">
+
+          <button class="option">
+            <span class="option-letter">A</span>
+            On reprend le nom « repas ».
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span>
+            On indique une profession.
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">C</span>
+            On commente globalement une situation ou un fait.
+          </button>
+
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’EST commente ici globalement la situation."
+             data-error="Ici, « ce » a une valeur neutre : on commente globalement une situation ou un fait.">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="8">
+
+        <p class="question-title">
+          <span class="question-number">8.</span>
+          « Regarde ce tableau. Il est magnifique. »
+          Pourquoi utilise-t-on IL EST ?
+        </p>
+
+        <div class="options">
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span>
+            « Il » reprend « ce tableau ».
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span>
+            On commente globalement une situation.
+          </button>
+
+          <button class="option">
+            <span class="option-letter">C</span>
+            On identifie le tableau.
+          </button>
+
+        </div>
+
+        <div class="feedback"
+             data-success="✓ « Il » reprend « ce tableau », déjà identifié."
+             data-error="La bonne réponse est A : « il » reprend « ce tableau ».">
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVITÉ 3
+    ========================== -->
+
+    <section class="activity">
+
+      <h2>3. Professions et nationalités</h2>
+
+      <p class="activity-intro">
+        Observez bien la présence ou l’absence d’un déterminant.
+      </p>
+
+
+      <div class="question" data-question="9">
+
+        <p class="question-title">
+          <span class="question-number">9.</span>
+          Tu connais cet homme ? — Oui, ___ un médecin.
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est un médecin — la profession est précédée d’un déterminant."
+             data-error="La bonne réponse est « C’est » : on dit « C’est un médecin ».">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="10">
+
+        <p class="question-title">
+          <span class="question-number">10.</span>
+          Et Marc, quelle est sa profession ? — ___ médecin.
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Il est médecin — après IL EST, la profession s’emploie ici sans déterminant."
+             data-error="La bonne réponse est « Il est » : « Il est médecin ».">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="11">
+
+        <p class="question-title">
+          <span class="question-number">11.</span>
+          Tu connais Julien ? — Oui, ___ français.
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Il est français — « français » est ici un adjectif."
+             data-error="La bonne réponse est « Il est français ». Ici, « français » est un adjectif.">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="12">
+
+        <p class="question-title">
+          <span class="question-number">12.</span>
+          Et cet homme ? — ___ un Français qui habite à Bagdad.
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est un Français — « Français » est ici un nom."
+             data-error="La bonne réponse est « C’est ». « Un Français » est un groupe nominal.">
+        </div>
+
+        <div class="mini-note">
+          💡 <strong>Rappel :</strong>
+          <strong>français</strong> = adjectif → minuscule ;
+          <strong>un Français</strong> = nom → majuscule.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVITÉ 4
+    ========================== -->
+
+    <section class="activity">
+
+      <h2>4. À vous d’écrire !</h2>
+
+      <p class="activity-intro">
+        Complétez avec la forme correcte.
+        Écrivez seulement les mots qui manquent.
+      </p>
+
+
+      <div class="question text-question"
+           data-question="13"
+           data-answer="ce sont">
+
+        <p class="question-title">
+          <span class="question-number">13.</span>
+          Qui sont ces personnes ? — ___ mes voisins.
+        </p>
+
+        <div class="answer-row">
+          <input
+            class="text-answer"
+            type="text"
+            autocomplete="off"
+            placeholder="Votre réponse"
+            aria-label="Réponse à la question 13"
+          >
+
+          <button class="check-btn">Vérifier</button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Ce sont mes voisins. Devant un groupe nominal pluriel, on emploie « ce sont » en français standard."
+             data-error="La réponse attendue est « Ce sont ».">
+        </div>
+
+      </div>
+
+
+      <div class="question text-question"
+           data-question="14"
+           data-answer="ils sont">
+
+        <p class="question-title">
+          <span class="question-number">14.</span>
+          Tes voisins ? — ___ très sympathiques.
+        </p>
+
+        <div class="answer-row">
+          <input
+            class="text-answer"
+            type="text"
+            autocomplete="off"
+            placeholder="Votre réponse"
+            aria-label="Réponse à la question 14"
+          >
+
+          <button class="check-btn">Vérifier</button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Ils sont très sympathiques. « Ils » reprend « tes voisins »."
+             data-error="La réponse attendue est « Ils sont ».">
+        </div>
+
+      </div>
+
+
+      <div class="question text-question"
+           data-question="15"
+           data-answer="cest">
+
+        <p class="question-title">
+          <span class="question-number">15.</span>
+          Qui est cette femme ? — ___ ma voisine.
+        </p>
+
+        <div class="answer-row">
+          <input
+            class="text-answer"
+            type="text"
+            autocomplete="off"
+            placeholder="Votre réponse"
+            aria-label="Réponse à la question 15"
+          >
+
+          <button class="check-btn">Vérifier</button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est ma voisine. On identifie la personne."
+             data-error="La réponse attendue est « C’est ».">
+        </div>
+
+      </div>
+
+
+      <div class="question text-question"
+           data-question="16"
+           data-answer="elle est">
+
+        <p class="question-title">
+          <span class="question-number">16.</span>
+          Ta voisine ? — ___ médecin.
+        </p>
+
+        <div class="answer-row">
+          <input
+            class="text-answer"
+            type="text"
+            autocomplete="off"
+            placeholder="Votre réponse"
+            aria-label="Réponse à la question 16"
+          >
+
+          <button class="check-btn">Vérifier</button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Elle est médecin. « Elle » reprend « ta voisine » et la profession s’emploie sans déterminant."
+             data-error="La réponse attendue est « Elle est ».">
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVITÉ 5
+    ========================== -->
+
+    <section class="activity">
+
+      <h2>5. 🧠 Le défi final</h2>
+
+      <p class="activity-intro">
+        Attention : ici, le contexte est essentiel !
+      </p>
+
+
+      <div class="question" data-question="17">
+
+        <p class="question-title">
+          <span class="question-number">17.</span>
+          — Tu as organisé toute cette fête toute seule ?<br>
+          — Oui !<br>
+          — Waouh, ___ incroyable !
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Elle est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est incroyable ! « C’est » commente ici toute la situation : le fait d’avoir organisé la fête toute seule."
+             data-error="La bonne réponse est « C’est ». On commente globalement toute la situation.">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="18">
+
+        <p class="question-title">
+          <span class="question-number">18.</span>
+          — Tu as vu cette maison ?<br>
+          — Oui, ___ magnifique !
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Elle est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Elle est magnifique ! « Elle » reprend « cette maison »."
+             data-error="La bonne réponse est « Elle est » : « elle » reprend « cette maison ».">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="19">
+
+        <p class="question-title">
+          <span class="question-number">19.</span>
+          Quelle heure est-il ? — ___ 9 heures.
+        </p>
+
+        <div class="options">
+          <button class="option">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option" data-correct="true">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ Il est 9 heures — on indique l’heure qu’il est."
+             data-error="La bonne réponse est « Il est ». Pour dire l’heure qu’il est, on utilise « Il est ».">
+        </div>
+
+      </div>
+
+
+      <div class="question" data-question="20">
+
+        <p class="question-title">
+          <span class="question-number">20.</span>
+          Et le cours de français ? — ___ à 10 heures.
+        </p>
+
+        <div class="options">
+          <button class="option" data-correct="true">
+            <span class="option-letter">A</span> C’est
+          </button>
+
+          <button class="option">
+            <span class="option-letter">B</span> Il est
+          </button>
+        </div>
+
+        <div class="feedback"
+             data-success="✓ C’est à 10 heures — on indique le moment d’un événement."
+             data-error="La bonne réponse est « C’est ». On indique ici le moment du cours.">
+        </div>
+
+        <div class="mini-note">
+          💡 <strong>Comparez :</strong><br>
+          <span class="ilest">Il est 9 heures.</span>
+          → l’heure qu’il est.<br>
+          <span class="cest">Le cours, c’est à 10 heures.</span>
+          → le moment d’un événement.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESULT
+    ========================== -->
+
+    <section class="result-card" id="resultCard">
+
+      <h2>🎉 Votre résultat</h2>
+
+      <div class="score" id="finalScore">
+        0 / 20
+      </div>
+
+      <p class="result-message" id="resultMessage"></p>
+
+      <div class="result-actions">
+
+        <button class="action-btn restart-btn" id="restartBtn">
+          ↻ Recommencer
+        </button>
+
+        <a href="cest-il-est.html" class="action-btn lesson-btn">
+          ← Revoir la leçon
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-brand">
+      <img
+        src="assets/logos/icon-light.svg"
+        alt="Français Sans Illusion"
+      >
+      <span>Français Sans Illusion</span>
+    </div>
+
+    <div>
+      Designed with ❤️ &amp; AI by Raghad Aboud
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    const TOTAL_QUESTIONS = 20;
+
+    let answered = 0;
+    let score = 0;
+
+    const progressText =
+      document.getElementById("progressText");
+
+    const scoreText =
+      document.getElementById("scoreText");
+
+    const progressFill =
+      document.getElementById("progressFill");
+
+    const resultCard =
+      document.getElementById("resultCard");
+
+    const finalScore =
+      document.getElementById("finalScore");
+
+    const resultMessage =
+      document.getElementById("resultMessage");
+
+
+    /* =========================
+       UPDATE PROGRESS
+    ========================== */
+
+    function updateProgress() {
+
+      progressText.textContent =
+        `${answered} / ${TOTAL_QUESTIONS} questions`;
+
+      scoreText.textContent =
+        `Score : ${score}`;
+
+      progressFill.style.width =
+        `${(answered / TOTAL_QUESTIONS) * 100}%`;
+
+      if (answered === TOTAL_QUESTIONS) {
+        showResult();
+      }
+
+    }
+
+
+    /* =========================
+       MULTIPLE CHOICE
+    ========================== */
+
+    document
+      .querySelectorAll(".question:not(.text-question) .option")
+      .forEach(button => {
+
+        button.addEventListener("click", function () {
+
+          const question =
+            this.closest(".question");
+
+          if (question.dataset.answered === "true") {
+            return;
+          }
+
+          question.dataset.answered = "true";
+
+          const options =
+            question.querySelectorAll(".option");
+
+          const feedback =
+            question.querySelector(".feedback");
+
+          const isCorrect =
+            this.dataset.correct === "true";
+
+
+          options.forEach(option => {
+
+            option.disabled = true;
+
+            if (option.dataset.correct === "true") {
+              option.classList.add("show-correct");
+            }
+
+          });
+
+
+          if (isCorrect) {
+
+            this.classList.add("correct");
+
+            feedback.textContent =
+              feedback.dataset.success;
+
+            feedback.className =
+              "feedback correct-feedback";
+
+            score++;
+
+          } else {
+
+            this.classList.add("wrong");
+
+            feedback.textContent =
+              feedback.dataset.error;
+
+            feedback.className =
+              "feedback wrong-feedback";
+
+          }
+
+
+          answered++;
+
+          updateProgress();
+
+        });
+
+      });
+
+
+    /* =========================
+       NORMALISATION
+       Activité 4
+    ========================== */
+
+    function normalizeAnswer(value) {
+
+      return value
+        .toLowerCase()
+
+        /* apostrophes typographiques → apostrophe simple */
+        .replace(/[’‘`´]/g, "'")
+
+        /* supprimer les apostrophes */
+        .replace(/'/g, "")
+
+        /* supprimer tous les espaces */
+        .replace(/\s+/g, "")
+
+        /* supprimer les espaces invisibles éventuels */
+        .replace(/\u00A0/g, "")
+
+        .trim();
+
+    }
+
+
+    /* =========================
+       TEXT QUESTIONS
+    ========================== */
+
+    document
+      .querySelectorAll(".text-question")
+      .forEach(question => {
+
+        const input =
+          question.querySelector(".text-answer");
+
+        const button =
+          question.querySelector(".check-btn");
+
+        const feedback =
+          question.querySelector(".feedback");
+
+
+        function checkTextAnswer() {
+
+          if (question.dataset.answered === "true") {
+            return;
+          }
+
+          const userValue =
+            input.value.trim();
+
+          if (!userValue) {
+
+            input.focus();
+            return;
+
+          }
+
+
+          const expected =
+            normalizeAnswer(question.dataset.answer);
+
+          const userAnswer =
+            normalizeAnswer(userValue);
+
+
+          question.dataset.answered = "true";
+
+          input.disabled = true;
+          button.disabled = true;
+
+
+          if (userAnswer === expected) {
+
+            feedback.textContent =
+              feedback.dataset.success;
+
+            feedback.className =
+              "feedback correct-feedback";
+
+            score++;
+
+          } else {
+
+            feedback.textContent =
+              feedback.dataset.error;
+
+            feedback.className =
+              "feedback wrong-feedback";
+
+          }
+
+
+          answered++;
+
+          updateProgress();
+
+        }
+
+
+        button.addEventListener(
+          "click",
+          checkTextAnswer
+        );
+
+
+        input.addEventListener(
+          "keydown",
+          function(event) {
+
+            if (event.key === "Enter") {
+              checkTextAnswer();
+            }
+
+          }
+        );
+
+      });
+
+
+    /* =========================
+       FINAL RESULT
+    ========================== */
+
+    function showResult() {
+
+      finalScore.textContent =
+        `${score} / ${TOTAL_QUESTIONS}`;
+
+
+      if (score >= 17) {
+
+        resultMessage.innerHTML =
+          `<strong>Excellent ! 🌟</strong><br>
+           Vous maîtrisez très bien la différence entre
+           <span class="cest">C’EST</span> et
+           <span class="ilest">IL EST</span>.`;
+
+      } else if (score >= 13) {
+
+        resultMessage.innerHTML =
+          `<strong>Très bien ! 👏</strong><br>
+           La règle est bien comprise.
+           Encore un petit effort !`;
+
+      } else {
+
+        resultMessage.innerHTML =
+          `<strong>Continuez ! 💪</strong><br>
+           Relisez la leçon, puis réessayez.`;
+
+      }
+
+
+      resultCard.classList.add("show");
+
+
+      setTimeout(() => {
+
+        resultCard.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      }, 250);
+
+    }
+
+
+    /* =========================
+       RESTART
+    ========================== */
+
+    document
+      .getElementById("restartBtn")
+      .addEventListener("click", function () {
+
+        answered = 0;
+        score = 0;
+
+
+        document
+          .querySelectorAll(".question")
+          .forEach(question => {
+
+            delete question.dataset.answered;
+
+            const feedback =
+              question.querySelector(".feedback");
+
+            feedback.className = "feedback";
+            feedback.textContent = "";
+
+
+            question
+              .querySelectorAll(".option")
+              .forEach(option => {
+
+                option.disabled = false;
+
+                option.classList.remove(
+                  "correct",
+                  "wrong",
+                  "show-correct"
+                );
+
+              });
+
+
+            const input =
+              question.querySelector(".text-answer");
+
+            const button =
+              question.querySelector(".check-btn");
+
+
+            if (input) {
+
+              input.value = "";
+              input.disabled = false;
+
+            }
+
+
+            if (button) {
+
+              button.disabled = false;
+
+            }
+
+          });
+
+
+        resultCard.classList.remove("show");
+
+        updateProgress();
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      });
+
+
+    updateProgress();
+
+  </script>
+
+</body>
+</html>

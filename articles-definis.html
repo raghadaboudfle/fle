@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZNHDB8N2L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZNHDB8N2L');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Les articles définis | Français Sans Illusion</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/logos/brand-symbol.png"
+  >
+
+  <style>
+    :root {
+      --primary-blue: #1E5BB8;
+      --light-blue: #7EB4FF;
+      --very-light-blue: #EAF4FF;
+      --dark-text: #1F2937;
+      --white: #FFFFFF;
+
+      --a1-sand: #D9B98C;
+      --a1-dark: #8A4F17;
+      --a1-light: #F7EBDD;
+      --a1-border: #E8D0B2;
+      --a1-background: #F8F1E8;
+
+      --soft-gray: #667085;
+
+      --success: #187044;
+      --success-background: #EDF8F1;
+      --success-border: #B9DFC7;
+
+      --error: #B42318;
+      --error-background: #FFF0EE;
+      --error-border: #F3B7B0;
+
+      --warning-background: #FFF7E8;
+      --warning-border: #F1D19A;
+
+      --masculine-background: #EAF4FF;
+      --masculine-text: #1E5BB8;
+
+      --feminine-background: #FFF0F6;
+      --feminine-text: #B4236A;
+
+      --plural-background: #F3F0FF;
+      --plural-text: #6941C6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--dark-text);
+
+      background:
+        radial-gradient(
+          circle at top left,
+          var(--a1-light),
+          transparent 34%
+        ),
+        linear-gradient(
+          180deg,
+          #FFFFFF 0%,
+          var(--a1-background) 100%
+        );
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-container {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: 30px 22px 55px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 34px;
+
+      color: var(--primary-blue);
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .lesson-header {
+      max-width: 800px;
+      margin: 0 auto 45px;
+
+      text-align: center;
+    }
+
+    .brand-symbol {
+      display: block;
+
+      width: 112px;
+      height: 112px;
+
+      margin: 0 auto 22px;
+
+      object-fit: contain;
+    }
+
+    .lesson-level {
+      display: inline-block;
+
+      margin-bottom: 15px;
+      padding: 8px 17px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 999px;
+
+      background: var(--a1-light);
+      color: var(--a1-dark);
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .lesson-header h1 {
+      margin-bottom: 18px;
+
+      color: var(--primary-blue);
+
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.12;
+    }
+
+    .lesson-header p {
+      color: var(--soft-gray);
+
+      font-size: clamp(18px, 2.5vw, 22px);
+      line-height: 1.7;
+    }
+
+    .exercise-stack {
+      display: grid;
+      gap: 30px;
+    }
+
+    .exercise-section {
+      padding: 32px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.97);
+
+      box-shadow:
+        0 14px 34px rgba(138, 79, 23, 0.08);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 16px;
+
+      color: var(--primary-blue);
+
+      font-size: 27px;
+      line-height: 1.3;
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 46px;
+      height: 46px;
+
+      flex: 0 0 auto;
+
+      border-radius: 14px;
+
+      background: var(--a1-light);
+
+      font-size: 24px;
+    }
+
+    .instruction {
+      color: var(--soft-gray);
+
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .mobile-note {
+      display: none;
+
+      margin-top: 12px;
+      padding: 12px 14px;
+
+      border: 1px solid var(--warning-border);
+      border-radius: 13px;
+
+      background: var(--warning-background);
+
+      color: var(--a1-dark);
+
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 24px;
+      padding: 20px;
+
+      border: 1px dashed var(--a1-sand);
+      border-radius: 20px;
+
+      background: #FFFCF8;
+    }
+
+    .word-chip {
+      padding: 11px 16px;
+
+      border: 2px solid transparent;
+      border-radius: 999px;
+
+      background: var(--very-light-blue);
+      color: var(--primary-blue);
+
+      font-size: 17px;
+      font-weight: 800;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .word-chip:hover {
+      transform: translateY(-2px);
+    }
+
+    .word-chip.selected {
+      border-color: var(--primary-blue);
+
+      box-shadow:
+        0 0 0 4px rgba(30, 91, 184, 0.12);
+    }
+
+    .word-chip.used {
+      opacity: 0.35;
+    }
+
+    .sorting-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 24px;
+    }
+
+    .sorting-column {
+      padding: 18px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 21px;
+
+      background: var(--white);
+    }
+
+    .sorting-column h3 {
+      margin-bottom: 15px;
+
+      text-align: center;
+
+      font-size: 24px;
+    }
+
+    .sorting-column.masculine h3 {
+      color: var(--masculine-text);
+    }
+
+    .sorting-column.feminine h3 {
+      color: var(--feminine-text);
+    }
+
+    .sorting-column.plural h3 {
+      color: var(--plural-text);
+    }
+
+    .drop-slots {
+      display: grid;
+      gap: 12px;
+    }
+
+    .drop-slot {
+      min-height: 54px;
+      padding: 10px 12px;
+
+      border: 2px dashed var(--a1-border);
+      border-radius: 14px;
+
+      background: #FAFAFA;
+
+      text-align: center;
+
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .drop-slot:hover {
+      border-color: var(--light-blue);
+      background: var(--very-light-blue);
+    }
+
+    .drop-slot.filled {
+      border-style: solid;
+      border-color: var(--light-blue);
+
+      background: var(--very-light-blue);
+    }
+
+    .drop-slot.correct {
+      border-color: var(--success-border);
+      background: var(--success-background);
+    }
+
+    .drop-slot.incorrect {
+      border-color: var(--error-border);
+      background: var(--error-background);
+    }
+
+    .placed-word {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .remove-word {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 25px;
+      height: 25px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: rgba(31, 41, 55, 0.08);
+      color: var(--dark-text);
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .feedback-list {
+      display: grid;
+      gap: 10px;
+
+      margin-top: 18px;
+
+      list-style: none;
+    }
+
+    .feedback-list li {
+      padding: 12px 14px;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .feedback-list .error-message {
+      border: 1px solid var(--error-border);
+      background: var(--error-background);
+      color: var(--error);
+    }
+
+    .feedback-list .success-message {
+      border: 1px solid var(--success-border);
+      background: var(--success-background);
+      color: var(--success);
+    }
+
+    .sentence-exercises {
+      display: grid;
+      gap: 16px;
+
+      margin-top: 24px;
+    }
+
+    .sentence-item {
+      padding: 18px;
+
+      border: 1px solid var(--a1-border);
+      border-radius: 17px;
+
+      background: var(--white);
+    }
+
+    .sentence-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .answer-input {
+      width: 92px;
+      padding: 9px 10px;
+
+      border: 2px solid var(--a1-border);
+      border-radius: 11px;
+
+      background: #FFFFFF;
+      color: var(--dark-text);
+
+      text-align: center;
+      font-weight: 800;
+
+      outline: none;
+    }
+
+    .answer-input:focus {
+      border-color: var(--primary-blue);
+
+      box-shadow:
+        0 0 0 4px rgba(30, 91, 184, 0.11);
+    }
+
+    .answer-input.correct {
+      border-color: var(--success);
+      background: var(--success-background);
+      color: var(--success);
+    }
+
+    .answer-input.incorrect {
+      border-color: var(--error);
+      background: var(--error-background);
+      color: var(--error);
+    }
+
+    .sentence-feedback {
+      min-height: 24px;
+      margin-top: 8px;
+
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .sentence-feedback.correct {
+      color: var(--success);
+    }
+
+    .sentence-feedback.incorrect {
+      color: var(--error);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+
+      margin-top: 25px;
+    }
+
+    .check-button,
+    .reset-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 15px 24px;
+
+      border-radius: 999px;
+
+      font-size: 17px;
+      font-weight: 800;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .check-button {
+      border: none;
+
+      background: var(--primary-blue);
+      color: var(--white);
+
+      box-shadow:
+        0 12px 24px rgba(30, 91, 184, 0.2);
+    }
+
+    .reset-button {
+      border: 2px solid var(--a1-border);
+
+      background: var(--white);
+      color: var(--a1-dark);
+    }
+
+    .check-button:hover,
+    .reset-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .summary-box {
+      display: none;
+
+      margin-top: 18px;
+      padding: 17px 18px;
+
+      border-radius: 15px;
+
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .summary-box.success {
+      display: block;
+
+      border: 1px solid var(--success-border);
+      background: var(--success-background);
+      color: var(--success);
+    }
+
+    .summary-box.error {
+      display: block;
+
+      border: 1px solid var(--error-border);
+      background: var(--error-background);
+      color: var(--error);
+    }
+
+    .brand-footer {
+      margin-top: 70px;
+      padding-top: 38px;
+
+      border-top: 1px solid var(--a1-border);
+
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: block;
+
+      width: min(330px, 78%);
+      max-height: 190px;
+
+      margin: 0 auto 16px;
+
+      object-fit: contain;
+    }
+
+    .brand-footer p {
+      color: var(--soft-gray);
+
+      font-size: 15px;
+    }
+
+    @media (max-width: 850px) {
+      .sorting-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-container {
+        padding: 24px 16px 45px;
+      }
+
+      .back-link {
+        margin-bottom: 28px;
+
+        font-size: 16px;
+      }
+
+      .brand-symbol {
+        width: 92px;
+        height: 92px;
+      }
+
+      .lesson-header {
+        margin-bottom: 34px;
+      }
+
+      .exercise-section {
+        padding: 23px 18px;
+
+        border-radius: 22px;
+      }
+
+      .section-title {
+        font-size: 23px;
+      }
+
+      .instruction,
+      .sentence-line {
+        font-size: 17px;
+      }
+
+      .mobile-note {
+        display: block;
+      }
+
+      .word-bank {
+        padding: 16px;
+      }
+
+      .action-row {
+        display: grid;
+      }
+
+      .check-button,
+      .reset-button {
+        width: 100%;
+      }
+
+      .footer-logo {
+        width: min(300px, 92%);
+      }
+    }
+  
+.lesson-content{display:grid;gap:28px}.lesson-section{padding:32px;border:2px solid var(--a1-border);border-radius:28px;background:rgba(255,255,255,.96);box-shadow:0 14px 34px rgba(138,79,23,.08)}
+.lesson-section p,.lesson-section li{font-size:18px;line-height:1.8}.table-wrapper{width:100%;overflow-x:auto;margin-top:22px;border:1px solid var(--a1-border);border-radius:20px}table{width:100%;min-width:620px;border-collapse:collapse;background:white}th,td{padding:17px 15px;border-bottom:1px solid var(--a1-border);border-right:1px solid var(--a1-border);text-align:left;font-size:17px}th:last-child,td:last-child{border-right:none}tr:last-child td{border-bottom:none}thead th{background:var(--a1-light);color:var(--a1-dark)}tbody tr:nth-child(even){background:#fffcf8}.article-word{color:var(--primary-blue);font-size:21px;font-weight:800}.article-group{display:inline-block;padding:3px 8px;border-radius:8px;font-weight:800}.masculine-group{background:var(--masculine-background);color:var(--masculine-text)}.feminine-group{background:var(--feminine-background);color:var(--feminine-text)}.plural-group{background:var(--plural-background);color:var(--plural-text)}.elision-group{background:var(--a1-light);color:var(--a1-dark)}.sentence-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:20px;list-style:none}.sentence-list li{padding:18px;border:1px solid var(--a1-border);border-radius:17px;background:white}.usage-list{display:grid;gap:14px;list-style:none}.usage-list li{padding:14px;border-radius:14px;background:white;border:1px solid var(--a1-border)}.usage-list strong{color:var(--a1-dark)}.attention-box{border-color:#f1d19a;background:#fff7e8}.important-box{border-color:#b9dfc7;background:#edf8f1}.memory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px;margin-top:20px}.memory-card{padding:18px;border:1px solid #b9dfc7;border-radius:17px;background:white;text-align:center}.memory-card strong{display:block;margin-bottom:7px;color:var(--primary-blue);font-size:19px}.memory-card span{color:var(--soft-gray);font-size:16px}.exercise-area{text-align:center;margin-top:42px}.exercise-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:290px;padding:18px 30px;border-radius:999px;background:var(--primary-blue);color:white;box-shadow:0 15px 30px rgba(30,91,184,.22);font-size:19px;font-weight:800}.exercise-button:hover{transform:translateY(-3px)}@media(max-width:720px){.lesson-section{padding:23px 18px}.sentence-list{grid-template-columns:1fr}.exercise-button{width:100%;min-width:0}}
+</style></head><body><main class="page-container">
+<a class="back-link" href="grammar-a1.html"><span aria-hidden="true">←</span> Back to A1 Grammar</a>
+<header class="lesson-header"><img class="brand-symbol" src="assets/logos/brand-symbol.png" alt="Français Sans Illusion"><span class="lesson-level">A1 · Grammaire</span><h1>Les articles définis</h1><p>Apprenez à choisir et à utiliser <strong>le</strong>, <strong>la</strong>, <strong>l’</strong> et <strong>les</strong> dans des phrases simples.</p></header>
+<div class="lesson-content">
+<section class="lesson-section"><h2 class="section-title"><span class="section-icon">📖</span> Qu’est-ce qu’un article défini ?</h2><p>Un article défini accompagne un nom. Il permet de parler d’une personne, d’un animal ou d’une chose déjà connue ou identifiable. On l’utilise aussi pour parler en général.</p></section>
+<section class="lesson-section"><h2 class="section-title"><span class="section-icon">📊</span> Les articles définis</h2><p>Pour choisir l’article correct, regardez le genre, le nombre et la première lettre du nom.</p><div class="table-wrapper"><table><thead><tr><th>Article</th><th>Utilisation</th><th>Exemple</th></tr></thead><tbody>
+<tr><td class="article-word">le</td><td>Nom masculin singulier</td><td><span class="article-group masculine-group">le livre</span></td></tr>
+<tr><td class="article-word">la</td><td>Nom féminin singulier</td><td><span class="article-group feminine-group">la maison</span></td></tr>
+<tr><td class="article-word">l’</td><td>Nom singulier devant une voyelle ou un h muet</td><td><span class="article-group elision-group">l’école</span> / <span class="article-group elision-group">l’hôtel</span></td></tr>
+<tr><td class="article-word">les</td><td>Nom pluriel masculin ou féminin</td><td><span class="article-group plural-group">les étudiants</span></td></tr>
+</tbody></table></div></section>
+<section class="lesson-section"><h2 class="section-title"><span class="section-icon">💬</span> Autres exemples</h2><ul class="sentence-list">
+<li>J’aime <span class="article-group masculine-group">le français</span>.</li><li>Elle habite dans <span class="article-group feminine-group">la ville</span>.</li>
+<li><span class="article-group elision-group">L’école</span> est grande.</li><li><span class="article-group plural-group">Les étudiants</span> parlent français.</li>
+<li><span class="article-group elision-group">L’hôtel</span> est près du musée.</li><li><span class="article-group feminine-group">La France</span> est en Europe.</li>
+</ul></section>
+<section class="lesson-section"><h2 class="section-title"><span class="section-icon">💡</span> Quand utilise-t-on les articles définis ?</h2><ul class="usage-list">
+<li><strong>Pour parler d’une chose précise :</strong> Le livre est sur la table.</li>
+<li><strong>Pour parler en général :</strong> Les chats aiment dormir.</li>
+<li><strong>Avec aimer, adorer et détester :</strong> J’adore le chocolat.</li>
+<li><strong>Avec les langues :</strong> J’apprends le français.</li>
+<li><strong>Avec les noms de pays qui prennent un article :</strong> La France est en Europe.</li>
+</ul></section>
+<section class="lesson-section attention-box"><h2 class="section-title"><span class="section-icon">⚠️</span> Attention : l’élision</h2><p>Devant une voyelle ou un <strong>h muet</strong>, <strong>le</strong> et <strong>la</strong> deviennent <strong>l’</strong> au singulier.</p><ul class="sentence-list"><li>le + ami → <strong>l’ami</strong></li><li>la + école → <strong>l’école</strong></li><li>le + hôtel → <strong>l’hôtel</strong></li><li>Au pluriel, on garde <strong>les</strong> : <strong>les amis</strong>.</li></ul></section>
+<section class="lesson-section important-box"><h2 class="section-title"><span class="section-icon">🧠</span> À retenir</h2><div class="memory-grid">
+<div class="memory-card"><strong>le</strong><span>Masculin singulier</span></div><div class="memory-card"><strong>la</strong><span>Féminin singulier</span></div><div class="memory-card"><strong>l’</strong><span>Singulier : voyelle ou h muet</span></div><div class="memory-card"><strong>les</strong><span>Pluriel masculin ou féminin</span></div><div class="memory-card"><strong>Pour parler en général</strong><span>J’aime le chocolat.</span></div>
+</div></section></div>
+<div class="exercise-area"><a class="exercise-button" href="exercices-articles-definis.html">Passez aux exercices <span aria-hidden="true">→</span></a></div>
+<footer class="brand-footer"><img class="footer-logo" src="assets/logos/raghad-logo.png" alt="Raghad Aboud — Français Sans Illusion"><p>Designed with ❤️ &amp; AI by Raghad Aboud</p></footer>
+</main></body></html>

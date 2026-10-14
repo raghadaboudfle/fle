@@ -959,7 +959,16 @@
         .replace(/\s+/g, "");
     }
 
+    // Mélange les étiquettes pour éviter de révéler les réponses par leur ordre.
+    function shuffleWords() {
+      for (let i = words.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [words[i], words[j]] = [words[j], words[i]];
+      }
+    }
+
     function renderWordBank() {
+      shuffleWords();
       const bank = document.getElementById("word-bank");
       bank.innerHTML = "";
 
@@ -1205,6 +1214,7 @@
         "feedback-exercise-1"
       ).innerHTML = "";
 
+      renderWordBank();
       updateWordChipStates();
     }
 
